@@ -1580,8 +1580,9 @@ function paintGate(){
   SEC.classList.toggle('as-wait',!go); gate.hidden=go;
   if(HOST){ q('[data-as-start]').hidden=go; q('[data-as-rev]').hidden=!go; q('[data-as-again]').hidden=!go;
     q('[data-as-gt]').textContent='Students see the cards when you press Start.';
-    q('[data-as-gs]').textContent= N>0? (N+' simulated answers will stream in, one for each student who named a price in the mug experiment.')
-      : 'No one has taken part in the mug experiment yet, so 30 simulated answers will stream in.'; }
+    var gs=q('[data-as-gs]');
+    gs.textContent= N>0? (N+' simulated answers will stream in, one for each student who named a price in the mug experiment.') : '';
+    gs.hidden=!(N>0); }
 }
 function resetLocal(){ stop(); started=false; revealed=false; myVote=null; counts=[0,0,0]; you.innerHTML='';
   SEC.querySelectorAll('.as-opt').forEach(function(o){ o.classList.remove('chosen'); }); paintReveal(); }
