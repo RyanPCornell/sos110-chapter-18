@@ -1066,6 +1066,51 @@ body{background:#16172a;}
 .ca-ov.ca-fin,.ca-ov.ca-pool{height:100%;}
 .ca-fn.gone{text-decoration:line-through; fill:#86847a;}
 .ca-lk.gone{opacity:.18!important;}
+/* ── Nov 17 2026: the intro clip (ch18_intro.js) ── */
+.ca-gate.ca-gatev{max-width:min(76rem,100%); display:grid; grid-template-columns:minmax(0,2.1fr) minmax(15rem,1fr); gap:1.4rem; align-items:center; padding:1.2rem 1.4rem;}
+.ca-gtxt{display:flex; flex-direction:column; gap:.65rem;}
+.ca-vid{display:flex; flex-direction:column; gap:.4rem; width:100%; max-width:calc((100vh - 15rem) * 1.613); justify-self:center;}
+.ca-vscreen{position:relative; aspect-ratio:1000/620; border-radius:10px; overflow:hidden; background:#efe6d4; box-shadow:inset 0 0 0 1.5px #23253b, 0 14px 30px -18px rgba(30,30,55,.55); cursor:pointer;}
+.ca-vcam,.ca-vcard{position:absolute; inset:0; width:100%; height:100%;}
+.ca-vhall{width:100%; height:100%; display:block;}
+.ca-vcard{pointer-events:none;}
+.ca-vcap{position:absolute; left:50%; bottom:4.5%; transform:translateX(-50%); max-width:86%; padding:.45rem .9rem; border-radius:8px; background:rgba(35,37,59,.86); color:#fdfbf5;
+  font:400 clamp(.78rem,1.15vw,1rem)/1.45 'Merriweather',serif; text-align:center; opacity:0; pointer-events:none;}
+.ca-vstarted .ca-vcap.in{animation:ca-capin .5s ease both;}
+@keyframes ca-capin{from{opacity:0; transform:translate(-50%,6px)} to{opacity:1; transform:translate(-50%,0)}}
+.ca-vbig{position:absolute; inset:0; margin:auto; width:max-content; height:max-content; display:flex; flex-direction:column; align-items:center; gap:.5rem; border:0; background:transparent; cursor:pointer; color:#fdfbf5;}
+.ca-vbig svg{width:4.6rem; height:4.6rem; padding:.9rem; border-radius:50%; background:rgba(47,92,132,.92); box-shadow:0 10px 26px -8px rgba(20,20,40,.6); transition:transform .2s;}
+.ca-vbig:hover svg{transform:scale(1.07);}
+.ca-vbig span{font:800 .78rem 'Inter',sans-serif; letter-spacing:.06em; color:#23253b; background:rgba(253,251,245,.92); padding:.3rem .7rem; border-radius:999px;}
+.ca-vstarted .ca-vbig{display:none;}
+.ca-vid:not(.ca-vstarted) .ca-vscreen::after{content:""; position:absolute; inset:0; background:rgba(244,239,228,.35); pointer-events:none;}
+.ca-vctl{display:flex; align-items:center; gap:.6rem;}
+.ca-vpp{width:2rem; height:2rem; flex:none; border-radius:50%; border:0; background:#23253b; cursor:pointer; position:relative;}
+.ca-vpp::before{content:""; position:absolute; left:.72rem; top:.55rem; border-left:.7rem solid #fdfbf5; border-top:.45rem solid transparent; border-bottom:.45rem solid transparent;}
+.ca-vpp.on::before{left:.6rem; top:.6rem; width:.8rem; height:.8rem; border:0; background:linear-gradient(90deg,#fdfbf5 0 35%,transparent 35% 65%,#fdfbf5 65%);}
+.ca-vended .ca-vpp::before{content:"\21BB"; left:0; top:0; width:100%; height:100%; border:0; background:none; color:#fdfbf5; font:700 1.05rem/2rem 'Inter',sans-serif; text-align:center;}
+.ca-vbar{flex:1; height:8px; border-radius:999px; background:#e2dac9; position:relative; cursor:pointer;}
+.ca-vbar i{position:absolute; left:0; top:0; bottom:0; border-radius:999px; background:#2f5c84;}
+.ca-vbar b{position:absolute; top:-2px; width:2px; height:12px; background:#fdfbf5; opacity:.9;}
+.ca-vt{font:700 .72rem 'Inter',sans-serif; color:#55576a; font-variant-numeric:tabular-nums; flex:none;}
+.ca-vflip{font:900 22px 'Merriweather',serif; fill:#2f5c84;}
+.ca-vtag{font:800 11px 'Inter',sans-serif; letter-spacing:.14em; fill:#6d6b78;}
+.ca-vbig1{font:900 17px 'Merriweather',serif; fill:#2e5a2b;}
+.ca-vnum{font:800 15px 'Inter',sans-serif; fill:#23253b;}
+.ca-vh{font:900 34px 'Merriweather',serif; fill:#23253b;} .ca-vh2{font:italic 400 24px 'Merriweather',serif; fill:#23253b;}
+.ca-vend{font:900 60px 'Merriweather',serif; fill:#23253b;}
+.ca-vax{font:600 13px 'Inter',sans-serif; fill:#55576a;}
+.ca-vbtn{font:800 15px 'Inter',sans-serif; fill:#fdfbf5;} .ca-vbtn2{font:700 15px 'Inter',sans-serif; fill:#23253b;}
+@media(max-width:900px){ .ca-gate.ca-gatev{grid-template-columns:1fr;} }
+/* ── Nov 17 2026: the framework pop-up (formerly its own slide) ── */
+.ca-fwb{white-space:nowrap;}
+.ca-fwpop{position:absolute; inset:0 0 3.2rem 0; z-index:7; display:flex; align-items:center; justify-content:center; padding:clamp(1rem,3vh,2rem) clamp(3rem,5vw,4.6rem); background:rgba(35,37,59,.38); backdrop-filter:blur(3px); -webkit-backdrop-filter:blur(3px);}
+.ca-fwpop[hidden]{display:none;}
+.ca-fwcard{width:100%; max-width:80rem; max-height:100%; overflow:auto; padding:1.1rem 1.4rem .8rem; display:flex; flex-direction:column; gap:.7rem; box-shadow:0 26px 60px -20px rgba(20,20,45,.7); animation:ca-rise .4s ease both;}
+.ca-fwin{display:flex; flex-direction:column; gap:.8rem; --accent:#2f5c84;}
+.ca-fwin .fw-chain{flex:none;}
+.ca-fwsrc{font:400 .66rem 'Inter',sans-serif; color:#86847a; text-align:right;}
+.ca-gatev h3{font-size:clamp(1.4rem,2.3vw,2.05rem);}
 
 
 /* announcements / upcoming assignments */
@@ -1225,18 +1270,6 @@ body{background:#16172a;}
     <div class="an-att" data-at-bar hidden><button class="an-att-btn" type="button" data-at-open>Attendance</button><select class="an-att-sel" data-at-section aria-label="Class section"><option value="MWF0905">MWF 9:05 am</option><option value="MWF1220">MWF 12:20 pm</option><option value="TTH1200">TTh 12:00 pm</option></select><button class="an-att-btn go" type="button" data-at-finalize hidden>Submit Attendance</button><button class="an-att-cancel" type="button" data-at-cancel hidden>Cancel</button><button class="an-att-cancel" type="button" data-at-clear hidden>Clear last roll call</button><span class="an-att-status" data-at-status></span></div>
   </div>
   
-</section>
-<section class="slide" data-type="quote" style="--accent:#3d4266">
-  <div class="bleed-grid">
-    <div class="bleed-text">
-      <div class="eyebrow">Introduction</div>
-      <blockquote class="bigquote">Thinking is easy, acting difficult, and to put one's thoughts into action, the most difficult thing in the world.<cite>Goethe</cite></blockquote>
-      
-      <ul class="bullets"></ul>
-    </div>
-    <div class="bleed-media cover"><img loading="lazy" decoding="async" data-src="media/image2.jpg" alt=""></div>
-  </div>
-  <div class="footer">© 2023 W. W. Norton &amp; Company, Inc.</div>
 </section>
 <section class="slide k18 pl-slide bt-slide" data-type="content" style="--accent:#5b4a8b" data-pl-id="ch18-bat" data-game-id="ch18-bat">
 <div class="k18-wrap">
@@ -2693,8 +2726,26 @@ st=L.make(SEC,{id:ID,onDoc:render,onMine:render,onReady:render}); wire(fin);
     <button type="button" class="k18-ghost" data-h-reset>Reset</button>
   </div>
 </div>
+<div class="ca-fwpop" data-fwpop hidden><div class="ca-fwcard k18-card" role="dialog" aria-label="A Framework for Environmental Behavior Change">
+  <div class="ca-ovh"><div><div class="k18-tag">Chapter 18 &#183; From knowing to acting</div><h3>A Framework for Environmental Behavior Change</h3></div>
+  <button type="button" class="k18-ghost" data-fwclose>Close</button></div>
+  <div class="ca-fwin"><div class="fw-lead"><span class="fw-sub">From Knowing to Acting.</span><span class="fw-ap">Apply it to a case from today:</span><span class="fw-btns"><button type="button" class="k18-ghost" data-case="plates">Restaurant food waste</button><button type="button" class="k18-ghost" data-case="towels">Hotel towel reuse</button><button type="button" class="k18-ghost" data-case="bags">Disposable bags</button><button type="button" class="k18-ghost" data-case="idling">Car idling</button></span></div>
+<div class="fw-chain"><div class="fw-step" style="--d:0"><div class="fw-top"><span class="fw-num">1</span><svg class="fw-ic" viewBox="0 0 50 50"><g fill="none" stroke="#23253b" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="24" cy="24" r="11"/><path d="M32,32 L42,42" stroke-width="3"/><circle cx="24" cy="21" r="3.2"/><path d="M18,31 q6,-6 12,0"/></g></svg></div>
+  <div class="fw-h">Understand the Decision:</div><div class="fw-d">Who is making the decision? What needs, biases, and social norms are at work?</div><div class="fw-c" data-c="0"></div></div><div class="fw-step" style="--d:1"><div class="fw-top"><span class="fw-num">2</span><svg class="fw-ic" viewBox="0 0 50 50"><g fill="none" stroke="#23253b" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6,38 H44"/><path d="M12,38 V20 M24,38 V20 M36,38 V20 M8,22 H40 M8,30 H40"/></g></svg></div>
+  <div class="fw-h">Identify the Barriers:</div><div class="fw-d">Loss aversion? Perceived inconvenience? Status quo bias? Emotional defense mechanisms?</div><div class="fw-c" data-c="1"></div></div><div class="fw-step" style="--d:2"><div class="fw-top"><span class="fw-num">3</span><svg class="fw-ic" viewBox="0 0 50 50"><g fill="none" stroke="#23253b" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M10,40 L30,12 L38,18 L18,46 Z"/><path d="M10,40 L8,48 L18,46"/><path d="M27,16 L35,22"/></g></svg></div>
+  <div class="fw-h">Design the Intervention:</div><div class="fw-d">Use prompts, feedback, commitments, nudges, and incentives, tailored to the specific barrier.</div><div class="fw-c" data-c="2"></div></div><div class="fw-step" style="--d:3"><div class="fw-top"><span class="fw-num">4</span><svg class="fw-ic" viewBox="0 0 50 50"><g fill="none" stroke="#23253b" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="9" width="36" height="32" rx="2"/><rect x="12" y="14" width="26" height="22"/><path d="M16,30 l6,-7 5,5 4,-4 5,6"/></g></svg></div>
+  <div class="fw-h">Frame the Message:</div><div class="fw-d">Choose words and images that activate the right associations: positive solutions, not just problems.</div><div class="fw-c" data-c="3"></div></div><div class="fw-step" style="--d:4"><div class="fw-top"><span class="fw-num">5</span><svg class="fw-ic" viewBox="0 0 50 50"><g fill="none" stroke="#23253b" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4,26 Q25,6 46,26 Q25,46 4,26 Z"/><circle cx="25" cy="26" r="7"/><circle cx="25" cy="26" r="2.5" fill="#23253b"/></g></svg></div>
+  <div class="fw-h">Make Change Visible:</div><div class="fw-d">Social norms drive conformity. Make sustainable behaviors the visible, normal choice.</div><div class="fw-c" data-c="4"></div></div></div>
+<script>(function(){ var SEC=document.currentScript.parentElement; if(!SEC||SEC.__fw) return; SEC.__fw=1;
+  var C={"plates": ["Restaurant food waste", ["Diners at a buffet deciding how much to take, on autopilot.", "Automatic thinking: we fill whatever plate we are handed.", "A nudge: plates 1 inch smaller (GreeNudge). Choice is not restricted.", "No lecture about waste at all. The design does the work.", "Every diner sees the smaller plate as simply how plates are here."]], "towels": ["Hotel towel reuse", ["A hotel guest, alone in the bathroom, deciding about a towel.", "No one is watching, and a fresh towel feels like part of what you paid for.", "A social incentive: a card in the room at the moment of decision.", "&#8220;Join your fellow guests&#8221; instead of &#8220;save the environment.&#8221;", "The card tells guests most people like them already reuse: about 35% rose to 44%."]], "bags": ["Disposable bags", ["Shoppers at the checkout, choosing out of habit.", "Status quo bias and inconvenience: the bag is free and always there.", "A negative incentive: a 5&#162; charge per disposable bag.", "Framed as a cost you can avoid. A 5&#162; bonus, framed as a gain, did almost nothing.", "Reusable bags at every register become the visible norm: use fell by 40+ points."]], "idling": ["Car idling", ["Drivers waiting at a school or a curb, engine running.", "Cognitive dissonance, excused away: &#8220;it&#8217;s cold,&#8221; &#8220;it&#8217;s only a minute.&#8221;", "A public commitment: drivers pledge and put a sticker on the car.", "&#8220;I turn my engine off when parked&#8221;: a promise about who I am.", "Stickers on windows show everyone that turning it off is normal: idling fell 72%."]]}, cs=SEC.querySelectorAll('[data-c]');
+  SEC.querySelectorAll('[data-case]').forEach(function(b){ b.addEventListener('click',function(){ b.blur(); var on=!b.classList.contains('on');
+    SEC.querySelectorAll('[data-case]').forEach(function(x){ x.classList.toggle('on',on && x===b); });
+    SEC.classList.toggle('fw-applied',on);
+    cs.forEach(function(c,i){ c.classList.remove('in'); void c.offsetWidth; c.innerHTML= on? C[b.dataset.case][1][i] : ''; if(on) c.classList.add('in'); }); }); });
+})();</script></div><div class="ca-fwsrc">© 2023 W. W. Norton &amp; Company, Inc.</div></div></div>
 <script>(function(){/* ═══ CHOICE ARCHITECT (Chapter 18) · see ch18_architect.py for the design ═══ */
 var SEC=document.currentScript.closest('section'); if(!SEC||SEC.__ca) return; SEC.__ca=1;
+if(!window.__deckLiveReady){ window.__deckLiveReady=new Promise(function(r){ window.__deckLiveResolve=r; }); }
 var GID='ch18-architect', NS='http://www.w3.org/2000/svg';
 var ROOT=SEC.querySelector('[data-ca]'), SIDE=ROOT.querySelector('[data-side]'), OVER=ROOT.querySelector('[data-over]');
 var HALL=ROOT.querySelector('[data-hall]'), CV=ROOT.querySelector('[data-cv]'), FIT=ROOT.querySelector('[data-fit]'), STAGE=ROOT.querySelector('[data-stage]');
@@ -3131,7 +3182,7 @@ function paintFinale(){ OVER.hidden=false; var keys=S.adopted, p0=probs([]), sem
   var unused=[]; Object.keys(CONSEC).forEach(function(cn){ if(ideas.indexOf(cn)<0) unused.push(cn); });
   var sum= best? 'Your biggest lever was <b>'+esc(best.o.name)+'</b> ('+esc(best.o.tag.toLowerCase())+'): on its own it moves about <b>'+Math.round(best.eff)+' of every 100</b> diners to the '+BEH[best.o.b].g+'.' : 'With nothing adopted, every diner behaved exactly as before.';
   OVER.innerHTML='<div class="ca-ov k18-card ca-fin"><div class="ca-ovh"><div><div class="k18-tag">How your hall works</div><h3>From a design choice to a result: follow the lines</h3></div>'
-    +'<span class="ca-ovbtns"><button type="button" class="k18-ghost" data-sem>The semester</button><button type="button" class="k18-ghost" data-close>Back to the hall</button></span></div>'
+    +'<span class="ca-ovbtns"><button type="button" class="k18-btn ca-fwb" data-fw>The framework</button><button type="button" class="k18-ghost" data-sem>The semester</button><button type="button" class="k18-ghost" data-close>Back to the hall</button></span></div>'
     +'<div class="ca-map"><svg class="ca-msvg" viewBox="0 0 '+W+' '+H+'">'+o+'</svg></div>'
     +'<div class="ca-finb"><p>'+sum+' The thin black tick on each bar shows where diners were before you changed anything. Click a change to trace its path.</p>'
     +'<p class="ca-rec">Your lab record: '+S.tests.length+' lunch'+(S.tests.length===1?'':'es')+', '+clear+' clear result'+(clear===1?'':'s')+', and your hunch matched the data '+rights+' of '+S.tests.length+' times.'
@@ -3174,7 +3225,7 @@ function paintPool(F){ OVER.hidden=false; F=F||{k:{},ad:{},c:[],nS:0,nT:0,base:o
     +'<path d="M'+cX(F.base)+',14 V50" stroke="#86847a" stroke-dasharray="4 3"/><text x="'+cX(F.base)+'" y="10" text-anchor="middle" class="ca-dbt">as it was</text>'
     +cs.map(function(v,i){ return '<circle cx="'+cX(v)+'" cy="'+(38-(i%4)*6)+'" r="4" fill="#2c6b5f" opacity=".7"/>'; }).join('')+'</svg>';
   OVER.innerHTML='<div class="ca-ov k18-card ca-pool"><div class="ca-ovh"><div><div class="k18-tag">The class lab report &#183; '+F.nS+' hall'+(F.nS===1?'':'s')+', '+F.nT+' lunch'+(F.nT===1?'':'es')+'</div><h3>Every experiment in this room, pooled</h3></div>'
-    +(HOST?'':'<button type="button" class="k18-ghost" data-close>Back to my hall</button>')+'</div>'
+    +'<span class="ca-ovbtns"><button type="button" class="k18-btn ca-fwb" data-fw>The framework</button>'+(HOST?'':'<button type="button" class="k18-ghost" data-close>Back to my hall</button>')+'</span></div>'
     +'<div class="ca-poolb"><div class="ca-forest"><svg viewBox="0 0 '+W+' '+H+'">'+o+'</svg></div>'
     +'<div class="ca-pside"><p class="ca-small">Each faint dot is one student&#8217;s lunch. The diamond pools them all, and the bar shows how sure we can be. One lunch is noisy; '+F.nT+' lunches together are not. <b style="color:#9c3a4a">Red</b> means the change made things worse.</p>'
     +'<div class="k18-tag">What the class adopted</div>'+adh
@@ -3198,18 +3249,152 @@ function paintHostSide(){ var P=pool(), started=0, done=0, lunches=0;
   HOSTBAR.querySelector('[data-hstat]').textContent= go? (started+' students in the lab') : 'The lab is closed. Students see the title card.'; }
 function pool(){ return poolFrom(doc.p||{}); }
 
+/* ═══ CHOICE ARCHITECT · the intro clip (Nov 17 2026, Ryan: "add a short intro video") ═══
+   A 56-second animated clip with a player (play/pause, scrub bar, captions). It is drawn live, not a video file:
+   the camera moves over a copy of the real hall, diners walk both lines, then short chart scenes preview the results
+   screen, the semester and the class pool. Every frame is a pure function of time, so scrubbing is exact.
+   Inlined into ch18_architect.js's IIFE (uses q, E, esc, HALL, SEC). */
+var VID_D=56;
+var VID_SC=[
+ {t:0, cam:[0,0,1000,620], cap:'Palo Verde Commons serves 1,500 lunches a day. Your job: cut its carbon and its trash without banning anything.'},
+ {t:6, cam:[240,0,520,322], cap:'A coin flip at the door sends each diner to Line A or Line B.'},
+ {t:13, cam:[560,70,440,273], cap:'Line A stays as it is. On Line B, you change one thing, like putting the plant dish first.'},
+ {t:21, cam:[0,0,1000,620], cap:'Diners decide in a split second. The lab counts every choice on both lines.'},
+ {t:30, cam:[0,0,1000,620], card:'result', cap:'Is the gap real, or just chance? The range shows how sure you can be. Adopt what works, within your budget.'},
+ {t:37, cam:[0,0,1000,620], card:'sem', cap:'Then run a 15-week semester. Some changes fade. Others hold.'},
+ {t:44, cam:[0,0,1000,620], card:'pool', cap:'At the end, we pool every experiment in the room. One lunch is noisy. Fifty lunches together are not.'},
+ {t:51, cam:[0,0,1000,620], card:'end', cap:'Six lunches. One semester. Your hall.'}];
+function vEase(x){ x=clamp(x,0,1); return x<.5? 2*x*x : 1-Math.pow(-2*x+2,2)/2; }
+function vLerp(a,b,k){ return a+(b-a)*k; }
+function vRng(s){ return function(){ s|=0; s=s+0x6D2B79F5|0; var t=Math.imul(s^s>>>15,1|s); t=t+Math.imul(t^t>>>7,61|t)^t; return ((t^t>>>14)>>>0)/4294967296; }; }
+/* diners: spawn every 0.34 s from 6.4 s; alternate A/B by coin flip; choose at the entrée counter */
+var VID_DN=(function(){ var r=vRng(18), out=[], nA=0, nB=0;
+  for(var i=0;i<62;i++){ var side=r()<.5? 'A':'B'; if(side==='A'&&nA>nB+2) side='B'; if(side==='B'&&nB>nA+2) side='A'; var kk=side==='A'? nA++ : nB++, pr=side==='A'? .2 : .36, plant=Math.floor((kk+1)*pr+.35)>Math.floor(kk*pr+.35);
+    var tb=Math.floor(r()*6), seat=[[318,168],[418,168],[318,280],[418,280],[318,392],[418,392]][tb], ang=r()*6.283;
+    var pts=[[500,22],[500,86],[318,100],[178,132],[178,214],[178,318],[206,370],[232,428],[seat[0]+30*Math.cos(ang),seat[1]+30*Math.sin(ang)]];
+    if(side==='B') pts=pts.map(function(p){ return [1000-p[0],p[1]]; });
+    var L=[0]; for(var k=1;k<pts.length;k++) L.push(L[k-1]+Math.hypot(pts[k][0]-pts[k-1][0],pts[k][1]-pts[k-1][1]));
+    out.push({t0:6.4+i*.34, side:side, pts:pts, L:L, sp:118+r()*30, plant:plant, shirt:['#5b4a8b','#2f5c84','#a3722a','#7a5c8f','#3d6f8c','#9c6b3a'][i%6], skin:['#c99a76','#8d5b3c','#e0b48f','#6b4423'][i%4]}); }
+  return out; })();
+function vPos(d,t){ var s=(t-d.t0)*d.sp; if(s<0) return null; var L=d.L, n=L.length-1; if(s>=L[n]) return {x:d.pts[n][0],y:d.pts[n][1],seg:n,done:s-L[n]};
+  for(var k=1;k<=n;k++) if(s<L[k]){ var f=(s-L[k-1])/(L[k]-L[k-1]); return {x:vLerp(d.pts[k-1][0],d.pts[k][0],f),y:vLerp(d.pts[k-1][1],d.pts[k][1],f),seg:k,s:s,sk:L[k-1]}; } }
+function vScene(t){ var i=0; for(var k=0;k<VID_SC.length;k++) if(t>=VID_SC[k].t) i=k; return i; }
+
+function vidHTML(){
+  return '<div class="ca-vid" data-vid><div class="ca-vscreen" data-vscreen><div class="ca-vcam" data-vcam></div>'
+    +'<svg class="ca-vcard" data-vcard viewBox="0 0 1000 620" preserveAspectRatio="xMidYMid meet"></svg>'
+    +'<div class="ca-vcap" data-vcap></div>'
+    +'<button type="button" class="ca-vbig" data-vbig aria-label="Play the intro"><svg viewBox="0 0 40 40"><path d="M14,10 L31,20 L14,30 Z" fill="currentColor"/></svg><span>Watch the intro &#183; 56 s</span></button></div>'
+    +'<div class="ca-vctl"><button type="button" class="ca-vpp" data-vpp aria-label="Play"></button><div class="ca-vbar" data-vbar><i data-vfill></i>'
+    +VID_SC.map(function(s){ return '<b style="left:'+(s.t/VID_D*100)+'%"></b>'; }).join('')+'</div><span class="ca-vt" data-vt>0:00 / 0:56</span></div></div>'; }
+
+function mountVid(box){
+  var cam=q('[data-vcam]',box), card=q('[data-vcard]',box), capEl=q('[data-vcap]',box), big=q('[data-vbig]',box), pp=q('[data-vpp]',box), bar=q('[data-vbar]',box), fill=q('[data-vfill]',box), tEl=q('[data-vt]',box);
+  /* snapshot the props for the clip (A as it is; B before and after the change), then put the live hall back */
+  var gA=q('[data-props="A"]'), gB=q('[data-props="B"]'), keepA=gA.innerHTML, keepB=gB.innerHTML;
+  drawProps('A',[]); drawProps('B',[]); var pB0=gB.innerHTML; drawProps('B',['order']); var pB1=gB.innerHTML;
+  drawProps('B',[]); var sv=HALL.cloneNode(true); gA.innerHTML=keepA; gB.innerHTML=keepB;
+  var cB=sv.querySelector('[data-props="B"]'), bOn=false; sv.removeAttribute('data-hall'); sv.setAttribute('class','ca-vhall'); sv.setAttribute('preserveAspectRatio','xMidYMid slice');
+  Array.prototype.forEach.call(sv.querySelectorAll('.ca-hot'),function(h){ h.remove(); });
+  var gx=E('g',{},sv), gd=E('g',{},sv); cam.appendChild(sv);
+  var t=0, playing=false, last=0, raf=0, capI=-1;
+  function fmt(s){ s=Math.floor(s); return Math.floor(s/60)+':'+('0'+s%60).slice(-2); }
+  function camAt(t){ var i=vScene(t), c=VID_SC[i].cam, p=i? VID_SC[i-1].cam : c, k=vEase((t-VID_SC[i].t)/1.8); return c.map(function(v,j){ return vLerp(p[j],v,k); }); }
+  function frame(){
+    var on=t>=14.6 && t<31; if(on!==bOn){ bOn=on; cB.innerHTML=on? pB1 : pB0; }
+    var c=camAt(t); sv.setAttribute('viewBox',c.map(function(v){ return v.toFixed(1); }).join(' '));
+    var i=vScene(t), sc=VID_SC[i], lt=t-sc.t;
+    /* diners */
+    var o='', tal={A:[0,0],B:[0,0]};
+    if(t<31) VID_DN.forEach(function(d){ var p=vPos(d,t); if(!p) return; var chose=p.seg>4 || p.done!==undefined, col=chose? (d.plant? '#4f7d4a' : '#b4504a') : d.shirt;
+      if(chose){ tal[d.side][1]++; if(d.plant) tal[d.side][0]++; }
+      var op=p.done!==undefined? clamp(1-p.done/60,0,1) : 1; if(op<=0) return;
+      o+='<g transform="translate('+p.x.toFixed(1)+' '+p.y.toFixed(1)+')" opacity="'+op.toFixed(2)+'"><ellipse rx="9" ry="6.5" fill="'+d.shirt+'" stroke="#23253b" stroke-width="1"/><circle r="4.3" fill="'+d.skin+'" stroke="#23253b" stroke-width=".8"/>'
+        +(chose? '<circle cx="9" cy="-7" r="4.4" fill="'+col+'" stroke="#fdfbf5" stroke-width="1.2"/>' : '')+'</g>';
+      if(p.seg===2 && p.s-p.sk<46){ var k=(p.s-p.sk)/46; o+='<text x="'+(500+(d.side==='A'?-26:26))+'" y="'+(70-k*14).toFixed(1)+'" text-anchor="middle" class="ca-vflip" opacity="'+(1-k).toFixed(2)+'">'+d.side+'</text>'; } });
+    gd.innerHTML=o;
+    /* the Line B change, highlighted */
+    var x='';
+    if(t>=14.2 && t<30.5){ var a=clamp((t-14.2)/0.8,0,1)*clamp((30.5-t)/0.6,0,1), pulse=1+.06*Math.sin(t*4);
+      x='<g opacity="'+a.toFixed(2)+'"><rect x="864" y="174" width="86" height="44" rx="7" fill="none" stroke="#4f7d4a" stroke-width="'+(3.5*pulse).toFixed(2)+'"/>'
+       +'<path d="M772,196 C800,196 830,196 860,196" fill="none" stroke="#23253b" stroke-width="1.6" marker-end="url(#caV)"/>'
+       +'<rect x="604" y="166" width="168" height="58" rx="8" fill="#fdfbf5" stroke="#23253b" stroke-width="1.4"/>'
+       +'<text x="618" y="186" class="ca-vtag">YOUR CHANGE ON LINE B</text><text x="618" y="210" class="ca-vbig1">Plant dish first</text></g>'; }
+    if(t>=21 && t<30.5){ var a2=clamp((t-21.4)/0.6,0,1)*clamp((30.5-t)/0.6,0,1);
+      [['A',200,'#f1ece0'],['B',800,'#efe7f7']].forEach(function(s){ var v=tal[s[0]];
+        x+='<g opacity="'+a2.toFixed(2)+'" transform="translate('+s[1]+' 586)"><rect x="-120" y="-22" width="240" height="40" rx="8" fill="'+s[2]+'" stroke="#23253b" stroke-width="1.3"/>'
+          +'<text y="-3" text-anchor="middle" class="ca-vtag">LINE '+s[0]+' &#183; PLANT PLATES</text><text y="13" text-anchor="middle" class="ca-vnum">'+v[0]+' of '+v[1]+(v[1]? ' &#183; '+Math.round(v[0]/v[1]*100)+'%' : '')+'</text></g>'; }); }
+    gx.innerHTML='<defs><marker id="caV" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#23253b"/></marker></defs>'+x;
+    card.innerHTML=cardAt(sc,lt,t);
+    if(i!==capI){ capI=i; capEl.classList.remove('in'); void capEl.offsetWidth; capEl.textContent=sc.cap; capEl.classList.add('in'); }
+    fill.style.width=(t/VID_D*100)+'%'; tEl.textContent=fmt(t)+' / '+fmt(VID_D);
+    pp.classList.toggle('on',playing); pp.setAttribute('aria-label',playing?'Pause':'Play'); box.classList.toggle('ca-vplaying',playing); box.classList.toggle('ca-vended',t>=VID_D); }
+  function loop(ts){ if(!playing) return; if(!box.isConnected||!SEC.classList.contains('active')){ playing=false; frame(); return; }
+    t=Math.min(VID_D,t+(ts-last)/1000); last=ts; if(t>=VID_D) playing=false; frame(); if(playing) raf=requestAnimationFrame(loop); }
+  function play(){ if(t>=VID_D) t=0; playing=true; box.classList.add('ca-vstarted'); last=performance.now(); cancelAnimationFrame(raf); raf=requestAnimationFrame(loop); frame(); }
+  function pause(){ playing=false; frame(); }
+  big.addEventListener('click',function(e){ e.currentTarget.blur(); play(); });
+  pp.addEventListener('click',function(e){ e.currentTarget.blur(); playing? pause() : play(); });
+  q('[data-vscreen]',box).addEventListener('click',function(e){ if(e.target.closest('[data-vbig]')||!box.classList.contains('ca-vstarted')) return; playing? pause() : play(); });
+  bar.addEventListener('click',function(e){ var r=bar.getBoundingClientRect(); t=clamp((e.clientX-r.left)/r.width,0,1)*VID_D; box.classList.add('ca-vstarted'); frame(); });
+  frame(); }
+
+/* the chart scenes, drawn over the hall in screen coordinates */
+function cardAt(sc,lt,t){
+  if(!sc.card) return '';
+  var o='<rect width="1000" height="620" fill="#f4efe4" opacity="'+(.94*clamp(lt/0.6,0,1)).toFixed(2)+'"/>', a=function(d,s){ return clamp((lt-d)/(s||.5),0,1).toFixed(2); };
+  if(sc.card==='result'){ var X=function(v){ return 250+v*1100; }, k=vEase((lt-.5)/1.2);
+    o+='<g opacity="'+a(.3)+'"><text x="500" y="92" text-anchor="middle" class="ca-vtag">LUNCH 1 &#183; RESULTS &#183; 120 DINERS PER LINE</text><text x="500" y="132" text-anchor="middle" class="ca-vh">Plant dish first</text>'
+      +'<path d="M'+X(0)+',330 H'+X(.5)+'" stroke="#23253b" stroke-width="1.2"/>'+[0,.1,.2,.3,.4,.5].map(function(v){ return '<path d="M'+X(v)+',330 v6" stroke="#23253b"/><text x="'+X(v)+'" y="356" text-anchor="middle" class="ca-vax">'+Math.round(v*100)+'%</text>'; }).join('')
+      +'<text x="500" y="386" text-anchor="middle" class="ca-vax">share of diners who chose the plant-based entr&#233;e</text>'
+      +'<path d="M'+X(.2)+',250 H'+X(vLerp(.2,.34,k))+'" stroke="#4f7d4a" stroke-width="5" stroke-linecap="round" opacity=".45"/>'
+      +'<circle cx="'+X(.2)+'" cy="250" r="13" fill="#fdfbf5" stroke="#23253b" stroke-width="2"/><text x="'+X(.2)+'" y="222" text-anchor="middle" class="ca-vnum">A &#183; 20%</text>'
+      +'<circle cx="'+X(vLerp(.2,.34,k))+'" cy="250" r="13" fill="#4f7d4a" stroke="#23253b" stroke-width="2"/><text x="'+X(vLerp(.2,.34,k))+'" y="222" text-anchor="middle" class="ca-vnum" opacity="'+a(1.6)+'">B &#183; 34%</text></g>'
+      +'<g opacity="'+a(2.2)+'"><path d="M'+X(.26)+',292 H'+X(.42)+' M'+X(.26)+',284 v16 M'+X(.42)+',284 v16" stroke="#23253b" stroke-width="2"/><text x="'+X(.34)+'" y="314" text-anchor="middle" class="ca-vax">likely range for Line B</text></g>'
+      +'<g opacity="'+a(3)+'" transform="translate(500 438)"><rect x="-150" y="-22" width="300" height="40" rx="20" fill="#e3eee0" stroke="#4f7d4a" stroke-width="1.5"/><text y="5" text-anchor="middle" class="ca-vnum" fill="#2e5a2b">+14 points: a clear difference</text></g>';
+    var pr=clamp((lt-4.6)/.3,0,1);
+    o+='<g opacity="'+a(3.8)+'" transform="translate(500 516)"><rect x="-176" y="-22" width="170" height="44" rx="22" fill="'+(pr>0?'#2c6b5f':'#2f5c84')+'" transform="scale('+(1-.06*Math.sin(pr*3.14))+')"/><text x="-91" y="6" text-anchor="middle" class="ca-vbtn">'+(pr>=1?'Adopted &#10003;':'Adopt it')+'</text>'
+      +'<rect x="6" y="-22" width="170" height="44" rx="22" fill="none" stroke="#23253b" stroke-opacity=".3" stroke-width="1.5"/><text x="91" y="6" text-anchor="middle" class="ca-vbtn2">Leave it out</text></g>'
+      +'<g opacity="'+a(4.8)+'"><text x="500" y="584" text-anchor="middle" class="ca-vax">Semester budget: $15,000 &#183; this change costs $0</text></g>';
+    return o; }
+  if(sc.card==='sem'){ var x0=170, x1=830, Y=function(v){ return 470-v*700; }, Xw=function(w){ return x0+(x1-x0)*(w-1)/14; }, pr=clamp((lt-.8)/4.2,0,1), wmax=1+14*pr;
+    function line(f,col,dash){ var d=''; for(var w=1;w<=wmax+.001;w+=.25) d+=(d?'L':'M')+Xw(w).toFixed(1)+','+Y(f(w)).toFixed(1); return '<path d="'+d+'" fill="none" stroke="'+col+'" stroke-width="4" stroke-linecap="round"'+(dash?' stroke-dasharray="7 7"':'')+'/>'; }
+    var hold=function(){ return .34; }, fade=function(w){ return .2+.12*Math.exp(-(w-1)/3.2); }, base=function(){ return .2; };
+    o+='<g opacity="'+a(.3)+'"><text x="500" y="92" text-anchor="middle" class="ca-vtag">THE SEMESTER &#183; 15 WEEKS</text><text x="500" y="132" text-anchor="middle" class="ca-vh">What lasts?</text>'
+      +'<path d="M'+x0+','+Y(0.1)+' H'+x1+'" stroke="#23253b"/>'+[1,5,10,15].map(function(w){ return '<text x="'+Xw(w)+'" y="'+(Y(.1)+24)+'" text-anchor="middle" class="ca-vax">week '+w+'</text>'; }).join('')
+      +[.2,.3,.4].map(function(v){ return '<path d="M'+x0+','+Y(v)+' H'+x1+'" stroke="#23253b" stroke-opacity=".08"/><text x="'+(x0-12)+'" y="'+(Y(v)+5)+'" text-anchor="end" class="ca-vax">'+Math.round(v*100)+'%</text>'; }).join('')
+      +'<text x="'+(x0-12)+'" y="'+(Y(.47))+'" text-anchor="end" class="ca-vax">plant plates</text>'+line(base,'#86847a',1)+line(fade,'#a3722a')+line(hold,'#4f7d4a')+'</g>'
+      +'<g opacity="'+a(4.6)+'"><text x="'+(x1+12)+'" y="'+(Y(.34)+6)+'" class="ca-vnum" fill="#4f7d4a">Dish order holds</text><text x="'+(x1+12)+'" y="'+(Y(fade(15))+2)+'" class="ca-vnum" fill="#a3722a">A sign fades</text>'
+      +'<text x="'+(x1+12)+'" y="'+(Y(.2)+22)+'" class="ca-vax">as it was</text></g>';
+    return o; }
+  if(sc.card==='pool'){ var X2=function(v){ return 470+v*9; }, rows=[['Plant-forward default',22,'#4f7d4a'],['Plant dish first',12,'#4f7d4a'],['Mugs by default',9,'#2f6b67'],['Sign: “Most students still eat meat…”',-4,'#9c3a4a']], r=vRng(5);
+    o+='<g opacity="'+a(.3)+'"><text x="500" y="92" text-anchor="middle" class="ca-vtag">THE CLASS LAB REPORT</text><text x="500" y="132" text-anchor="middle" class="ca-vh">Every experiment, pooled</text>'
+      +'<path d="M'+X2(0)+',170 V'+(190+rows.length*80)+'" stroke="#23253b" stroke-width="1.2"/><text x="'+X2(0)+'" y="164" text-anchor="middle" class="ca-vax">no effect</text></g>';
+    rows.forEach(function(rw,i){ var y=215+i*80; o+='<g opacity="'+a(.6+i*.2)+'"><text x="120" y="'+(y+6)+'" class="ca-vnum"'+(rw[1]<0?' fill="#9c3a4a"':'')+'>'+esc(rw[0])+'</text>';
+      for(var j=0;j<14;j++){ var d=rw[1]+(r()-.5)*28, dl=1+i*.3+j*.12, f=clamp((lt-dl)/.5,0,1); if(f<=0) continue; o+='<circle cx="'+X2(d).toFixed(1)+'" cy="'+(y-40+40*vEase(f)+((j*7)%9-4)*1.6).toFixed(1)+'" r="5" fill="'+rw[2]+'" opacity="'+(.32*f).toFixed(2)+'"/>'; }
+      var dm=clamp((lt-4.2-i*.15)/.5,0,1); o+='<g opacity="'+dm.toFixed(2)+'"><path d="M'+X2(rw[1]-4)+','+y+' H'+X2(rw[1]+4)+'" stroke="'+(rw[1]<0?'#9c3a4a':'#23253b')+'" stroke-width="3" stroke-linecap="round"/>'
+        +'<path d="M'+X2(rw[1])+','+(y-12)+' l12,12 l-12,12 l-12,-12 z" fill="'+rw[2]+'" stroke="#23253b" stroke-width="1.2"/></g></g>'; });
+    o+='<g opacity="'+a(5.4)+'"><text x="500" y="560" text-anchor="middle" class="ca-vax">Faint dots: single lunches. Diamonds: the whole class combined. Red: it backfired.</text></g>';
+    return o; }
+  if(sc.card==='end'){ o+='<g opacity="'+a(.3,.8)+'"><text x="500" y="250" text-anchor="middle" class="ca-vtag">A LIVE GAME &#183; CHAPTER 18</text><text x="500" y="318" text-anchor="middle" class="ca-vend">Choice Architect</text></g>'
+      +'<g opacity="'+a(1.4,.8)+'"><path d="M400,350 H600" stroke="#2f5c84" stroke-width="2"/><text x="500" y="392" text-anchor="middle" class="ca-vh2">Change the setting, not the person.</text></g>';
+    return o; }
+  return o; }
+
 /* ═══ gate + brief ══════════════════════════════════════════════════════════════════════════════════════ */
 function paintGate(){ OVER.hidden=false;
-  OVER.innerHTML='<div class="ca-gate k18-card"><div class="k18-tag">A live game &#183; Chapter 18</div><h3>Choice Architect</h3>'
+  OVER.innerHTML='<div class="ca-gate ca-gatev k18-card">'+vidHTML()+'<div class="ca-gtxt"><div class="k18-tag">A live game &#183; Chapter 18</div><h3>Choice Architect</h3>'
     +'<p>You are the new sustainability lead at <b>Palo Verde Commons</b>, a campus dining hall that serves 1,500 lunches a day. Your goal: cut its carbon and its landfill trash <i>without</i> banning anything, and without making diners miserable.</p>'
-    +'<p class="ca-small">'+(HOST? 'Press <b>Open the lab</b> when everyone has this slide open.' : 'Waiting for your instructor to open the lab.')+'</p></div>'; }
+    +'<p class="ca-small">'+(HOST? 'Play the intro, then press <b>Open the lab</b> when everyone has this slide open.' : 'Waiting for your instructor to open the lab.')+'</p></div></div>';
+  mountVid(q('[data-vid]',OVER)); }
 function paintBrief(){ OVER.hidden=false;
-  OVER.innerHTML='<div class="ca-gate ca-brief k18-card"><div class="k18-tag">How the lab works</div><h3>Run experiments, then design the hall</h3>'
+  OVER.innerHTML='<div class="ca-gate ca-gatev ca-brief k18-card">'+vidHTML()+'<div class="ca-gtxt"><div class="k18-tag">How the lab works</div><h3>Run experiments, then design the hall</h3>'
     +'<ol><li><b>Two identical lines.</b> Each lunch, change <b>one thing</b> on Line B. Line A stays as your hall is now.</li>'
     +'<li><b>A coin flip at the door</b> sends each diner to A or B, so any difference between the lines comes from your change, or from chance.</li>'
     +'<li><b>Read the results</b>, then adopt what works for the whole hall. Fees raise money; staff and screens cost money. Your budget is '+money(BUDGET)+' a semester.</li>'
     +'<li>After '+MAXL+' lunches (or sooner), <b>run the semester</b> and see how your design holds up over 15 weeks.</li></ol>'
-    +'<button type="button" class="k18-btn" data-begin>Start the first lunch</button></div>';
+    +'<button type="button" class="k18-btn" data-begin>Start the first lunch</button></div></div>';
+  mountVid(q('[data-vid]',OVER));
   q('[data-begin]',OVER).addEventListener('click',function(){ S.phase='plan'; save(); OVER.hidden=true; render(); }); }
 
 /* ═══ render ════════════════════════════════════════════════════════════════════════════════════════════ */
@@ -3226,6 +3411,12 @@ function render(){ HOSTBAR.hidden=!HOST; ROOT.classList.toggle('ca-plan',!!(S&&S
   if(S.phase==='plan'||S.phase==='run'){ if(S.phase==='run'){ S.phase='plan'; save(); } paintPlan(); return; }
   if(S.phase==='result'){ paintResult(); return; }
   if(S.phase==='semester'){ if(!S.sem) S.sem=semester(S.adopted); paintSideDone(); return; } }
+
+/* ═══ the framework pop-up (Nov 17 2026: the old Framework slide now lives here) ═══ */
+var FWP=SEC.querySelector('[data-fwpop]');
+ROOT.addEventListener('click',function(e){ var b=e.target.closest('[data-fw]'); if(!b) return; b.blur(); FWP.hidden=false; });
+FWP.addEventListener('click',function(e){ if(e.target===FWP||e.target.closest('[data-fwclose]')) FWP.hidden=true; });
+new MutationObserver(function(){ if(!SEC.classList.contains('active')) FWP.hidden=true; }).observe(SEC,{attributes:true,attributeFilter:['class']});
 
 /* ═══ live ══════════════════════════════════════════════════════════════════════════════════════════════ */
 new MutationObserver(function(){ if(SEC.classList.contains('active')){ fit(); kick(); if(HOST&&go&&!rv) setTimeout(ambientLunch,300); } }).observe(SEC,{attributes:true,attributeFilter:['class']});
@@ -3245,20 +3436,6 @@ window.__deckLiveReady.then(function(Lv){ backend=Lv.backend; HOST=!!Lv.HOST;
 });
 })();</script>
 </section>
-<section class="slide k18 fw-slide" data-type="content" style="--accent:#2f5c84"><div class="k18-wrap"><div><div class="eyebrow">Chapter 18  ·  A Framework for Environmental Behavior Change</div><h2 class="heading">A Framework for Environmental Behavior Change</h2></div><div class="fw-lead"><span class="fw-sub">From Knowing to Acting.</span><span class="fw-ap">Apply it to a case from today:</span><span class="fw-btns"><button type="button" class="k18-ghost" data-case="plates">Restaurant food waste</button><button type="button" class="k18-ghost" data-case="towels">Hotel towel reuse</button><button type="button" class="k18-ghost" data-case="bags">Disposable bags</button><button type="button" class="k18-ghost" data-case="idling">Car idling</button></span></div>
-<div class="fw-chain"><div class="fw-step" style="--d:0"><div class="fw-top"><span class="fw-num">1</span><svg class="fw-ic" viewBox="0 0 50 50"><g fill="none" stroke="#23253b" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="24" cy="24" r="11"/><path d="M32,32 L42,42" stroke-width="3"/><circle cx="24" cy="21" r="3.2"/><path d="M18,31 q6,-6 12,0"/></g></svg></div>
-  <div class="fw-h">Understand the Decision:</div><div class="fw-d">Who is making the decision? What needs, biases, and social norms are at work?</div><div class="fw-c" data-c="0"></div></div><div class="fw-step" style="--d:1"><div class="fw-top"><span class="fw-num">2</span><svg class="fw-ic" viewBox="0 0 50 50"><g fill="none" stroke="#23253b" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6,38 H44"/><path d="M12,38 V20 M24,38 V20 M36,38 V20 M8,22 H40 M8,30 H40"/></g></svg></div>
-  <div class="fw-h">Identify the Barriers:</div><div class="fw-d">Loss aversion? Perceived inconvenience? Status quo bias? Emotional defense mechanisms?</div><div class="fw-c" data-c="1"></div></div><div class="fw-step" style="--d:2"><div class="fw-top"><span class="fw-num">3</span><svg class="fw-ic" viewBox="0 0 50 50"><g fill="none" stroke="#23253b" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M10,40 L30,12 L38,18 L18,46 Z"/><path d="M10,40 L8,48 L18,46"/><path d="M27,16 L35,22"/></g></svg></div>
-  <div class="fw-h">Design the Intervention:</div><div class="fw-d">Use prompts, feedback, commitments, nudges, and incentives, tailored to the specific barrier.</div><div class="fw-c" data-c="2"></div></div><div class="fw-step" style="--d:3"><div class="fw-top"><span class="fw-num">4</span><svg class="fw-ic" viewBox="0 0 50 50"><g fill="none" stroke="#23253b" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="9" width="36" height="32" rx="2"/><rect x="12" y="14" width="26" height="22"/><path d="M16,30 l6,-7 5,5 4,-4 5,6"/></g></svg></div>
-  <div class="fw-h">Frame the Message:</div><div class="fw-d">Choose words and images that activate the right associations: positive solutions, not just problems.</div><div class="fw-c" data-c="3"></div></div><div class="fw-step" style="--d:4"><div class="fw-top"><span class="fw-num">5</span><svg class="fw-ic" viewBox="0 0 50 50"><g fill="none" stroke="#23253b" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4,26 Q25,6 46,26 Q25,46 4,26 Z"/><circle cx="25" cy="26" r="7"/><circle cx="25" cy="26" r="2.5" fill="#23253b"/></g></svg></div>
-  <div class="fw-h">Make Change Visible:</div><div class="fw-d">Social norms drive conformity. Make sustainable behaviors the visible, normal choice.</div><div class="fw-c" data-c="4"></div></div></div>
-<script>(function(){ var SEC=document.currentScript.closest('section'); if(!SEC||SEC.__fw) return; SEC.__fw=1;
-  var C={"plates": ["Restaurant food waste", ["Diners at a buffet deciding how much to take, on autopilot.", "Automatic thinking: we fill whatever plate we are handed.", "A nudge: plates 1 inch smaller (GreeNudge). Choice is not restricted.", "No lecture about waste at all. The design does the work.", "Every diner sees the smaller plate as simply how plates are here."]], "towels": ["Hotel towel reuse", ["A hotel guest, alone in the bathroom, deciding about a towel.", "No one is watching, and a fresh towel feels like part of what you paid for.", "A social incentive: a card in the room at the moment of decision.", "&#8220;Join your fellow guests&#8221; instead of &#8220;save the environment.&#8221;", "The card tells guests most people like them already reuse: about 35% rose to 44%."]], "bags": ["Disposable bags", ["Shoppers at the checkout, choosing out of habit.", "Status quo bias and inconvenience: the bag is free and always there.", "A negative incentive: a 5&#162; charge per disposable bag.", "Framed as a cost you can avoid. A 5&#162; bonus, framed as a gain, did almost nothing.", "Reusable bags at every register become the visible norm: use fell by 40+ points."]], "idling": ["Car idling", ["Drivers waiting at a school or a curb, engine running.", "Cognitive dissonance, excused away: &#8220;it&#8217;s cold,&#8221; &#8220;it&#8217;s only a minute.&#8221;", "A public commitment: drivers pledge and put a sticker on the car.", "&#8220;I turn my engine off when parked&#8221;: a promise about who I am.", "Stickers on windows show everyone that turning it off is normal: idling fell 72%."]]}, cs=SEC.querySelectorAll('[data-c]');
-  SEC.querySelectorAll('[data-case]').forEach(function(b){ b.addEventListener('click',function(){ b.blur(); var on=!b.classList.contains('on');
-    SEC.querySelectorAll('[data-case]').forEach(function(x){ x.classList.toggle('on',on && x===b); });
-    SEC.classList.toggle('fw-applied',on);
-    cs.forEach(function(c,i){ c.classList.remove('in'); void c.offsetWidth; c.innerHTML= on? C[b.dataset.case][1][i] : ''; if(on) c.classList.add('in'); }); }); });
-})();</script></div><div class="footer">© 2023 W. W. Norton &amp; Company, Inc.</div></section>
 <section class="slide" data-type="grid" style="--accent:#3d4266">
   <div class="slide-inner col">
     <div class="eyebrow">Chapter 18  ·  Key Concepts</div>
@@ -3275,7 +3452,7 @@ window.__deckLiveReady.then(function(Lv){ backend=Lv.backend; HOST=!!Lv.HOST;
 
 <div class="hud">
   <button onclick="prev()" title="Previous (left arrow)">&#8249;</button>
-  <span class="counter" id="counter">1 / 22</span>
+  <span class="counter" id="counter">1 / 20</span>
   <button onclick="next()" title="Next (right arrow)">&#8250;</button>
   <button onclick="toggleMenu()" title="Slide menu (O)">&#9776;</button>
   <button onclick="toggleFs()" title="Fullscreen (F)">&#9974;</button>
@@ -3284,7 +3461,7 @@ window.__deckLiveReady.then(function(Lv){ backend=Lv.backend; HOST=!!Lv.HOST;
 <div class="menu" id="menu">
   <button class="menu-close" onclick="toggleMenu(false)" aria-label="Close menu">&times;</button>
   <h3>Chapter 18 &middot; Jump to a slide</h3>
-  <div class="menu-grid"><button class="menu-item" data-go="0"><span class="menu-num">1</span>Title</button><button class="menu-item" data-go="1"><span class="menu-num">2</span>Outline</button><button class="menu-item" data-go="2"><span class="menu-num">3</span>Announcements</button><button class="menu-item" data-go="3"><span class="menu-num">4</span>Introduction</button><button class="menu-item" data-go="4"><span class="menu-num">5</span>18.1 ▶ A Bat and a Ball (live)</button><button class="menu-item" data-go="5"><span class="menu-num">6</span>18.1 ▶ The Mug Experiment (live)</button><button class="menu-item" data-go="6"><span class="menu-num">7</span>18.1 How People Prioritize and Decide</button><button class="menu-item" data-go="7"><span class="menu-num">8</span>18.1 Emotional Defense Mechanisms</button><button class="menu-item" data-go="8"><span class="menu-num">9</span>18.1 ▶ Which Line Matches? (live)</button><button class="menu-item" data-go="9"><span class="menu-num">10</span>18.1 The Pull of the Group</button><button class="menu-item" data-go="10"><span class="menu-num">11</span>18.1 ▶ First Impressions (live)</button><button class="menu-item" data-go="11"><span class="menu-num">12</span>18.1 Belief Perseverance and Confirmation Bias</button><button class="menu-item" data-go="12"><span class="menu-num">13</span>18.2 ▶ The Planted Litter (live)</button><button class="menu-item" data-go="13"><span class="menu-num">14</span>18.2 Knowing, Doing, and Prompts</button><button class="menu-item" data-go="14"><span class="menu-num">15</span>18.2 ▶ The Default Decides (live)</button><button class="menu-item" data-go="15"><span class="menu-num">16</span>18.3 ▶ Which Card Worked? (live)</button><button class="menu-item" data-go="16"><span class="menu-num">17</span>18.3 Positive, Negative, Social</button><button class="menu-item" data-go="17"><span class="menu-num">18</span>18.4 ▶ A Difficult Decision (live)</button><button class="menu-item" data-go="18"><span class="menu-num">19</span>18.4 Labels and Narratives</button><button class="menu-item" data-go="19"><span class="menu-num">20</span>18.5 ▶ Choice Architect (live game)</button><button class="menu-item" data-go="20"><span class="menu-num">21</span>Framework for Behavior Change</button><button class="menu-item" data-go="21"><span class="menu-num">22</span>Key Concepts</button></div>
+  <div class="menu-grid"><button class="menu-item" data-go="0"><span class="menu-num">1</span>Title</button><button class="menu-item" data-go="1"><span class="menu-num">2</span>Outline</button><button class="menu-item" data-go="2"><span class="menu-num">3</span>Announcements</button><button class="menu-item" data-go="3"><span class="menu-num">4</span>18.1 ▶ A Bat and a Ball (live)</button><button class="menu-item" data-go="4"><span class="menu-num">5</span>18.1 ▶ The Mug Experiment (live)</button><button class="menu-item" data-go="5"><span class="menu-num">6</span>18.1 How People Prioritize and Decide</button><button class="menu-item" data-go="6"><span class="menu-num">7</span>18.1 Emotional Defense Mechanisms</button><button class="menu-item" data-go="7"><span class="menu-num">8</span>18.1 ▶ Which Line Matches? (live)</button><button class="menu-item" data-go="8"><span class="menu-num">9</span>18.1 The Pull of the Group</button><button class="menu-item" data-go="9"><span class="menu-num">10</span>18.1 ▶ First Impressions (live)</button><button class="menu-item" data-go="10"><span class="menu-num">11</span>18.1 Belief Perseverance and Confirmation Bias</button><button class="menu-item" data-go="11"><span class="menu-num">12</span>18.2 ▶ The Planted Litter (live)</button><button class="menu-item" data-go="12"><span class="menu-num">13</span>18.2 Knowing, Doing, and Prompts</button><button class="menu-item" data-go="13"><span class="menu-num">14</span>18.2 ▶ The Default Decides (live)</button><button class="menu-item" data-go="14"><span class="menu-num">15</span>18.3 ▶ Which Card Worked? (live)</button><button class="menu-item" data-go="15"><span class="menu-num">16</span>18.3 Positive, Negative, Social</button><button class="menu-item" data-go="16"><span class="menu-num">17</span>18.4 ▶ A Difficult Decision (live)</button><button class="menu-item" data-go="17"><span class="menu-num">18</span>18.4 Labels and Narratives</button><button class="menu-item" data-go="18"><span class="menu-num">19</span>18.5 ▶ Choice Architect (live game)</button><button class="menu-item" data-go="19"><span class="menu-num">20</span>Key Concepts</button></div>
 </div>
 
 <script>
