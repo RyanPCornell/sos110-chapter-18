@@ -435,7 +435,7 @@ body{background:#16172a;}
 .t18-bl{font:700 10.5px 'Inter',sans-serif; fill:#8b91c4; letter-spacing:.34em;}
 .t18-n{font:800 11px 'Inter',sans-serif; fill:#e9cf8e; text-anchor:middle; letter-spacing:.1em;}
 .t18-sc{font:600 10.5px 'Inter',sans-serif; fill:#e7d9b8; text-anchor:middle; letter-spacing:.06em;}
-.t18-capbox{position:absolute; top:clamp(3rem,6.4vh,3.8rem); right:clamp(1.4rem,3vw,2.4rem); z-index:2; text-align:right; pointer-events:none; max-width:min(25rem,60vw);}
+.t18-capbox{position:absolute; top:clamp(3rem,6.4vh,3.8rem); right:clamp(1.4rem,3vw,2.4rem); z-index:2; text-align:right; pointer-events:none; max-width:min(25rem,60vw); padding:.7rem .95rem .65rem; background:rgba(17,19,42,.9); border:1px solid rgba(109,115,168,.8); box-shadow:inset 0 0 0 4px rgba(17,19,42,.9), inset 0 0 0 5px rgba(109,115,168,.4);} /* Nov 17 2026: its own double-ruled frame, so the box goes all the way around the caption */
 .t18-pl{font:800 clamp(.6rem,.8vw,.72rem) 'Inter',sans-serif; letter-spacing:.32em; color:#d9b98a;}
 .t18-cap{font:italic 400 clamp(.72rem,.95vw,.86rem)/1.35 'Merriweather',serif; color:#e4d6b8; opacity:.92; margin-top:.15rem;
   text-shadow:0 1px 6px rgba(12,13,30,.9);}
@@ -1171,6 +1171,88 @@ body{background:#16172a;}
 .ca-fwin .fw-chain{flex:none;}
 .ca-fwsrc{font:400 .66rem 'Inter',sans-serif; color:#86847a; text-align:right;}
 .ca-gatev h3{font-size:clamp(1.4rem,2.3vw,2.05rem);}
+/* ── Nov 17 2026 redesign: design many changes, a budget that moves, clearer results ── */
+.ca:not(.ca-host) .ca-body{grid-template-columns:minmax(0,1fr) clamp(19rem,29vw,26rem);}
+.ca-chip.ca-me{background:#23253b; color:#fdfbf5; border-color:#23253b;} .ca-chip.ca-me b{color:#f1d58a;}
+.ca-bud{position:relative; padding:.5rem .65rem; background:#f4efe4; border-radius:9px; display:flex; flex-direction:column; gap:.3rem;}
+.ca-budh{display:flex; justify-content:space-between; align-items:baseline; font:800 .64rem 'Inter',sans-serif; letter-spacing:.12em; text-transform:uppercase; color:#6d6b78;}
+.ca-budh b{font:900 1.15rem 'Merriweather',serif; letter-spacing:0; text-transform:none; color:#2c6b5f;}
+.ca-bud.over .ca-budh b{color:#9c3a4a;}
+.ca-budbar{height:14px; background:#e1d6c2; border-radius:7px; overflow:hidden;} .ca-bl2{display:block; height:100%; background:linear-gradient(90deg,#2c6b5f,#4f8b70); border-radius:7px; transition:width .6s cubic-bezier(.3,.8,.3,1);}
+.ca-budl{display:flex; justify-content:space-between; gap:.4rem; font:600 .64rem 'Inter',sans-serif; color:#6d6b78;} .ca-budl b{color:#9c3a4a;} .ca-budl b.g{color:#2c6b5f;}
+.ca-puff{position:absolute; left:42%; top:.1rem; font:900 1rem 'Inter',sans-serif; color:#9c3a4a; pointer-events:none; animation:ca-puff 1.4s ease-out forwards;} .ca-puff.g{color:#2c6b5f;}
+@keyframes ca-puff{0%{opacity:0; transform:translateY(8px)} 15%{opacity:1} 100%{opacity:0; transform:translateY(-22px)}}
+.ca-tab b{display:inline-block; min-width:1rem; margin-left:.2rem; padding:0 .25rem; border-radius:999px; background:var(--accent); color:#fdfbf5; font-size:.6rem;}
+.ca-tab.on b{background:#fdfbf5; color:#23253b;}
+.ca-lv .ca-lvd{display:block;}
+.ca-lvh{align-items:center;} .ca-lvh b{flex:1;} .ca-lvh i.g,.ca-op i.g{color:#2c6b5f;}
+.ca-box{flex:none; width:1rem; height:1rem; border:2px solid rgba(35,37,59,.35); border-radius:4px; background:#fff; position:relative;}
+.ca-lv.on .ca-box{background:var(--c); border-color:var(--c);} .ca-lv.on .ca-box::after{content:""; position:absolute; left:.24rem; top:.04rem; width:.3rem; height:.55rem; border:solid #fff; border-width:0 2px 2px 0; transform:rotate(45deg);}
+.ca-lv.nope,.ca-op.nope{opacity:.5;} .ca-lv.nope .ca-lvh i,.ca-op.nope i{color:#9c3a4a;}
+.ca-lvo{cursor:default;} .ca-lvo:hover{border-color:rgba(35,37,59,.16);} .ca-lvo.on{border-color:var(--c);}
+.ca-op{display:grid; grid-template-columns:1rem 1fr auto; gap:.45rem; align-items:center; text-align:left; background:transparent; border:1px solid rgba(35,37,59,.14); border-radius:7px; padding:.3rem .45rem; cursor:pointer; font:inherit;}
+.ca-op:hover{border-color:var(--c);} .ca-op.on{border-color:var(--c); background:color-mix(in srgb,var(--c) 8%,#fff);}
+.ca-rad{width:.95rem; height:.95rem; border:2px solid rgba(35,37,59,.35); border-radius:50%; background:#fff;} .ca-op.on .ca-rad{border-color:var(--c); background:radial-gradient(circle,var(--c) 0 42%,#fff 46%);}
+.ca-opl{font:italic 700 .74rem/1.35 'Merriweather',serif; color:#23253b;} .ca-op i{font:700 .64rem 'Inter',sans-serif; font-style:normal; color:#6d6b78; white-space:nowrap;}
+.ca-lgh{display:grid; grid-template-columns:6.4rem 1fr 1fr; gap:.4rem; font:800 .6rem 'Inter',sans-serif; letter-spacing:.12em; text-transform:uppercase; color:#6d6b78;}
+.ca-lrow2{display:grid; grid-template-columns:6.4rem 1fr 1fr; gap:.4rem; align-items:center; font:700 .72rem 'Merriweather',serif; color:#23253b;}
+.ca-lnum{display:grid; grid-template-columns:6.4rem 1fr 1fr; gap:.4rem; margin-top:-.25rem; font:900 .78rem 'Inter',sans-serif; color:#55576a;}
+.ca-tiles{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:.35rem;}
+.ca-tile{display:flex; flex-direction:column; gap:.05rem; padding:.45rem .5rem; background:#fff; border:1px solid rgba(35,37,59,.14); border-radius:8px;}
+.ca-tl{font:800 .56rem 'Inter',sans-serif; letter-spacing:.1em; text-transform:uppercase; color:#6d6b78;}
+.ca-tv{font:900 1.2rem/1.1 'Merriweather',serif; color:#23253b;} .ca-tv small{font-size:.6em; margin-left:.1rem;}
+.ca-tw{font:600 .62rem 'Inter',sans-serif; color:#86847a;} .ca-td{font:900 .74rem 'Inter',sans-serif; color:#86847a;} .ca-td.good{color:#2c6b5f;} .ca-td.bad{color:#9c3a4a;}
+.ca-cmp{display:flex; flex-direction:column; gap:.15rem; padding:.45rem .55rem; background:#f4efe4; border-radius:8px;}
+.ca-crow{display:grid; grid-template-columns:6.4rem 1fr 1fr; gap:.4rem; font:700 .74rem 'Merriweather',serif; color:#23253b;} .ca-crow b{font:900 .82rem 'Inter',sans-serif;}
+.ca-eff summary{display:flex; flex-wrap:wrap; align-items:baseline; gap:.1rem .5rem; list-style:none;} .ca-eff summary::-webkit-details-marker{display:none;}
+.ca-eff summary b{font:900 .78rem 'Merriweather',serif; color:#23253b; flex:1 1 100%;}
+.ca-effn{font:900 .82rem 'Inter',sans-serif;} .ca-effn small{font:600 .66rem 'Inter',sans-serif; color:#6d6b78;} .ca-effm{font:800 .66rem 'Inter',sans-serif; color:#9c3a4a;}
+.ca-eff.bad{background:#f6e4e1;}
+/* host: every hall, live */
+.ca-dash{width:100%; height:100%; max-width:84rem; padding:.9rem 1.2rem; display:flex; flex-direction:column; gap:.5rem; box-shadow:0 26px 60px -26px rgba(30,30,55,.6); animation:ca-rise .45s ease both;}
+.ca-dst{display:flex; gap:.5rem;} .ca-dst div{display:flex; flex-direction:column; align-items:center; min-width:6rem; padding:.35rem .6rem; background:#f4efe4; border-radius:8px;}
+.ca-dst b{font:900 1.6rem/1 'Merriweather',serif; color:var(--accent);} .ca-dst span{font:600 .62rem 'Inter',sans-serif; color:#6d6b78;}
+.ca-dbody{flex:1; min-height:0; display:grid; grid-template-columns:minmax(0,2.2fr) minmax(15rem,1fr); gap:1rem;}
+.ca-cmap{min-height:0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:.3rem;} .ca-cmap svg{display:block; width:100%; height:auto; max-height:calc(100% - 1.8rem);}
+.ca-mkey{display:flex; gap:1rem; font:600 .7rem 'Inter',sans-serif; color:#55576a;} .ca-mkey i{display:inline-block; width:.8rem; height:.8rem; border-radius:50%; margin-right:.3rem; vertical-align:-.1rem; border:2px solid #2f5c84;}
+.ca-mkey i.st-plan{background:#fdfbf5;} .ca-mkey i.st-test{background:#2f5c84;} .ca-mkey i.st-done{background:#2c6b5f; border-color:#2c6b5f; box-shadow:0 0 0 2px #fdfbf5,0 0 0 3.5px #2c6b5f;}
+.ca-mt{font:600 13px 'Inter',sans-serif; fill:#6d6b78;} .ca-ma{font:italic 400 14px 'Merriweather',serif; fill:#3f4152;}
+.ca-mq{font:800 12px 'Inter',sans-serif; letter-spacing:.06em; fill:#86847a;} .ca-mq.g{fill:#2c6b5f;} .ca-mq.r{fill:#a5574d;}
+.ca-hd{transition:transform 1.1s cubic-bezier(.3,.8,.3,1); cursor:default;} .ca-mapc .ca-hd{cursor:pointer;}
+.ca-hd circle{fill:#fdfbf5; stroke:#2f5c84; stroke-width:2.5; transition:fill .4s;} .ca-hd.st-test circle{fill:#2f5c84;} .ca-hd.st-done circle{fill:#2c6b5f; stroke:#2c6b5f;}
+.ca-hd.sel circle{stroke:#a3722a; stroke-width:5;} .ca-hdn{font:800 11px 'Inter',sans-serif; fill:#23253b; paint-order:stroke; stroke:#fdfbf5; stroke-width:3.5px; stroke-linejoin:round;}
+.ca-dside{min-height:0; display:flex; flex-direction:column; gap:.45rem; overflow:hidden;}
+.ca-feed{margin:0; padding:0; list-style:none; display:flex; flex-direction:column; gap:.3rem;}
+.ca-feed li{font:400 .78rem/1.4 'Merriweather',serif; color:#2a2c3c; padding:.3rem .5rem; background:#f4efe4; border-radius:6px; animation:ca-rise .4s ease both;} .ca-feed li:first-child{background:#ece4f4;}
+/* everyone: compare the halls */
+.ca-pool .ca-ovh{align-items:center;} .ca-pool .ca-ovbtns{align-items:center; flex-wrap:wrap; justify-content:flex-end;}
+.ca-cbody{flex:1; min-height:0; display:flex; flex-direction:column; gap:.5rem; overflow:auto;}
+.ca-cmpn{max-width:60rem;}
+.ca-ccs3{flex:1; display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:.9rem; align-items:start;}
+.ca-cc{position:relative; padding:.9rem 1rem; background:#fff; border:1.5px solid rgba(35,37,59,.16); border-radius:12px; display:flex; flex-direction:column; gap:.45rem; animation:ca-rise .45s ease both;}
+.ca-cc:nth-child(2){animation-delay:.12s;} .ca-cc:nth-child(3){animation-delay:.24s;} .ca-cc.me{border-color:var(--accent); box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 20%,transparent);}
+.ca-ccb{align-self:flex-start; font:800 .62rem 'Inter',sans-serif; letter-spacing:.14em; text-transform:uppercase; color:#fdfbf5; background:#23253b; border-radius:999px; padding:.2rem .6rem;}
+.ca-cc h4{margin:0; font:900 1.25rem 'Merriweather',serif; color:#23253b;} .ca-cc h4 small{font:italic 400 .7em 'Merriweather',serif; color:var(--accent);}
+.ca-ccs{font:600 .68rem 'Inter',sans-serif; color:#6d6b78;}
+.ca-or{display:grid; grid-template-columns:6.6rem 1fr 6rem; gap:.45rem; align-items:center;}
+.ca-orl{font:700 .72rem 'Merriweather',serif; color:#23253b;} .ca-orv{font:900 .82rem 'Inter',sans-serif; color:#23253b; text-align:right;} .ca-orv small{font-size:.7rem; color:#86847a;}
+.ca-orv small.good{color:#2c6b5f;} .ca-orv small.bad{color:#9c3a4a;}
+.ca-ort{position:relative; height:12px; background:#ece5d7; border-radius:6px;} .ca-ort i{position:absolute; left:0; top:0; bottom:0; border-radius:6px; background:#86847a; animation:ca-grow 1s cubic-bezier(.2,.8,.3,1) .3s both; transform-origin:left;}
+.ca-ort i.good{background:#2c6b5f;} .ca-ort i.bad{background:#9c3a4a;} .ca-ort u{position:absolute; top:-4px; bottom:-4px; width:2.5px; margin-left:-1px; background:#23253b; opacity:.55;}
+.ca-ccd{display:flex; flex-direction:column; gap:.3rem; padding-top:.4rem; border-top:1px dashed rgba(35,37,59,.2);}
+.ca-ccg{display:flex; flex-wrap:wrap; gap:.25rem; align-items:center;} .ca-ccg span{font:800 .6rem 'Inter',sans-serif; letter-spacing:.08em; text-transform:uppercase; margin-right:.2rem;}
+.ca-ccg em{font:700 .66rem 'Inter',sans-serif; font-style:normal; color:#fdfbf5; background:var(--c); border-radius:999px; padding:.15rem .5rem;}
+.ca-ccm{font:600 .68rem 'Inter',sans-serif; color:#55576a;}
+.ca-diff svg{width:100%; height:auto;}
+@media(max-width:900px){ .ca-dbody,.ca-ccs3,.ca-tiles{grid-template-columns:1fr;} }
+
+.ca-dside .ca-pa{grid-template-columns:minmax(0,10rem) 1fr 1.4rem;} .ca-dside .ca-pa span{white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+/* bigger cards for the projector */
+.ca-ccs3 .ca-cc{padding:1.2rem 1.3rem; gap:.65rem;} .ca-ccs3 .ca-cc h4{font-size:clamp(1.3rem,2vw,1.8rem);}
+.ca-ccs3 .ca-ccs{font-size:.78rem;} .ca-ccs3 .ca-ccb{font-size:.7rem;}
+.ca-ccs3 .ca-or{grid-template-columns:8.2rem 1fr 7.2rem;} .ca-ccs3 .ca-orl{font-size:.9rem;} .ca-ccs3 .ca-orv{font-size:1rem;} .ca-ccs3 .ca-ort{height:16px; border-radius:8px;}
+.ca-ccs3 .ca-ccg em{font-size:.78rem; padding:.2rem .6rem;} .ca-ccs3 .ca-ccg span{font-size:.68rem;} .ca-ccs3 .ca-ccm{font-size:.8rem;}
+.ca-cbody .ca-cmpn{font-size:.86rem;}
 
 
 /* announcements / upcoming assignments */
@@ -1859,15 +1941,16 @@ function q(s){ return SEC.querySelector(s); }
 var ttl=q('[data-as-ttl]'), you=q('[data-as-you]'), hint=q('[data-as-hint]'), box=q('[data-as-reveal]'), hostEl=q('[data-as-host]');
 var counts=[0,0,0], myVote=null, timer=null, target=0, revealed=false, HOST=false, backend=null, N=0, run=null, started=false, go=false;
 var gate=q('[data-as-gate]');
+/* Nov 17 2026 (Ryan): when a real student picks A or C, the host bar shows 1, and never more than 1 (flags oA / oC on the doc) */
+var real=[0,0,0];
+function hostFix(){ if(!HOST) return; counts[0]=real[0]; counts[2]=real[2]; }
 function active(){ return SEC.classList.contains('active'); }
 function nLabel(){ return N>0? N : 30; }
 function paintGate(){
   SEC.classList.toggle('as-wait',!go); gate.hidden=go;
   if(HOST){ q('[data-as-start]').hidden=go; q('[data-as-rev]').hidden=!go; q('[data-as-again]').hidden=!go;
     q('[data-as-gt]').textContent='Students see the cards when you press Start.';
-    var gs=q('[data-as-gs]');
-    gs.textContent= N>0? (N+' simulated answers will stream in, one for each student who named a price in the mug experiment.') : '';
-    gs.hidden=!(N>0); }
+    var gs=q('[data-as-gs]'); gs.textContent=''; gs.hidden=true; }   /* Nov 17 2026 (Ryan): no hint on screen that answers are simulated */
 }
 function resetLocal(){ stop(); started=false; revealed=false; myVote=null; counts=[0,0,0]; you.innerHTML='';
   SEC.querySelectorAll('.as-opt').forEach(function(o){ o.classList.remove('chosen'); }); paintReveal(); }
@@ -1884,8 +1967,9 @@ function pick(){ return 1; }
 function stop(){ if(timer){ clearTimeout(timer); timer=null; } }
 function tick(){
   var fake=counts[0]+counts[1]+counts[2]-(myVote===null?0:1);
+  if(HOST) fake=counts[1];
   if(fake>=target){ timer=null; render(); return; }
-  counts[pick()]++; render();
+  counts[pick()]++; hostFix(); render();
   /* slower (Ryan, Nov 16): the whole stream takes about 40 s whatever the class size, each answer 0.7 to 3 s apart,
      with a little irregularity so it looks like people answering */
   var gap=Math.max(700,Math.min(3000,40000/Math.max(1,target)));
@@ -1895,7 +1979,7 @@ function start(){
   stop(); counts=[0,0,0]; started=true;
   var n=N>0? N : 30; target=HOST? n : Math.max(0,n-1);
   if(myVote!==null) counts[myVote]=1;
-  render(); timer=setTimeout(tick,2600);
+  hostFix(); render(); timer=setTimeout(tick,2600);
 }
 function paintReveal(){
   SEC.querySelectorAll('.as-opt').forEach(function(g){ g.classList.toggle('right',revealed && +g.dataset.asOpt===ANSWER); });
@@ -1915,6 +1999,7 @@ function choose(g){
   myVote=i; counts[i]++;
   SEC.querySelectorAll('.as-opt').forEach(function(o){ o.classList.toggle('chosen',o===g); });
   you.innerHTML='You answered <b>'+LET[i]+'</b>. You can change it until the answer is revealed.'; hint.textContent=''; render();
+  if(i!==1 && backend){ var f={}; f[i===0?'oA':'oC']=1; backend.mergeDoc('polls',ID,f); }
 }
 SEC.querySelectorAll('.as-opt').forEach(function(g){
   g.addEventListener('click',function(){ choose(g); });
@@ -1936,11 +2021,12 @@ window.__deckLiveReady.then(function(Lv){
     var was=N; N=n; if(HOST && !go) paintGate(); if(!n || n===was) return;
     if(!started){ if(go && active() && !revealed) start(); return; }
     target=HOST? n : Math.max(0,n-1);                              /* the real count arrived after the stream began */
-    var fake=counts[0]+counts[1]+counts[2]-(myVote===null?0:1);
+    var fake=HOST? counts[1] : counts[0]+counts[1]+counts[2]-(myVote===null?0:1);
     if(!timer && !revealed && fake<target && active()) timer=setTimeout(tick,300); });
   (backend.subscribeMain||backend.subscribeDoc)('polls',ID,function(d){ d=d||{};
     if(run!==null && d.run && d.run!==run) resetLocal();
     run=d.run||0;
+    if(HOST){ var ra=d.oA?1:0, rc=d.oC?1:0; if(ra!==real[0]||rc!==real[2]){ real=[ra,0,rc]; if(started){ hostFix(); render(); } } }
     var g=!!d.go; if(g!==go){ go=g; if(!go) resetLocal(); paintGate(); }
     var r=!!d.rv && go; if(r!==revealed){ revealed=r; paintReveal(); }
     if(go && !started && !revealed && active()) start(); });
@@ -2588,7 +2674,7 @@ st=L.make(SEC,{id:ID,onDoc:render,onMine:render,onReady:render}); wire(fin);
   <div class="ca-hostbar" data-hostbar hidden>
     <span class="ca-hstat" data-hstat></span>
     <button type="button" class="k18-btn" data-h-open>Open the lab</button>
-    <button type="button" class="k18-btn" data-h-pool hidden>Pool the class&#8217;s experiments</button>
+    <button type="button" class="k18-btn" data-h-pool hidden>Compare the halls</button>
     <button type="button" class="k18-ghost" data-h-back hidden>Back to the lab</button>
     <button type="button" class="k18-ghost" data-h-reset>Reset</button>
   </div>
@@ -2632,7 +2718,7 @@ var BEH={P:{n:'chose the plant-based entrée',s:'Plant plates',c:'#4f7d4a',g:'pl
          R:{n:'used a reusable mug',s:'Reusable mugs',c:'#2f6b67',g:'reusable mug',st:'coffee'},
          W:{n:'left little food behind',s:'Clean plates',c:'#a3722a',g:'clean plate',st:'waste'},
          S:{n:'sorted their waste correctly',s:'Sorted right',c:'#2f5c84',g:'right bin',st:'waste'}};
-var BASE={P:.20,R:.12,W:.55,S:.40}, SAT0=78, BUDGET=15000, MAXL=6, MEALS_WK=7500, WEEKS=15;
+var BASE={P:.20,R:.12,W:.55,S:.40}, SAT0=78, BUDGET=15000, MAXL=3, MEALS_WK=7500, WEEKS=15;
 var STATIONS={head:'Line entrance',tray:'Tray rack',entree:'Entrée counter',coffee:'Coffee bar',waste:'Waste station'};
 var LEVERS=[
  {id:'pledge',st:'head',name:'Pledge board',tag:'Commitment',sec:'18.2',b:'W',pp:5,sat:0,cost:200,fade:.5,
@@ -2785,10 +2871,12 @@ function makeDiner(side,ch,keys){ var seat=SEATS[Math.floor(Math.random()*SEATS.
     shirt:SHIRTS[Math.floor(Math.random()*SHIRTS.length)],skin:SKIN[Math.floor(Math.random()*SKIN.length)],hair:Math.random()<.5?'#2b1d14':(Math.random()<.5?'#6b4423':'#1a1a1a'),
     tray:false,plate:null,cup:null,done:false,seated:false}; }
 function say(d,text,bad){ if(bubbles.length>=3) return; bubbles.push({d:d,text:text,t:0,bad:!!bad}); }
-function event(d,ev){ var c=d.ch, kB=d.keys, mine=(d.side==='B' && lunch && lunch.sel);
-  function maybe(b){ if(!mine) return; var o=OPT[lunch.sel]; if(o.b!==b) return; if(Math.random()<.22){ if(c[b]) say(d,QUOTES[lunch.sel]); else if(SAD[lunch.sel]) say(d,SAD[lunch.sel],true); } }
-  if(ev==='tray'){ d.tray=kB.indexOf('trayless')<0; if(mine && lunch.sel==='trayless' && Math.random()<.15) say(d,QUOTES.trayless); }
-  else if(ev==='head'){ if(mine && lunch.sel==='pledge' && Math.random()<.12) say(d,QUOTES.pledge); }
+function event(d,ev){ var c=d.ch, kB=d.keys, mine=(d.side==='B' && lunch && lunch.sel && lunch.sel.length);
+  function maybe(b){ if(!mine) return; var ks=lunch.sel.filter(function(k){ return OPT[k].b===b; }); if(!ks.length) return; var k=ks[Math.floor(Math.random()*ks.length)];
+    if(Math.random()<.18){ if(c[b]) say(d,QUOTES[k]); else if(SAD[k]) say(d,SAD[k],true); } }
+  function has(k){ return mine && lunch.sel.indexOf(k)>-1; }
+  if(ev==='tray'){ d.tray=kB.indexOf('trayless')<0; if(has('trayless') && Math.random()<.1) say(d,QUOTES.trayless); }
+  else if(ev==='head'){ if(has('pledge') && Math.random()<.08) say(d,QUOTES.pledge); }
   else if(ev==='entree'){ d.plate=c.P?'P':'M'; tally(d,'P'); maybe('P'); }
   else if(ev==='coffee'){ d.cup=c.R?'R':'D'; tally(d,'R'); maybe('R'); }
   else if(ev==='seat'){ d.dwell=1.2+Math.random()*1.8; d.seated=true; }
@@ -2852,110 +2940,132 @@ function skipLunch(){ if(!lunch) return; var L=lunch; lunch.queue=[]; diners=[];
   ['A','B'].forEach(function(s){ ['P','R','W','S'].forEach(function(b){ L.live[s][b]=[L.out[s][b],L.out[s].n]; }); });
   drawFrame(); L.queue=null; if(L.onTally) L.onTally(); if(L.onDone) L.onDone(); }
 
-/* ═══ the student's side panel ══════════════════════════════════════════════════════════════════════════ */
-function keysA(){ return S? S.adopted.slice() : []; }
-function keysB(){ return !S? [] : S.sel? withOpt(S.adopted,S.sel) : S.adopted.slice(); }
-function lunchNo(){ return S.tests.length+(S.phase==='plan'||S.phase==='run'?1:0); }
+/* ═══ the student's side panel (Nov 17 2026 redesign) ═══════════════════════════════════════════════════
+   Ryan: "the game play for individual students is hard to understand. The money doesn't seem to go down, and you can't really
+   select multiple choices." Now: DESIGN (pick any changes, a budget meter that drains and refills as you click) -> TEST the whole
+   design at lunch (Line A as it was vs Line B your design) -> RESULTS (carbon, landfill, mood, the four behaviors, and what each
+   change did) -> revise (up to MAXL tests) -> LOCK IN and run the semester. S.adopted holds the current design throughout. */
+var NAMES=['Agave','Brittlebush','Cholla','Creosote','Desert Willow','Ironwood','Jojoba','Mesquite','Ocotillo','Palo Brea','Saguaro','Yucca',
+  'Barrel Cactus','Chuparosa','Fairy Duster','Globemallow','Hackberry','Lupine','Penstemon','Primrose','Senna','Sotol','Verbena','Wolfberry'];
+function hallName(id){ var h=0; for(var i=0;i<id.length;i++) h=(h*31+id.charCodeAt(i))>>>0; return NAMES[h%NAMES.length]+' '+(10+Math.floor(h/NAMES.length)%90); }
+var MYNAME=hallName(PID);
+function keysA(){ return []; }
+function keysB(){ return S? S.adopted.slice() : []; }
+function lunchNo(){ return Math.min(MAXL,S.tests.length+(S.phase==='plan'||S.phase==='run'?1:0)); }
+function spent(keys){ var c=0; keys.forEach(function(k){ if(OPT[k].cost>0) c+=OPT[k].cost; }); return c; }
+function raised(keys){ var c=0; keys.forEach(function(k){ if(OPT[k].cost<0) c-=OPT[k].cost; }); return c; }
+function left(keys){ return BUDGET-netCost(keys); }
+function costTxt(c){ return c>0? money(c) : c<0? '+'+money(-c)+' raised' : 'Free'; }
+function expOf(keys){ var p=probs(keys), oc=outcome(p); return {c:Math.round(oc.co2*100)/100,w:Math.round(oc.land),s:Math.round(oc.sat)}; }
+var wT=null;
+function writeDesign(now){ if(HOST||!S) return; clearTimeout(wT);
+  var go_=function(){ write({nm:MYNAME,d:S.adopted.join(','),c:netCost(S.adopted),v:S.tests.length,ph:S.phase,x:expOf(S.adopted)}); };
+  if(now) go_(); else wT=setTimeout(go_,700); }
 function paintChips(){ if(HOST){ CHIPS.innerHTML=''; return; }
   if(!S || !go){ CHIPS.innerHTML=''; return; }
-  var used=netCost(S.adopted);
-  CHIPS.innerHTML='<span class="ca-chip"><b>Lunch '+Math.min(MAXL,Math.max(1,lunchNo()))+'</b> of '+MAXL+'</span>'
-    +'<span class="ca-chip'+(used>BUDGET?' bad':'')+'">Semester budget <b>'+money(BUDGET-used)+'</b> left</span>'
-    +'<span class="ca-chip">'+S.adopted.length+' change'+(S.adopted.length===1?'':'s')+' adopted</span>'; }
-function hallList(){ if(!S.adopted.length) return '<p class="ca-small">Nothing yet. Your hall is exactly as you found it.</p>';
-  return '<div class="ca-adl">'+S.adopted.map(function(k){ var o=OPT[k]; return '<span class="ca-ad" style="--c:'+BEH[o.b].c+'">'+esc(o.name)+(o.L.opts?': '+esc(o.short):'')+'<button type="button" data-unadopt="'+k+'" title="Remove from the hall">&#215;</button></span>'; }).join('')+'</div>'; }
-function testedKeys(){ var t={}; S.tests.forEach(function(x){ t[x.key]=x; }); return t; }
+  var L=left(S.adopted);
+  CHIPS.innerHTML='<span class="ca-chip ca-me">Your hall: <b>'+esc(MYNAME)+'</b></span>'
+    +'<span class="ca-chip">Test <b>'+lunchNo()+'</b> of '+MAXL+'</span>'
+    +'<span class="ca-chip'+(L<0?' bad':'')+'">Budget left <b>'+money(L)+'</b></span>'; }
+function designList(rm){ if(!S.adopted.length) return '<p class="ca-small">Nothing chosen yet. Line B looks exactly like Line A.</p>';
+  return '<div class="ca-adl">'+S.adopted.map(function(k){ var o=OPT[k]; return '<span class="ca-ad" style="--c:'+BEH[o.b].c+'">'+esc(o.L.opts? o.short : o.name)
+    +(rm?'<button type="button" data-unadopt="'+k+'" title="Remove">&#215;</button>':'')+'</span>'; }).join('')+'</div>'; }
+function hallList(){ return designList(false); }
+function budgetHTML(){ var sp=spent(S.adopted), rs=raised(S.adopted), L=left(S.adopted), cap=Math.max(BUDGET,BUDGET+rs);
+  return '<div class="ca-bud'+(L<0?' over':'')+'"><div class="ca-budh"><span>Semester budget</span><b data-left>'+money(L)+' left</b></div>'
+    +'<div class="ca-budbar"><i class="ca-bl2" style="width:'+clamp(L/cap*100,0,100).toFixed(1)+'%"></i></div>'
+    +'<div class="ca-budl"><span>Start '+money(BUDGET)+'</span><span>Spent <b>'+money(sp)+'</b></span><span>Fees raised <b class="g">+'+money(rs)+'</b></span></div></div>'; }
+function puff(txt,good){ var b=q('.ca-bud',SIDE); if(!b) return; var n=document.createElement('div'); n.className='ca-puff'+(good?' g':''); n.textContent=txt; b.appendChild(n); setTimeout(function(){ n.remove(); },1500); }
+function toggleKey(k){ var o=OPT[k], had=S.adopted.indexOf(k)>-1, next;
+  if(had) next=S.adopted.filter(function(x){ return x!==k; }); else next=withOpt(S.adopted,k);
+  if(!had && left(next)<0){ return 'over'; }
+  var d=netCost(next)-netCost(S.adopted); S.adopted=next; save(); props(); writeDesign();
+  return d; }
 function paintPlan(){
-  var st=S.tab, tested=testedKeys();
-  var tabs=Object.keys(STATIONS).map(function(k){ return '<button type="button" class="ca-tab'+(k===st?' on':'')+'" data-tab="'+k+'">'+STATIONS[k]+'</button>'; }).join('');
+  var st=S.tab, sc=q('.ca-lvs',SIDE), keep=sc? sc.scrollTop : 0;
+  var cnt={}; S.adopted.forEach(function(k){ var s0=OPT[k].L.st; cnt[s0]=(cnt[s0]||0)+1; });
+  var tabs=Object.keys(STATIONS).map(function(k){ return '<button type="button" class="ca-tab'+(k===st?' on':'')+'" data-tab="'+k+'">'+STATIONS[k]+(cnt[k]?' <b>'+cnt[k]+'</b>':'')+'</button>'; }).join('');
   var cards=''; LEVERS.filter(function(L){ return L.st===st; }).forEach(function(L){
-    var list=L.opts? L.opts.map(function(o){ return L.id+':'+o.k; }) : [L.id];
-    list.forEach(function(k){ var o=OPT[k], on=S.sel===k, ad=S.adopted.indexOf(k)>-1, t=tested[k];
-      cards+='<button type="button" class="ca-lv'+(on?' on':'')+(ad?' ad':'')+'" data-sel="'+k+'" style="--c:'+BEH[o.b].c+'">'
-        +'<span class="ca-lvh"><b>'+esc(L.opts? o.label : o.name)+'</b><i>'+(o.cost>0? money(o.cost) : o.cost<0? '+'+money(-o.cost).replace('−','')+' raised' : 'free')+'</i></span>'
-        +(L.opts? '' : '<span class="ca-lvd">'+L.desc+'</span>')
-        +'<span class="ca-lvt"><em>'+esc(o.tag)+'</em> &#183; aims at <u>'+BEH[o.b].g+'s</u>'+(ad?' &#183; <strong>in your hall</strong>':t?' &#183; tested':'')+'</span></button>'; }); });
-  var L0=S.sel? OPT[S.sel] : null;
-  SIDE.innerHTML='<div class="ca-sh"><div class="k18-tag">Lunch '+lunchNo()+' of '+MAXL+' &#183; plan your experiment</div>'
-    +'<p class="ca-lead">Change <b>one thing</b> on Line B. Line A stays as your hall is now. A coin flip at the door decides which line each diner joins.</p></div>'
+    if(L.opts){ var rows=L.opts.map(function(o2){ var k=L.id+':'+o2.k, o=OPT[k], on=S.adopted.indexOf(k)>-1, nope=!on && left(withOpt(S.adopted,k))<0;
+        return '<button type="button" class="ca-op'+(on?' on':'')+(nope?' nope':'')+'" data-tog="'+k+'"><span class="ca-rad"></span><span class="ca-opl">'+esc(o.label)+'</span><i class="'+(o.cost<0?'g':'')+'">'+(nope?'Over budget':costTxt(o.cost))+'</i></button>'; }).join('');
+      var any=L.opts.some(function(o2){ return S.adopted.indexOf(L.id+':'+o2.k)>-1; });
+      cards+='<div class="ca-lv ca-lvo'+(any?' on':'')+'" style="--c:'+BEH[L.b].c+'"><span class="ca-lvh"><b>'+esc(L.name)+'</b><i>pick one, or none</i></span>'+rows
+        +'<span class="ca-lvt">Aims at <u>'+BEH[L.b].g+'s</u></span></div>'; }
+    else { var k=L.id, o=OPT[k], on=S.adopted.indexOf(k)>-1, nope=!on && left(withOpt(S.adopted,k))<0;
+      cards+='<button type="button" class="ca-lv'+(on?' on':'')+(nope?' nope':'')+'" data-tog="'+k+'" style="--c:'+BEH[o.b].c+'">'
+        +'<span class="ca-lvh"><span class="ca-box"></span><b>'+esc(o.name)+'</b><i class="'+(o.cost<0?'g':'')+'">'+(nope?'Over budget':costTxt(o.cost))+'</i></span>'
+        +'<span class="ca-lvd">'+L.desc+'</span>'
+        +'<span class="ca-lvt"><em>'+esc(o.tag)+'</em> &#183; aims at <u>'+BEH[o.b].g+'s</u></span></button>'; } });
+  var n=S.adopted.length, last=S.tests.length>=MAXL;
+  SIDE.innerHTML='<div class="ca-sh"><div class="k18-tag">Design '+lunchNo()+' of '+MAXL+'</div>'
+    +'<p class="ca-lead">Choose <b>as many changes as you like</b> for Line B. Line A stays as the hall is now. Then test your design at lunch.</p></div>'
+    +budgetHTML()
     +'<div class="ca-tabs">'+tabs+'</div><div class="ca-lvs">'+cards+'</div>'
-    +'<div class="ca-hunch"'+(L0?'':' hidden')+'><div class="ca-hq">Your hunch: on Line B, will more diners choose the '+(L0?BEH[L0.b].g:'')+'?</div>'
-    +'<div class="ca-hb">'+[['up','More'],['same','No real change'],['down','Fewer']].map(function(h){ return '<button type="button" class="k18-ghost'+(S.hunch===h[0]?' on':'')+'" data-hunch="'+h[0]+'">'+h[1]+'</button>'; }).join('')+'</div></div>'
-    +'<button type="button" class="k18-btn ca-go" data-run'+(L0&&S.hunch?'':' disabled')+'>Open the doors for lunch</button>'
-    +'<div class="ca-hall-l"><div class="k18-tag">Your hall now</div>'+hallList()+'</div>'
-    +(S.tests.length? '<button type="button" class="k18-ghost ca-fin" data-finish>I’m done testing: run the semester</button>' : '');
+    +'<div class="ca-hall-l"><div class="k18-tag">Your design &#183; '+n+' change'+(n===1?'':'s')+'</div>'+designList(true)+'</div>'
+    +'<button type="button" class="k18-btn ca-go" data-run'+(n&&!last?'':' disabled')+'>'+(S.tests.length? 'Test the new version at lunch' : 'Test this design at lunch')+'</button>'
+    +(S.tests.length? '<button type="button" class="k18-ghost ca-fin" data-finish>Lock it in: run the semester</button>' : '');
+  var sc2=q('.ca-lvs',SIDE); if(sc2) sc2.scrollTop=keep;
   qa('[data-tab]',SIDE).forEach(function(b){ b.addEventListener('click',function(){ S.tab=b.dataset.tab; save(); paintPlan(); }); });
-  qa('[data-sel]',SIDE).forEach(function(b){ b.addEventListener('click',function(){ var k=b.dataset.sel; if(S.adopted.indexOf(k)>-1){ flash(b,'Already in your hall. Pick something else to test.'); return; }
-    S.sel=(S.sel===k? null : k); S.hunch=null; save(); drawProps('B',keysB()); paintPlan(); }); });
-  qa('[data-hunch]',SIDE).forEach(function(b){ b.addEventListener('click',function(){ S.hunch=b.dataset.hunch; save(); paintPlan(); }); });
+  qa('[data-tog]',SIDE).forEach(function(b){ b.addEventListener('click',function(){ var k=b.dataset.tog, r=toggleKey(k);
+    if(r==='over'){ flash(b,'Over budget. Remove something, or add a change that raises money.'); return; }
+    paintPlan(); paintChips(); if(r) puff((r>0?'−':'+')+money(Math.abs(r)).replace('−',''),r<0); }); });
   var r=q('[data-run]',SIDE); if(r) r.addEventListener('click',runLunch);
-  qa('[data-unadopt]',SIDE).forEach(function(b){ b.addEventListener('click',function(e){ e.stopPropagation(); var k=b.dataset.unadopt; S.adopted=S.adopted.filter(function(x){ return x!==k; }); save(); syncAd(); props(); paintPlan(); paintChips(); }); });
+  qa('[data-unadopt]',SIDE).forEach(function(b){ b.addEventListener('click',function(e){ e.stopPropagation(); var r0=toggleKey(b.dataset.unadopt); paintPlan(); paintChips(); if(r0) puff((r0>0?'−':'+')+money(Math.abs(r0)).replace('−',''),r0<0); }); });
   var f=q('[data-finish]',SIDE); if(f) f.addEventListener('click',function(){ startSemester(); });
   markHot(); }
 function flash(el,msg){ var n=document.createElement('div'); n.className='ca-flash'; n.textContent=msg; el.appendChild(n); setTimeout(function(){ n.remove(); },1900); }
-function markHot(){ qa('.ca-hot',HALL).forEach(function(h){ h.classList.toggle('on',h.dataset.st===S.tab); h.classList.toggle('used',S.sel && OPT[S.sel].L.st===h.dataset.st); }); }
+function markHot(){ qa('.ca-hot',HALL).forEach(function(h){ h.classList.toggle('on',h.dataset.st===S.tab); h.classList.toggle('used',S.adopted.some(function(k){ return OPT[k].L.st===h.dataset.st; })); }); }
 qa('.ca-hot',HALL).forEach(function(h){ function go_(){ if(HOST||!S||S.phase!=='plan') return; S.tab=h.dataset.st; save(); paintPlan(); }
   h.addEventListener('click',go_); h.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); e.stopPropagation(); go_(); } }); });
 function props(){ drawProps('A',keysA()); drawProps('B',keysB()); }
-function syncAd(){ write({ad:S.adopted.join(',')}); }
+function syncAd(){ writeDesign(); }
 
-function runLunch(){ if(!S.sel||!S.hunch) return; S.phase='run'; save(); ROOT.classList.remove('ca-plan'); props(); paintChips();
-  var o=OPT[S.sel], b=o.b;
-  SIDE.innerHTML='<div class="ca-sh"><div class="k18-tag">Lunch '+lunchNo()+' &#183; the doors are open</div><p class="ca-lead">Testing: <b>'+esc(o.L.opts? o.name+': '+o.short : o.name)+'</b></p></div>'
-    +'<div class="ca-live"><div class="ca-lvlab">'+BEH[b].s+' so far</div>'
-    +'<div class="ca-lrow"><span>Line A</span><div class="ca-lbar"><i data-la></i></div><b data-lav>–</b></div>'
-    +'<div class="ca-lrow b"><span>Line B</span><div class="ca-lbar"><i data-lb></i></div><b data-lbv>–</b></div>'
+var BROWS=['P','R','W','S'];
+function runLunch(){ if(!S.adopted.length||S.tests.length>=MAXL) return; S.phase='run'; save(); ROOT.classList.remove('ca-plan'); props(); paintChips(); writeDesign(true);
+  SIDE.innerHTML='<div class="ca-sh"><div class="k18-tag">Test '+lunchNo()+' &#183; the doors are open</div><p class="ca-lead">A coin flip sends each diner to <b>Line A</b> (as it was) or <b>Line B</b> (your '+S.adopted.length+' change'+(S.adopted.length===1?'':'s')+').</p></div>'
+    +'<div class="ca-live"><div class="ca-lgh"><span></span><span>Line A</span><span>Line B</span></div>'
+    +BROWS.map(function(b){ return '<div class="ca-lrow2"><span>'+BEH[b].s+'</span><div class="ca-lbar"><i data-la="'+b+'"></i></div><div class="ca-lbar b"><i data-lb="'+b+'" style="background:'+BEH[b].c+'"></i></div></div>'
+      +'<div class="ca-lnum"><span></span><b data-lav="'+b+'">–</b><b data-lbv="'+b+'" style="color:'+BEH[b].c+'">–</b></div>'; }).join('')
     +'<p class="ca-small" data-ln>0 diners served</p></div>'
     +'<div class="ca-speed"><span>Speed</span>'+[1,2,4].map(function(v){ return '<button type="button" class="k18-ghost'+(speed===v?' on':'')+'" data-sp="'+v+'">'+v+'&#215;</button>'; }).join('')
     +'<button type="button" class="k18-ghost" data-skip>Skip to results</button></div>'
-    +'<p class="ca-small ca-tip">Watch the diners on Line B. Some of them will say what they are thinking.</p>';
+    +'<p class="ca-small ca-tip">Watch Line B (right). Some diners will say what they are thinking.</p>';
   qa('[data-sp]',SIDE).forEach(function(x){ x.addEventListener('click',function(){ speed=+x.dataset.sp; qa('[data-sp]',SIDE).forEach(function(y){ y.classList.toggle('on',y===x); }); }); });
   q('[data-skip]',SIDE).addEventListener('click',function(){ skipLunch(); });
-  var served=0;
-  startLunch(keysA(),keysB(),S.sel,240,function(){ finishLunch(lunch.out); },function(){
-    var L=lunch.live, a=L.A[b], bb=L.B[b], ra=a[1]?a[0]/a[1]:0, rb=bb[1]?bb[0]/bb[1]:0;
-    var la=q('[data-la]',SIDE); if(!la) return; la.style.width=(ra*100)+'%'; q('[data-lb]',SIDE).style.width=(rb*100)+'%';
-    q('[data-lav]',SIDE).textContent=a[1]?pct(ra):'–'; q('[data-lbv]',SIDE).textContent=bb[1]?pct(rb):'–';
-    q('[data-ln]',SIDE).textContent=(L.A.S[1]+L.B.S[1])+' diners served, '+(a[1]+bb[1])+' past the '+STATIONS[BEH[b].st].toLowerCase(); }); }
-function verdictOf(d,se){ return d-1.96*se>0? 'up' : d+1.96*se<0? 'down' : 'same'; }
-function finishLunch(out){ var o=OPT[S.sel], b=o.b, A=out.A, B=out.B, pa=A[b]/Math.max(1,A.n), pb=B[b]/Math.max(1,B.n);
-  var d=(pb-pa)*100, se=Math.sqrt(pa*(1-pa)/Math.max(1,A.n)+pb*(1-pb)/Math.max(1,B.n))*100;
-  var t={key:S.sel,b:b,pa:pa,pb:pb,na:A.n,nb:B.n,d:d,se:se,v:verdictOf(d,se),hunch:S.hunch,ma:A.m,mb:B.m,
-    all:{A:{P:A.P/A.n,R:A.R/A.n,W:A.W/A.n,S:A.S/A.n},B:{P:B.P/B.n,R:B.R/B.n,W:B.W/B.n,S:B.S/B.n}}};
-  S.tests.push(t); S.phase='result'; save();
-  var w={t:{}}; w.t['L'+S.tests.length]={l:t.key,d:Math.round(d*10)/10,se:Math.round(se*10)/10}; write(w);
+  startLunch(keysA(),keysB(),S.adopted.slice(),240,function(){ finishLunch(lunch.out); },function(){
+    var L=lunch.live; if(!q('[data-ln]',SIDE)) return;
+    BROWS.forEach(function(b){ var a=L.A[b], bb=L.B[b], ra=a[1]?a[0]/a[1]:0, rb=bb[1]?bb[0]/bb[1]:0;
+      q('[data-la="'+b+'"]',SIDE).style.width=(ra*100)+'%'; q('[data-lb="'+b+'"]',SIDE).style.width=(rb*100)+'%';
+      q('[data-lav="'+b+'"]',SIDE).textContent=a[1]?pct(ra):'–'; q('[data-lbv="'+b+'"]',SIDE).textContent=bb[1]?pct(rb):'–'; });
+    q('[data-ln]',SIDE).textContent=(L.A.S[1]+L.B.S[1])+' of 240 diners finished lunch'; }); }
+function rates(o){ var n=Math.max(1,o.n); return {P:o.P/n,R:o.R/n,W:o.W/n,S:o.S/n,sat:o.m}; }
+function finishLunch(out){ var a=rates(out.A), b=rates(out.B);
+  S.tests.push({d:S.adopted.slice(),a:a,b:b,na:out.A.n,nb:out.B.n}); S.phase='result'; save(); writeDesign(true);
   paintResult(); paintChips(); }
-function dumbbell(t){ var W=300, x=function(v){ return 14+v*(W-28); };
-  var ci=[clamp(t.pb-1.96*t.se/100,0,1),clamp(t.pb+1.96*t.se/100,0,1)];
-  return '<svg class="ca-db" viewBox="0 0 '+W+' 86"><path d="M14,64 H'+(W-14)+'" stroke="#23253b" stroke-width="1"/>'
-    +[0,.25,.5,.75,1].map(function(v){ return '<path d="M'+x(v)+',64 v5" stroke="#23253b"/><text x="'+x(v)+'" y="80" text-anchor="middle" class="ca-dbt">'+Math.round(v*100)+'%</text>'; }).join('')
-    +'<rect x="'+x(ci[0])+'" y="36" width="'+Math.max(2,x(ci[1])-x(ci[0]))+'" height="14" rx="7" fill="'+BEH[t.b].c+'" opacity=".18"/>'
-    +'<path d="M'+x(t.pa)+',43 H'+x(t.pb)+'" stroke="'+BEH[t.b].c+'" stroke-width="3"/>'
-    +(function(){ var close=Math.abs(x(t.pb)-x(t.pa))<56, bR=t.pb>=t.pa;
-      var la=close? (bR? [x(t.pa)-9,'end'] : [x(t.pa)+9,'start']) : [x(t.pa),'middle'], lb=close? (bR? [x(t.pb)+9,'start'] : [x(t.pb)-9,'end']) : [x(t.pb),'middle'];
-      return '<circle cx="'+x(t.pa)+'" cy="43" r="7" fill="#fdfbf5" stroke="#23253b" stroke-width="2"/><text x="'+la[0]+'" y="'+(close?47:26)+'" text-anchor="'+la[1]+'" class="ca-dbl">A '+pct(t.pa)+'</text>'
-      +'<circle cx="'+x(t.pb)+'" cy="43" r="7" fill="'+BEH[t.b].c+'" stroke="#23253b" stroke-width="2"/><text x="'+lb[0]+'" y="'+(close?47:26)+'" text-anchor="'+lb[1]+'" class="ca-dbl b">B '+pct(t.pb)+'</text>'; })()+'</svg>'; }
-function canAdopt(k){ var next=withOpt(S.adopted,k); return netCost(next)<=BUDGET; }
-function paintResult(){ var t=S.tests[S.tests.length-1], o=OPT[t.key], V={up:['A clear improvement','good'],same:['Can’t tell from one lunch','meh'],down:['It backfired','bad']}[t.v];
-  var hunchOk=(t.hunch===t.v), H={up:'more',same:'no real change',down:'fewer'};
-  var ad=canAdopt(t.key), more=S.tests.length<MAXL;
-  SIDE.innerHTML='<div class="ca-sh"><div class="k18-tag">Lunch '+S.tests.length+' &#183; results</div><p class="ca-lead"><b>'+esc(o.L.opts? o.name+': '+o.short : o.name)+'</b></p></div>'
-    +'<div class="ca-res"><div class="ca-verdict '+V[1]+'">'+V[0]+'</div>'
-    +'<p class="ca-rl">Share of diners who '+BEH[t.b].n+':</p>'+dumbbell(t)
-    +'<p class="ca-small">Line B minus Line A: <b>'+(t.d>=0?'+':'−')+f1(Math.abs(t.d))+' points</b>, give or take '+f1(1.96*t.se)+' (about '+(t.na+t.nb)+' diners). '
-    +(t.v==='same'? 'The difference is smaller than the noise in a single lunch.' : 'Bigger than the noise in a single lunch.')+'</p>'
-    +'<p class="ca-small">Diner mood: A '+Math.round(t.ma)+' &#183; B '+Math.round(t.mb)+' (out of 100)</p>'
-    +'<p class="ca-hk '+(hunchOk?'ok':'no')+'">Your hunch was “'+H[t.hunch]+'.” '+(hunchOk?'The data agreed.':'The data disagreed: worth remembering.')+'</p>'
-    +'<details class="ca-why" open><summary>Why it works: <b>'+esc(o.tag)+'</b></summary><p>'+o.note+'</p>'+(o.src?'<p class="ca-src">'+o.src+'</p>':'')+'</details></div>'
-    +'<div class="ca-adopt"><button type="button" class="k18-btn" data-adopt'+(ad?'':' disabled')+'>Adopt it for the whole hall</button>'
-    +'<button type="button" class="k18-ghost" data-skipad>Leave it out</button></div>'
-    +(ad?'':'<p class="ca-small bad">Over budget: it would cost '+money(netCost(withOpt(S.adopted,t.key)))+' of your '+money(BUDGET)+'. Remove something from your hall first, or add a change that raises money.</p>')
-    +'<p class="ca-small">Cost per semester: '+(o.cost>0?money(o.cost):o.cost<0?'raises '+money(-o.cost):'free')+'. '+(more? (MAXL-S.tests.length)+' lunch'+(MAXL-S.tests.length===1?'':'es')+' left.' : 'That was your last lunch.')+'</p>';
-  function next(adopt){ t.adopted=adopt; if(adopt){ S.adopted=withOpt(S.adopted,t.key); syncAd(); }
-    S.sel=null; S.hunch=null; S.phase= S.tests.length>=MAXL? 'semester' : 'plan'; save(); props(); paintChips(); ROOT.classList.toggle('ca-plan',S.phase==='plan');
-    if(S.phase==='semester') startSemester(); else paintPlan(); }
-  var a=q('[data-adopt]',SIDE); a.addEventListener('click',function(){ next(true); });
-  q('[data-skipad]',SIDE).addEventListener('click',function(){ next(false); }); }
+function effOf(k){ var o=OPT[k], solo=probs([k]); return {b:o.b,eff:(solo[o.b]-BASE[o.b])*100,sat:o.sat}; }
+function chg(a,b,lowGood,fmt,unit){ var d=b-a, pc=a? d/a*100 : 0, good=lowGood? d<-1e-9 : d>1e-9, bad=lowGood? d>1e-9 : d<-1e-9;
+  return '<span class="ca-tv">'+fmt(b)+'<small>'+unit+'</small></span><span class="ca-tw">was '+fmt(a)+unit+'</span>'
+    +'<span class="ca-td '+(good?'good':bad?'bad':'')+'">'+(Math.abs(pc)<0.5? 'no change' : (d<0?'▼ ':'▲ ')+Math.round(Math.abs(pc))+'%')+'</span>'; }
+function paintResult(){ var t=S.tests[S.tests.length-1], oa=outcome(t.a), ob=outcome(t.b), more=S.tests.length<MAXL;
+  var effs=t.d.map(function(k){ var e=effOf(k); e.k=k; return e; }).sort(function(x,y){ return y.eff-x.eff; });
+  SIDE.innerHTML='<div class="ca-sh"><div class="k18-tag">Test '+S.tests.length+' of '+MAXL+' &#183; results</div><p class="ca-lead">Line A (as it was) vs Line B (your design), about '+(t.na+t.nb)+' diners.</p></div>'
+    +'<div class="ca-res">'
+    +'<div class="ca-tiles"><div class="ca-tile"><span class="ca-tl">Carbon per meal</span>'+chg(oa.co2,ob.co2,true,function(v){ return f1(v); },' kg')+'</div>'
+    +'<div class="ca-tile"><span class="ca-tl">Landfill per meal</span>'+chg(oa.land,ob.land,true,function(v){ return Math.round(v); },' g')+'</div>'
+    +'<div class="ca-tile"><span class="ca-tl">Diner mood</span>'+chg(oa.sat,ob.sat,false,function(v){ return Math.round(v); },'')+'</div></div>'
+    +'<div class="ca-cmp"><div class="ca-lgh"><span></span><span>Line A</span><span>Line B</span></div>'
+    +BROWS.map(function(b){ return '<div class="ca-crow"><span>'+BEH[b].s+'</span><b>'+pct(t.a[b])+'</b><b style="color:'+BEH[b].c+'">'+pct(t.b[b])+'</b></div>'; }).join('')+'</div>'
+    +'<div class="k18-tag">What each change did</div>'
+    +effs.map(function(e){ var o=OPT[e.k], up=e.eff>=0.5, dn=e.eff<=-0.5;
+      return '<details class="ca-why ca-eff'+(dn?' bad':'')+'"><summary><b>'+esc(o.L.opts? o.short : o.name)+'</b><span class="ca-effn" style="color:'+(dn?'#9c3a4a':BEH[e.b].c)+'">'
+        +(up? '+'+Math.round(e.eff) : dn? '−'+Math.round(-e.eff) : '±0')+' <small>of 100 diners chose the '+BEH[e.b].g+'</small></span>'
+        +(e.sat<0? '<span class="ca-effm">mood '+e.sat+'</span>' : '')+'</summary><p><i>'+esc(o.tag)+'.</i> '+o.note+'</p>'+(o.src?'<p class="ca-src">'+o.src+'</p>':'')+'</details>'; }).join('')
+    +'<p class="ca-small">One lunch is a small sample, so each number wobbles a little from lunch to lunch. The &#8220;what each change did&#8221; numbers are the steady effect of each change on its own.</p></div>'
+    +'<div class="ca-adopt">'+(more? '<button type="button" class="k18-ghost" data-revise>Change my design and test again</button>' : '')
+    +'<button type="button" class="k18-btn" data-lock>Lock it in: run the semester</button></div>'
+    +'<p class="ca-small">'+(more? (MAXL-S.tests.length)+' test'+(MAXL-S.tests.length===1?'':'s')+' left. ' : 'That was your last test. ')+'Budget left: <b>'+money(left(S.adopted))+'</b>.</p>';
+  var rv_=q('[data-revise]',SIDE); if(rv_) rv_.addEventListener('click',function(){ S.phase='plan'; save(); ROOT.classList.add('ca-plan'); writeDesign(true); paintPlan(); paintChips(); });
+  q('[data-lock]',SIDE).addEventListener('click',function(){ startSemester(); }); }
 
 /* ═══ the semester ══════════════════════════════════════════════════════════════════════════════════════ */
 function semester(keys){ var p0=probs([]), o0=outcome(p0), pet=null, rep=false, weeks=[];
@@ -2968,6 +3078,7 @@ function semester(keys){ var p0=probs([]), o0=outcome(p0), pet=null, rep=false, 
   var tot={co2:0,land:0}; weeks.forEach(function(x){ tot.co2+=(o0.co2-x.co2)*MEALS_WK/1000; tot.land+=(o0.land-x.land)*MEALS_WK/1e6; });
   return {weeks:weeks,base:o0,pet:pet,tot:tot,end:weeks[WEEKS-1]}; }
 function startSemester(){ S.phase='semester'; S.sem=semester(S.adopted); save();
+  ROOT.classList.remove('ca-plan'); writeDesign(true); paintChips();
   var e=S.sem.end; write({f:{c:Math.round(e.co2*100)/100,w:Math.round(e.land),s:Math.round(e.sat),n:semNet(S.adopted,S.sem),k:S.adopted.join(',')}});
   paintSemester(); paintSideDone(); }
 function paintSideDone(){ SIDE.innerHTML='<div class="ca-sh"><div class="k18-tag">Your semester</div><p class="ca-lead">Your design ran for '+WEEKS+' weeks: about '+(MEALS_WK*WEEKS).toLocaleString('en-US')+' lunches.</p></div>'
@@ -3045,76 +3156,152 @@ function paintFinale(){ OVER.hidden=false; var keys=S.adopted, p0=probs([]), sem
     o+='<g class="ca-node"><rect x="'+cx[3]+'" y="'+(y-34)+'" width="210" height="68" rx="10" fill="#fdfbf5" stroke="#23253b" stroke-width="1.4"/>'
       +'<text x="'+(cx[3]+14)+'" y="'+(y-14)+'" class="ca-fs2">'+r[1]+'</text><text x="'+(cx[3]+14)+'" y="'+(y+12)+'" class="ca-fbig'+(good?'':' bad')+'">'+r[2](z)+'</text>'
       +'<text x="'+(cx[3]+14)+'" y="'+(y+27)+'" class="ca-fs2">was '+r[2](a)+'</text></g>'; });
-  var best=ch[0], rights=S.tests.filter(function(t){ return t.hunch===t.v; }).length, clear=S.tests.filter(function(t){ return t.v!=='same'; }).length;
+  var best=ch[0];
   var unused=[]; Object.keys(CONSEC).forEach(function(cn){ if(ideas.indexOf(cn)<0) unused.push(cn); });
   var sum= best? 'Your biggest lever was <b>'+esc(best.o.name)+'</b> ('+esc(best.o.tag.toLowerCase())+'): on its own it moves about <b>'+Math.round(best.eff)+' of every 100</b> diners to the '+BEH[best.o.b].g+'.' : 'With nothing adopted, every diner behaved exactly as before.';
   OVER.innerHTML='<div class="ca-ov k18-card ca-fin"><div class="ca-ovh"><div><div class="k18-tag">How your hall works</div><h3>From a design choice to a result: follow the lines</h3></div>'
     +'<span class="ca-ovbtns"><button type="button" class="k18-btn ca-fwb" data-fw>The framework</button><button type="button" class="k18-ghost" data-sem>The semester</button><button type="button" class="k18-ghost" data-close>Back to the hall</button></span></div>'
     +'<div class="ca-map"><svg class="ca-msvg" viewBox="0 0 '+W+' '+H+'">'+o+'</svg></div>'
     +'<div class="ca-finb"><p>'+sum+' The thin black tick on each bar shows where diners were before you changed anything. Click a change to trace its path.</p>'
-    +'<p class="ca-rec">Your lab record: '+S.tests.length+' lunch'+(S.tests.length===1?'':'es')+', '+clear+' clear result'+(clear===1?'':'s')+', and your hunch matched the data '+rights+' of '+S.tests.length+' times.'
-    +(unused.length? ' Ideas from the chapter you did not use: '+unused.map(function(u){ return '<i>'+esc(u)+'</i>'; }).join(', ')+'.' : '')+'</p></div></div>';
+    +'<p class="ca-rec">Your lab record: you tested '+S.tests.length+' version'+(S.tests.length===1?'':'s')+' of your design at lunch before locking it in.'+(unused.length? ' Ideas from the chapter you did not use: '+unused.map(function(u){ return '<i>'+esc(u)+'</i>'; }).join(', ')+'.' : '')+'</p></div></div>';
   q('[data-close]',OVER).addEventListener('click',function(){ OVER.hidden=true; });
   q('[data-sem]',OVER).addEventListener('click',paintSemester);
   qa('.ca-node[data-k]',OVER).forEach(function(n){ n.addEventListener('click',function(){ var k=n.dataset.k, on=!n.classList.contains('hi');
     qa('.ca-node[data-k]',OVER).forEach(function(x){ x.classList.toggle('hi',on&&x===n); });
     var b=OPT[k].b; qa('.ca-lk',OVER).forEach(function(l){ l.classList.toggle('dim',on && !(l.dataset.k===k || l.dataset.k===b)); }); }); }); }
 
-/* ═══ the class lab report (host pools; everyone sees it) ═══════════════════════════════════════════════ */
-function poolFrom(p){ var k={}, ad={}, c=[], nS=0, nT=0;
-  for(var id in p){ var e=p[id]; if(!e || e.r!==run) continue; nS++;
-    if(e.t) for(var L in e.t){ var t=e.t[L]; if(!t||!OPT[t.l]) continue; nT++; (k[t.l]=k[t.l]||{d:[],se:[]}); k[t.l].d.push(+t.d); k[t.l].se.push(Math.max(1,+t.se)); }
-    if(e.ad) e.ad.split(',').forEach(function(x){ if(OPT[x]) ad[x]=(ad[x]||0)+1; });
-    if(e.f && e.f.c) c.push(+e.f.c); }
-  return {k:k,ad:ad,c:c,nS:nS,nT:nT,base:outcome(probs([])).co2}; }
-function paintPool(F){ OVER.hidden=false; F=F||{k:{},ad:{},c:[],nS:0,nT:0,base:outcome(probs([])).co2};
-  var rows=[]; for(var key in F.k){ var a=F.k[key], sw=0, sd=0; a.d.forEach(function(d,i){ var w=1/(a.se[i]*a.se[i]); sw+=w; sd+=w*d; });
-    rows.push({key:key,d:sd/sw,se:Math.sqrt(1/sw),pts:a.d,n:a.d.length}); }
-  rows.sort(function(a,b){ return b.d-a.d; });
-  var W=900, RH=Math.min(40,Math.max(30,460/Math.max(1,rows.length))), H=70+rows.length*RH+44, x0=400, x1=W-70, lo=-20, hi=60, X=function(v){ return x0+(x1-x0)*(clamp(v,lo,hi)-lo)/(hi-lo); };
-  var o='<path d="M'+X(0)+',46 V'+(H-30)+'" stroke="#23253b" stroke-width="1.2"/>';
-  for(var v=lo;v<=hi;v+=10){ o+='<path d="M'+X(v)+','+(H-30)+' v5" stroke="#23253b"/><text x="'+X(v)+'" y="'+(H-12)+'" text-anchor="middle" class="ca-dbt">'+(v>0?'+':'')+v+'</text>'; }
-  o+='<text x="'+X(20)+'" y="30" text-anchor="middle" class="ca-fs2">change in the share of diners making the greener choice (percentage points)</text><text x="'+X(0)+'" y="46" text-anchor="middle" class="ca-ps">no effect</text>';
-  rows.forEach(function(r,i){ var y=66+i*RH, o2=OPT[r.key], col=BEH[o2.b].c, sig=r.d-1.96*r.se>0? 'up' : r.d+1.96*r.se<0? 'down' : 'same';
-    if(i%2===0) o+='<rect x="10" y="'+(y-RH/2)+'" width="'+(W-20)+'" height="'+RH+'" fill="#f4efe4" opacity=".6"/>';
-    var lab=o2.L.opts? (o2.id==='sign'? 'Sign: \u201c'+o2.short+'\u201d' : 'Cups: '+o2.short) : o2.name; if(lab.length>31) lab=lab.slice(0,29)+'\u2026\u201d';
-    o+='<text x="20" y="'+(y-2)+'" class="ca-pn'+(sig==='down'?' bad':'')+'">'+esc(lab)+'</text><text x="20" y="'+(y+13)+'" class="ca-ps">'+esc(CON[r.key])+'</text>';
-    r.pts.forEach(function(d,j){ o+='<circle cx="'+X(d)+'" cy="'+(y+((j*7)%9-4)*1.2)+'" r="3.2" fill="'+col+'" opacity=".35"/>'; });
-    o+='<path d="M'+X(r.d-1.96*r.se)+','+y+' H'+X(r.d+1.96*r.se)+'" stroke="'+(sig==='down'?'#9c3a4a':'#23253b')+'" stroke-width="2.4" stroke-linecap="round"/>'
-      +'<path d="M'+X(r.d)+','+(y-9)+' l9,9 l-9,9 l-9,-9 z" fill="'+(sig==='down'?'#9c3a4a':col)+'" stroke="#23253b" stroke-width="1"/>'
-      +'<text x="'+(W-14)+'" y="'+(y+4)+'" text-anchor="end" class="ca-pv'+(sig==='down'?' bad':sig==='same'?' meh':'')+'">'+(r.d>=0?'+':'−')+f1(Math.abs(r.d))+'</text>'
-      +'<text x="'+(x0-10)+'" y="'+(y+4)+'" text-anchor="end" class="ca-ps">'+r.n+' lunch'+(r.n===1?'':'es')+'</text>'; });
-  if(!rows.length) o+='<text x="'+W/2+'" y="120" text-anchor="middle" class="ca-fn">No experiments yet.</text>';
-  var ads=Object.keys(F.ad).map(function(k){ return [k,F.ad[k]]; }).sort(function(a,b){ return b[1]-a[1]; }).slice(0,6), amax=ads.length? ads[0][1] : 1;
-  var adh=ads.map(function(a){ var o2=OPT[a[0]]; return '<div class="ca-pa"><span>'+esc(o2.L.opts? o2.short : o2.name)+'</span><i style="width:'+(a[1]/amax*100)+'%;background:'+BEH[o2.b].c+'"></i><b>'+a[1]+'</b></div>'; }).join('')||'<p class="ca-small">No halls adopted anything yet.</p>';
-  var cs=F.c.slice().sort(function(a,b){ return a-b; }), SW=300, cX=function(v){ return 14+(SW-28)*(clamp(v,0.8,3.2)-0.8)/2.4; };
-  var strip='<svg class="ca-strip" viewBox="0 0 '+SW+' 74"><path d="M14,46 H'+(SW-14)+'" stroke="#23253b"/>'+[1,1.5,2,2.5,3].map(function(v){ return '<text x="'+cX(v)+'" y="64" text-anchor="middle" class="ca-dbt">'+v.toFixed(1)+'</text>'; }).join('')
-    +'<path d="M'+cX(F.base)+',14 V50" stroke="#86847a" stroke-dasharray="4 3"/><text x="'+cX(F.base)+'" y="10" text-anchor="middle" class="ca-dbt">as it was</text>'
-    +cs.map(function(v,i){ return '<circle cx="'+cX(v)+'" cy="'+(38-(i%4)*6)+'" r="4" fill="#2c6b5f" opacity=".7"/>'; }).join('')+'</svg>';
-  OVER.innerHTML='<div class="ca-ov k18-card ca-pool"><div class="ca-ovh"><div><div class="k18-tag">The class lab report &#183; '+F.nS+' hall'+(F.nS===1?'':'s')+', '+F.nT+' lunch'+(F.nT===1?'':'es')+'</div><h3>Every experiment in this room, pooled</h3></div>'
-    +'<span class="ca-ovbtns"><button type="button" class="k18-btn ca-fwb" data-fw>The framework</button>'+(HOST?'':'<button type="button" class="k18-ghost" data-close>Back to my hall</button>')+'</span></div>'
-    +'<div class="ca-poolb"><div class="ca-forest"><svg viewBox="0 0 '+W+' '+H+'">'+o+'</svg></div>'
-    +'<div class="ca-pside"><p class="ca-small">Each faint dot is one student&#8217;s lunch. The diamond pools them all, and the bar shows how sure we can be. One lunch is noisy; '+F.nT+' lunches together are not. <b style="color:#9c3a4a">Red</b> means the change made things worse.</p>'
-    +'<div class="k18-tag">What the class adopted</div>'+adh
-    +'<div class="k18-tag">Carbon per meal at the end of each semester (kg CO&#8322;e)</div>'+strip+'</div></div></div>';
-  var c=q('[data-close]',OVER); if(c) c.addEventListener('click',function(){ OVER.hidden=true; }); }
+/* ═══ the class layer (Nov 17 2026 redesign) ═══════════════════════════════════════════════════════════
+   Ryan: "very little of benefit is shown on the main host screen ... maybe multiple students being displayed on the home screen,
+   demonstrating how their choices resulted in different results." While the lab is open the projector shows EVERY HALL LIVE: one
+   dot per student on a carbon-vs-mood map that moves as they click, the most chosen changes, and a feed of what just happened.
+   "Compare the halls" (rv) then shows standout halls SIDE BY SIDE, WHAT MADE THE DIFFERENCE (halls with vs without each change),
+   and the full map (click dots to compare any halls). Everyone sees the comparison; the host publishes it as fin. */
+var BASEO=(function(){ var o=outcome(probs([])); return {c:o.co2,w:o.land,s:o.sat}; })();
+function hallsFrom(p){ var out=[]; for(var id in (p||{})){ var e=p[id]; if(!e||e.r!==run||!e.nm) continue;
+    var o=(e.f&&e.f.c)? {c:+e.f.c,w:+e.f.w,s:+e.f.s} : e.x? {c:+e.x.c,w:+e.x.w,s:+e.x.s} : BASEO;
+    out.push({id:id,nm:e.nm,keys:(e.d||'').split(',').filter(function(k){ return OPT[k]; }),cost:+e.c||0,v:+e.v||0,done:!!(e.f&&e.f.c),ph:e.ph||'',o:o}); }
+  out.sort(function(a,b){ return a.nm<b.nm?-1:1; }); return out; }
+function cutC(h){ return (BASEO.c-h.o.c)/BASEO.c*100; } function cutW(h){ return (BASEO.w-h.o.w)/BASEO.w*100; }
+function score(h){ return cutC(h)+cutW(h)/2-Math.max(0,BASEO.s-h.o.s)*2; }
+function summary(list){ var h={}; list.forEach(function(x){ h[x.id]={nm:x.nm,d:x.keys.join(','),c:x.cost,v:x.v,dn:x.done?1:0,o:{c:x.o.c,w:x.o.w,s:x.o.s}}; }); return {h:h}; }
+function fromSummary(F){ var out=[]; if(!F||!F.h) return out; for(var id in F.h){ var e=F.h[id];
+    out.push({id:id,nm:e.nm,keys:(e.d||'').split(',').filter(function(k){ return OPT[k]; }),cost:+e.c||0,v:+e.v||0,done:!!e.dn,o:{c:+e.o.c,w:+e.o.w,s:+e.o.s}}); }
+  out.sort(function(a,b){ return a.nm<b.nm?-1:1; }); return out; }
+function jit(id){ var h=0; for(var i=0;i<id.length;i++) h=(h*33+id.charCodeAt(i))>>>0; return [(h%17)-8,((h>>5)%17)-8]; }
+/* the carbon-vs-mood map */
+var MW=900, MH=640, MX0=86, MX1=870, MY0=36, MY1=566, CLO=-10, CHI=60, SLO=40, SHI=95;
+function mx(v){ return MX0+(MX1-MX0)*(clamp(v,CLO,CHI)-CLO)/(CHI-CLO); } function my(v){ return MY1-(MY1-MY0)*(clamp(v,SLO,SHI)-SLO)/(SHI-SLO); }
+function mapFrame(){ var o='<rect x="'+mx(0)+'" y="'+MY0+'" width="'+(MX1-mx(0))+'" height="'+(my(BASEO.s)-MY0)+'" fill="#e3eee6" opacity=".55"/>'
+    +'<rect x="'+mx(0)+'" y="'+my(BASEO.s)+'" width="'+(MX1-mx(0))+'" height="'+(MY1-my(BASEO.s))+'" fill="#f3e9df" opacity=".6"/>';
+  for(var v=CLO;v<=CHI;v+=10) o+='<path d="M'+mx(v)+','+MY1+' v6" stroke="#23253b"/><text x="'+mx(v)+'" y="'+(MY1+22)+'" text-anchor="middle" class="ca-mt">'+(v>0?'−':v<0?'+':'')+Math.abs(v)+'%</text>';
+  for(var s=SLO;s<=SHI;s+=10) o+='<path d="M'+MX0+','+my(s)+' h-6" stroke="#23253b"/><text x="'+(MX0-10)+'" y="'+(my(s)+4)+'" text-anchor="end" class="ca-mt">'+s+'</text>';
+  o+='<path d="M'+MX0+','+MY1+' H'+MX1+' M'+MX0+','+MY1+' V'+MY0+'" stroke="#23253b" stroke-width="1.4"/>'
+    +'<path d="M'+mx(0)+','+MY0+' V'+MY1+'" stroke="#86847a" stroke-dasharray="5 4"/><path d="M'+MX0+','+my(BASEO.s)+' H'+MX1+'" stroke="#86847a" stroke-dasharray="5 4"/>'
+    +'<text x="'+(mx(0)+6)+'" y="'+(MY0+14)+'" class="ca-mq">as it was</text>'
+    +'<text x="'+(MX1-10)+'" y="'+(MY0+22)+'" text-anchor="end" class="ca-mq g">Greener, and diners are happy</text>'
+    +'<text x="'+(MX1-10)+'" y="'+(MY1-12)+'" text-anchor="end" class="ca-mq r">Greener, but diners grumble</text>'
+    +'<text x="'+((MX0+MX1)/2)+'" y="'+(MY1+46)+'" text-anchor="middle" class="ca-ma">carbon per meal compared with the hall as it was &#8594; greener</text>'
+    +'<text x="22" y="'+((MY0+MY1)/2)+'" text-anchor="middle" class="ca-ma" transform="rotate(-90 22 '+((MY0+MY1)/2)+')">diner mood (out of 100)</text>';
+  return o; }
+function dotHTML(h,sel){ var j=jit(h.id), st=h.done?'done':h.v?'test':'plan';
+  return '<g class="ca-hd st-'+st+(sel?' sel':'')+'" data-hid="'+h.id+'" style="transform:translate('+(mx(cutC(h))+j[0])+'px,'+(my(h.o.s)+j[1])+'px)">'
+    +'<circle r="11"/><text x="15" y="4" class="ca-hdn">'+esc(h.nm)+'</text></g>'; }
 
-/* ═══ host: the lab, live ═══════════════════════════════════════════════════════════════════════════════ */
-var demoKeys=['default','sign:dyn','cup:charge','mug','binsigns','name','trayless','ambassador'], demoI=0, demoTxt='Line B is showing a sample change.';
-function ambientLunch(){ if(!HOST||!go||!SEC.classList.contains('active')||(lunch&&lunch.queue)) return; var k=demoKeys[demoI++%demoKeys.length];
-  drawProps('A',[]); drawProps('B',[k]); demoTxt='Line B is showing: '+(OPT[k].L.opts? OPT[k].name+': '+OPT[k].short : OPT[k].name); var dm=q('[data-demo]'); if(dm) dm.textContent=demoTxt;
-  startLunch([],[k],k,90,function(){ setTimeout(ambientLunch,1200); }); }
-function paintHostSide(){ var P=pool(), started=0, done=0, lunches=0;
-  for(var id in (doc.p||{})){ var e=doc.p[id]; if(!e||e.r!==run) continue; started++; if(e.f) done++; if(e.t) lunches+=Object.keys(e.t).length; }
-  var cards=''; for(var id2 in (doc.p||{})){ var e2=doc.p[id2]; if(!e2||e2.r!==run) continue; var n=e2.t? Object.keys(e2.t).length:0;
-    cards+='<span class="ca-wc'+(e2.f?' done':'')+'" title="'+n+' lunches">'+(new Array(Math.min(6,n)+1).join('<i></i>'))+'</span>'; }
-  SIDE.innerHTML='<div class="ca-sh"><div class="k18-tag">The lab, live</div></div>'
-    +'<div class="ca-hstats"><div><b>'+started+'</b><span>hall'+(started===1?'':'s')+' open</span></div><div><b>'+lunches+'</b><span>lunch'+(lunches===1?'':'es')+' run</span></div><div><b>'+done+'</b><span>semester'+(done===1?'':'s')+' done</span></div></div>'
-    +'<div class="ca-wall">'+(cards||'<p class="ca-small">Waiting for the first student.</p>')+'</div>'
-    +'<p class="ca-small" data-demo>'+esc(demoTxt)+'</p>'
-    +'<p class="ca-small">When most semesters are done, press <b>Pool the class&#8217;s experiments</b>.</p>';
-  HOSTBAR.querySelector('[data-hstat]').textContent= go? (started+' students in the lab') : 'The lab is closed. Students see the title card.'; }
-function pool(){ return poolFrom(doc.p||{}); }
+/* ── host: the live dashboard ── */
+var dashOn=false, prevH={}, FEED=[], firstFeed=true;
+function feedFrom(list){ var now={}; list.forEach(function(h){ now[h.id]=h; var p=prevH[h.id];
+    if(firstFeed) return;
+    if(!p){ FEED.unshift(esc(h.nm)+' opened their hall.'); return; }
+    var add=h.keys.filter(function(k){ return p.keys.indexOf(k)<0; }), rem=p.keys.filter(function(k){ return h.keys.indexOf(k)<0; });
+    add.forEach(function(k){ FEED.unshift('<b>'+esc(h.nm)+'</b> added <span style="color:'+BEH[OPT[k].b].c+'">'+esc(OPT[k].L.opts? OPT[k].short : OPT[k].name)+'</span>'); });
+    rem.forEach(function(k){ FEED.unshift('<b>'+esc(h.nm)+'</b> dropped '+esc(OPT[k].L.opts? OPT[k].short : OPT[k].name)); });
+    if(h.v>p.v) FEED.unshift('<b>'+esc(h.nm)+'</b> tested design '+h.v+': carbon '+(cutC(h)>=0?'−':'+')+Math.round(Math.abs(cutC(h)))+'%, mood '+Math.round(h.o.s));
+    if(h.done&&!p.done) FEED.unshift('<b>'+esc(h.nm)+'</b> ran the semester.'); });
+  prevH=now; firstFeed=false; FEED=FEED.slice(0,7); }
+function paintDash(){ var list=hallsFrom(doc.p); feedFrom(list); OVER.hidden=false;
+  if(!dashOn||!q('.ca-dash',OVER)){ dashOn=true;
+    OVER.innerHTML='<div class="ca-dash k18-card"><div class="ca-ovh"><div><div class="k18-tag">The class lab, live</div><h3>Every hall in the room</h3></div><div class="ca-dst" data-dst></div></div>'
+      +'<div class="ca-dbody"><div class="ca-cmap"><svg viewBox="0 0 '+MW+' '+MH+'">'+mapFrame()+'<g data-dots></g></svg>'
+      +'<div class="ca-mkey"><span><i class="st-plan"></i>still designing</span><span><i class="st-test"></i>tested at lunch</span><span><i class="st-done"></i>semester done</span></div></div>'
+      +'<div class="ca-dside"><div class="k18-tag">Most chosen changes</div><div data-pop></div><div class="k18-tag">Just now</div><ul class="ca-feed" data-feed></ul></div></div></div>'; }
+  var g=q('[data-dots]',OVER), seen={};
+  list.forEach(function(h){ seen[h.id]=1; var el=g.querySelector('[data-hid="'+h.id+'"]'), j=jit(h.id), st=h.done?'done':h.v?'test':'plan';
+    if(!el){ var t=document.createElementNS(NS,'g'); t.innerHTML=dotHTML(h); el=t.firstChild; g.appendChild(el); }
+    el.setAttribute('class','ca-hd st-'+st); el.style.transform='translate('+(mx(cutC(h))+j[0])+'px,'+(my(h.o.s)+j[1])+'px)'; });
+  Array.prototype.slice.call(g.children).forEach(function(el){ if(!seen[el.getAttribute('data-hid')]) el.remove(); });
+  var tested=0, done=0; list.forEach(function(h){ tested+=h.v; if(h.done) done++; });
+  q('[data-dst]',OVER).innerHTML='<div><b>'+list.length+'</b><span>hall'+(list.length===1?'':'s')+' open</span></div><div><b>'+tested+'</b><span>lunch test'+(tested===1?'':'s')+'</span></div><div><b>'+done+'</b><span>semester'+(done===1?'':'s')+' done</span></div>';
+  var cnt={}; list.forEach(function(h){ h.keys.forEach(function(k){ cnt[k]=(cnt[k]||0)+1; }); });
+  var top=Object.keys(cnt).sort(function(a,b){ return cnt[b]-cnt[a]; }).slice(0,7), mxn=top.length? cnt[top[0]] : 1;
+  q('[data-pop]',OVER).innerHTML= top.length? top.map(function(k){ var o=OPT[k]; return '<div class="ca-pa"><span>'+esc(o.L.opts? o.short : o.name)+'</span><i style="width:'+(cnt[k]/mxn*100)+'%;background:'+BEH[o.b].c+'"></i><b>'+cnt[k]+'</b></div>'; }).join('')
+    : '<p class="ca-small">No changes chosen yet.</p>';
+  q('[data-feed]',OVER).innerHTML= FEED.length? FEED.map(function(f){ return '<li>'+f+'</li>'; }).join('') : '<li class="ca-small">Waiting for the first student.</li>';
+  HOSTBAR.querySelector('[data-hstat]').textContent=list.length+' hall'+(list.length===1?'':'s')+' open'; }
+function paintHostSide(){ if(HOST&&go&&!rv) paintDash(); else if(HOST) HOSTBAR.querySelector('[data-hstat]').textContent= go? '' : 'The lab is closed. Students see the title card.'; }
+function pool(){ return summary(hallsFrom(doc.p)); }
+
+/* ── everyone: compare the halls ── */
+var CT='side', CSEL=null, lastPool='', lastFin='', pubT=null;
+function picks(list){ if(!list.length) return [];
+  var by=function(f){ return list.slice().sort(function(a,b){ return f(b)-f(a); }); }, out=[], used={};
+  function take(h,lab){ if(h&&!used[h.id]){ used[h.id]=1; out.push({h:h,lab:lab}); } }
+  take(by(cutC)[0],'Greenest');
+  var greenish=list.filter(function(h){ return cutC(h)>=5; }); take(by.call(null,function(h){ return h.o.s; }).filter(function(h){ return !greenish.length||cutC(h)>=5; })[0],'Happiest diners');
+  take(by(score)[0],'Best balance');
+  by(score).forEach(function(h){ if(out.length<3) take(h,'Also strong'); });
+  return out; }
+function oRow(lab,a,b,mxv,fmt,unit,lowGood){ var good=lowGood? b<a-1e-9 : b>a+1e-9, bad=lowGood? b>a+1e-9 : b<a-1e-9, pc=a? (b-a)/a*100 : 0;
+  return '<div class="ca-or"><span class="ca-orl">'+lab+'</span><div class="ca-ort"><i style="width:'+clamp(b/mxv*100,0,100)+'%" class="'+(good?'good':bad?'bad':'')+'"></i><u style="left:'+clamp(a/mxv*100,0,100)+'%"></u></div>'
+    +'<span class="ca-orv">'+fmt(b)+unit+' <small class="'+(good?'good':bad?'bad':'')+'">'+(Math.abs(pc)<0.5?'same':(pc<0?'▼':'▲')+Math.round(Math.abs(pc))+'%')+'</small></span></div>'; }
+function hallCard(h,lab){ var groups={}; h.keys.forEach(function(k){ var b=OPT[k].b; (groups[b]=groups[b]||[]).push(k); });
+  return '<div class="ca-cc'+(h.id===PID&&!HOST?' me':'')+'">'+(lab?'<div class="ca-ccb">'+lab+'</div>':'')+'<h4>'+esc(h.nm)+(h.id===PID&&!HOST?' <small>(you)</small>':'')+'</h4>'
+    +'<div class="ca-ccs">'+(h.done?'End of the semester':'Planned design, before the semester')+' &#183; '+h.keys.length+' change'+(h.keys.length===1?'':'s')+'</div>'
+    +oRow('Carbon / meal',BASEO.c,h.o.c,3.2,function(v){ return f1(v); },' kg',true)
+    +oRow('Landfill / meal',BASEO.w,h.o.w,BASEO.w*1.15,function(v){ return Math.round(v); },' g',true)
+    +oRow('Diner mood',BASEO.s,h.o.s,100,function(v){ return Math.round(v); },'',false)
+    +'<div class="ca-ccd">'+(h.keys.length? BROWS.filter(function(b){ return groups[b]; }).map(function(b){ return '<div class="ca-ccg"><span style="color:'+BEH[b].c+'">'+BEH[b].s+'</span>'
+      +groups[b].map(function(k){ var o=OPT[k]; return '<em style="--c:'+BEH[b].c+'">'+esc(o.L.opts? o.short : o.name)+'</em>'; }).join('')+'</div>'; }).join('') : '<p class="ca-small">No changes: the hall as it was.</p>')+'</div>'
+    +'<div class="ca-ccm">'+(h.cost<0? 'Fees raised '+money(-h.cost)+' more than it spent' : 'Spent '+money(h.cost)+' of '+money(BUDGET))+'</div></div>'; }
+function diffRows(list){ var rows=[]; OPTKEYS.forEach(function(k){ var w=list.filter(function(h){ return h.keys.indexOf(k)>-1; }), wo=list.filter(function(h){ return h.keys.indexOf(k)<0; });
+    if(!w.length||!wo.length) return; var av=function(a,f){ var s=0; a.forEach(function(h){ s+=f(h); }); return s/a.length; }, f=OPT[k].b==='P'? cutC : cutW;
+    rows.push({k:k,g:OPT[k].b==='P'?'c':'w',n:w.length,cw:av(w,f),co:av(wo,f),sw:av(w,function(h){ return h.o.s; }),so:av(wo,function(h){ return h.o.s; })}); });
+  return rows.sort(function(a,b){ return (a.g===b.g? 0 : a.g==='c'? -1 : 1) || (b.cw-b.co)-(a.cw-a.co); }); }
+function paintCompare(F){ OVER.hidden=false; dashOn=false; var list=fromSummary(F);
+  if(!CSEL) CSEL=picks(list).map(function(p){ return p.h.id; });
+  var tabs=[['side','Side by side'],['diff','What made the difference'],['all','Every hall']].map(function(t){ return '<button type="button" class="ca-tab'+(CT===t[0]?' on':'')+'" data-ct="'+t[0]+'">'+t[1]+'</button>'; }).join('');
+  var body='';
+  if(!list.length) body='<p class="ca-lead">No halls yet.</p>';
+  else if(CT==='side'){ var auto=picks(list), labs={}; auto.forEach(function(p){ labs[p.h.id]=p.lab; });
+    var show=CSEL.map(function(id){ return list.filter(function(h){ return h.id===id; })[0]; }).filter(Boolean);
+    if(!HOST){ var me=list.filter(function(h){ return h.id===PID; })[0]; if(me && show.indexOf(me)<0) show=show.slice(0,2).concat([me]); }
+    body='<p class="ca-small ca-cmpn">The grey tick on each bar is the hall as it was. Same budget, same diners: the only difference between these halls is the choices their architects made.</p>'
+      +'<div class="ca-ccs3">'+show.map(function(h){ return hallCard(h,labs[h.id]); }).join('')+'</div>'; }
+  else if(CT==='diff'){ var rows=diffRows(list), X=function(v){ return 330+(clamp(v,-10,60)+10)/70*480; }, y=0, o='', sec=null, RH=40;
+    rows.forEach(function(r,i){ var o2=OPT[r.k], col=BEH[o2.b].c, d=r.cw-r.co, dm=r.sw-r.so;
+      if(r.g!==sec){ sec=r.g; y+=(i?22:4)+30;
+        o+='<text x="12" y="'+(y-6)+'" class="ca-fh">'+(r.g==='c'? 'Food choices: carbon per meal cut' : 'Cups and waste: landfill per meal cut')+'</text>';
+        for(var v=0;v<=60;v+=20) o+='<text x="'+X(v)+'" y="'+(y-6)+'" text-anchor="middle" class="ca-mt">'+(v?'−'+v+'%':'as it was')+'</text>';
+        o+='<path d="M'+X(0)+','+(y+2)+' V'+(y+2+RH*rows.filter(function(z){ return z.g===r.g; }).length)+'" stroke="#86847a" stroke-dasharray="4 4"/>'; y+=RH/2+2; }
+      if(i%2===0) o+='<rect x="0" y="'+(y-RH/2)+'" width="1000" height="'+RH+'" fill="#f4efe4" opacity=".55"/>';
+      o+='<text x="12" y="'+(y-2)+'" class="ca-pn'+(d<-1?' bad':'')+'">'+esc(o2.L.opts? o2.short : o2.name)+'</text><text x="12" y="'+(y+14)+'" class="ca-ps">'+esc(CON[r.k])+' &#183; in '+r.n+' of '+list.length+' halls</text>'
+        +'<path d="M'+X(r.co)+','+y+' H'+X(r.cw)+'" stroke="'+col+'" stroke-width="4" opacity=".5"/>'
+        +'<circle cx="'+X(r.co)+'" cy="'+y+'" r="7" fill="#fdfbf5" stroke="#23253b" stroke-width="1.6"/><circle cx="'+X(r.cw)+'" cy="'+y+'" r="8" fill="'+(d<-1?'#9c3a4a':col)+'" stroke="#23253b" stroke-width="1.6"/>'
+        +'<text x="850" y="'+(y+5)+'" class="ca-pv'+(d<-1?' bad':Math.abs(d)<2?' meh':'')+'">'+(d>=0?'+':'−')+Math.round(Math.abs(d))+' pts</text>'
+        +'<text x="930" y="'+(y+5)+'" class="ca-ps'+(dm<-2?' bad':'')+'">mood '+(dm>=0?'+':'−')+Math.round(Math.abs(dm))+'</text>';
+      y+=RH; if(rows[i+1] && rows[i+1].g!==r.g) y-=RH/2; });
+    if(!rows.length){ o+='<text x="490" y="60" text-anchor="middle" class="ca-fn">Need more halls with different designs to compare.</text>'; y=90; }
+    body='<p class="ca-small ca-cmpn"><b>Hollow dot:</b> the average cut in halls <i>without</i> the change. <b>Filled dot:</b> halls <i>with</i> it. Halls differ in many ways at once, so this is a comparison across the class, not a controlled test (your lunch tests were the controlled part).</p>'
+      +'<div class="ca-diff"><svg viewBox="0 0 1000 '+Math.round(y+10)+'">'+o+'</svg></div>'; }
+  else { body='<p class="ca-small ca-cmpn">Click up to three halls, then open <b>Side by side</b> to compare them.</p>'
+      +'<div class="ca-cmap ca-mapc"><svg viewBox="0 0 '+MW+' '+MH+'">'+mapFrame()+'<g>'+list.map(function(h){ return dotHTML(h,CSEL.indexOf(h.id)>-1); }).join('')+'</g></svg></div>'; }
+  OVER.innerHTML='<div class="ca-ov k18-card ca-pool"><div class="ca-ovh"><div><div class="k18-tag">Compare the halls &#183; '+list.length+' hall'+(list.length===1?'':'s')+'</div><h3>Same hall, same diners, different choices</h3></div>'
+    +'<span class="ca-ovbtns"><span class="ca-tabs">'+tabs+'</span><button type="button" class="k18-btn ca-fwb" data-fw>The framework</button>'+(HOST?'':'<button type="button" class="k18-ghost" data-close>Back to my hall</button>')+'</span></div>'
+    +'<div class="ca-cbody">'+body+'</div></div>';
+  qa('[data-ct]',OVER).forEach(function(b){ b.addEventListener('click',function(){ CT=b.dataset.ct; paintCompare(F); }); });
+  qa('.ca-mapc .ca-hd',OVER).forEach(function(d){ d.addEventListener('click',function(){ var id=d.getAttribute('data-hid'), i=CSEL.indexOf(id);
+    if(i>-1) CSEL.splice(i,1); else { CSEL.push(id); if(CSEL.length>3) CSEL.shift(); } paintCompare(F); }); });
+  var c=q('[data-close]',OVER); if(c) c.addEventListener('click',function(){ OVER.hidden=true; }); }
+function paintPool(F){ paintCompare(F); }
 
 /* ═══ CHOICE ARCHITECT · the intro clip (Nov 17 2026, Ryan: "add a short intro video") ═══
    A 56-second animated clip with a player (play/pause, scrub bar, captions). It is drawn live, not a video file:
@@ -3256,11 +3443,7 @@ function paintGate(){ OVER.hidden=false;
   mountVid(q('[data-vid]',OVER)); }
 function paintBrief(){ OVER.hidden=false;
   OVER.innerHTML='<div class="ca-gate ca-gatev ca-brief k18-card">'+vidHTML()+'<div class="ca-gtxt"><div class="k18-tag">How the lab works</div><h3>Run experiments, then design the hall</h3>'
-    +'<ol><li><b>Two identical lines.</b> Each lunch, change <b>one thing</b> on Line B. Line A stays as your hall is now.</li>'
-    +'<li><b>A coin flip at the door</b> sends each diner to A or B, so any difference between the lines comes from your change, or from chance.</li>'
-    +'<li><b>Read the results</b>, then adopt what works for the whole hall. Fees raise money; staff and screens cost money. Your budget is '+money(BUDGET)+' a semester.</li>'
-    +'<li>After '+MAXL+' lunches (or sooner), <b>run the semester</b> and see how your design holds up over 15 weeks.</li></ol>'
-    +'<button type="button" class="k18-btn" data-begin>Start the first lunch</button></div></div>';
+    +'<ol><li><b>Design.</b> Choose as many changes as you like for Line B. Each one costs money or raises it; your semester budget is '+money(BUDGET)+'.</li>'+'<li><b>Test at lunch.</b> A coin flip at the door sends each diner to Line A (the hall as it is) or Line B (your design). Compare carbon, trash and diner mood.</li>'+'<li><b>Revise.</b> You get '+MAXL+' tests. Keep what works, drop what doesn&#8217;t.</li>'+'<li><b>Lock it in</b> and run a 15-week semester. Your hall (<b>'+esc(MYNAME)+'</b>) appears on the projector next to everyone else&#8217;s.</li></ol>'+'<button type="button" class="k18-btn" data-begin>Start the first lunch</button></div></div>';
   mountVid(q('[data-vid]',OVER));
   q('[data-begin]',OVER).addEventListener('click',function(){ S.phase='plan'; save(); OVER.hidden=true; render(); }); }
 
@@ -3268,11 +3451,12 @@ function paintBrief(){ OVER.hidden=false;
 function render(){ HOSTBAR.hidden=!HOST; ROOT.classList.toggle('ca-plan',!!(S&&S.phase==='plan'&&go&&!HOST)); ROOT.classList.toggle('ca-host',HOST);
   if(HOST){ q('[data-h-open]').hidden=go; q('[data-h-pool]').hidden=!go||rv; q('[data-h-back]').hidden=!rv; }
   paintChips();
-  if(rv){ paintPool(HOST? pool() : fin); if(HOST) paintHostSide(); return; }
-  if(HOST){ paintHostSide(); if(!go){ props(); paintGate(); } else { OVER.hidden=true; setTimeout(ambientLunch,400); } return; }
+  if(rv){ paintPool(HOST? pool() : fin); if(HOST){ paintHostSide(); return; } }   /* students keep their own panel under the comparison */
+  if(HOST){ CSEL=null; if(!go){ dashOn=false; props(); paintGate(); paintHostSide(); } else paintDash(); return; }
   if(!go){ drawProps('A',[]); drawProps('B',[]); SIDE.innerHTML='<div class="ca-sh"><div class="k18-tag">Choice Architect</div><p class="ca-lead">The lab opens when your instructor is ready.</p></div>'; paintGate(); return; }
-  if(!S || S.run!==run) freshState();
+  if(!S || S.run!==run || !S.tests || S.tests.some(function(t){ return !t.a; })) freshState();   /* old one-change-per-lunch saves start fresh */
   props();
+  if(rv && S.phase==='brief'){ S.phase='plan'; save(); }
   if(S.phase==='brief'){ SIDE.innerHTML='<div class="ca-sh"><div class="k18-tag">Choice Architect</div><p class="ca-lead">Read how the lab works, then start your first lunch.</p></div>'; paintBrief(); return; }
   if(OVER.querySelector('.ca-gate')) OVER.hidden=true;
   if(S.phase==='plan'||S.phase==='run'){ if(S.phase==='run'){ S.phase='plan'; save(); } paintPlan(); return; }
@@ -3286,7 +3470,7 @@ FWP.addEventListener('click',function(e){ if(e.target===FWP||e.target.closest('[
 new MutationObserver(function(){ if(!SEC.classList.contains('active')) FWP.hidden=true; }).observe(SEC,{attributes:true,attributeFilter:['class']});
 
 /* ═══ live ══════════════════════════════════════════════════════════════════════════════════════════════ */
-new MutationObserver(function(){ if(SEC.classList.contains('active')){ fit(); kick(); if(HOST&&go&&!rv) setTimeout(ambientLunch,300); } }).observe(SEC,{attributes:true,attributeFilter:['class']});
+new MutationObserver(function(){ if(SEC.classList.contains('active')){ fit(); kick(); } }).observe(SEC,{attributes:true,attributeFilter:['class']});
 fit(); props();
 window.__deckLiveReady.then(function(Lv){ backend=Lv.backend; HOST=!!Lv.HOST;
   if(HOST){
@@ -3298,8 +3482,10 @@ window.__deckLiveReady.then(function(Lv){ backend=Lv.backend; HOST=!!Lv.HOST;
   (HOST? backend.subscribeDoc : (backend.subscribeMain||backend.subscribeDoc))('polls',GID,function(d){ d=d||{}; doc=d;
     var nr=d.run||0, ng=!!d.go, nrv=!!d.rv, changed=(nr!==run||ng!==go||nrv!==rv);
     run=nr; go=ng; rv=nrv; fin=d.fin||null;
-    if(changed){ if(!rv && OVER.querySelector('.ca-pool')) OVER.hidden=true; render(); }
-    else if(HOST) paintHostSide(); });
+    if(changed){ CSEL=null; CT='side'; if(!rv && OVER.querySelector('.ca-pool')) OVER.hidden=true; render(); }
+    else if(HOST){ if(rv){ var P=pool(), js=JSON.stringify(P); if(js!==lastPool){ lastPool=js; paintCompare(P); clearTimeout(pubT); pubT=setTimeout(function(){ backend.mergeDoc('polls',GID,{fin:P}); },3000); } }
+      else paintHostSide(); }
+    else if(rv && fin && OVER.querySelector('.ca-pool') && !OVER.hidden){ var jf=JSON.stringify(fin); if(jf!==lastFin){ lastFin=jf; paintCompare(fin); } } });
 });
 })();</script>
 </section>
