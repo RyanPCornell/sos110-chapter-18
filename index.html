@@ -372,6 +372,9 @@ body{background:#16172a;}
 .lv-go{margin-top:.5rem; font:800 .88rem 'Inter',sans-serif; color:#fdfbf5; background:var(--accent); border:0; border-radius:999px; padding:.62rem 1rem; cursor:pointer;}
 .lv-go:hover{filter:brightness(.9);} .lv-go:disabled{background:#d7d1c2; color:#5d6663; cursor:default; filter:none;}
 .lv-reset{align-self:flex-start; margin-top:.3rem; font:700 .74rem 'Inter',sans-serif; color:#23253b; background:transparent; border:1.5px solid rgba(35,37,59,.28); border-radius:999px; padding:.28rem .8rem; cursor:pointer;}
+.lv-flash{position:absolute; left:50%; bottom:4.2rem; transform:translateX(-50%); z-index:30; max-width:90%; padding:.6rem 1.1rem; border-radius:10px;
+  background:#23253b; color:#fdfbf5; font:700 .86rem 'Inter',sans-serif; box-shadow:0 10px 24px rgba(0,0,0,.25); transition:opacity .5s;} .lv-flash.out{opacity:0;}
+.lv-busy .lv-go,.lv-busy .st-go{opacity:.6; pointer-events:none;}
 .lv-priv{margin:.25rem 0 0; font:italic 400 .7rem 'Merriweather',serif; color:#86847a; text-align:center;}
 .lv-hm{margin:.25rem 0 0; font-size:.84rem; line-height:1.4; color:#2a2c3c;} .lv-hm b{color:var(--accent);}
 .lv-src{margin:0; font:italic 400 clamp(.54rem,.72vw,.64rem)/1.4 'Merriweather',serif; color:#86847a;}
@@ -1005,6 +1008,89 @@ body{background:#16172a;}
 .a6 .rl-wc{animation:rl-up .5s ease both;} .a6 .rl-wc:nth-child(2){animation-delay:.15s;} .a6 .rl-wc:nth-child(3){animation-delay:.3s;}
 @media(max-width:900px){ .rl-body{grid-template-columns:1fr;} .rl-why{position:static; grid-template-columns:1fr;} }
 
+
+/* ── guest-lecture slides (ch18_guest.py) ── */
+/* decision tree */
+.dt-body{flex:1; min-height:0; display:grid; grid-template-columns:clamp(17rem,25vw,22rem) minmax(0,1fr); gap:clamp(.8rem,1.6vw,1.3rem);}
+.dt-side{min-height:0; overflow:auto; padding:.85rem 1rem; display:flex; flex-direction:column; gap:.5rem;}
+.dt-chips{display:flex; gap:.3rem;}
+.dt-chip{width:1.8rem; height:1.8rem; border-radius:50%; border:1.5px solid rgba(35,37,59,.25); background:#fff; font:800 .78rem 'Inter',sans-serif; color:#23253b; cursor:pointer; padding:0;}
+.dt-chip.done{background:#ebe5d7;} .dt-chip.on{background:var(--accent); border-color:var(--accent); color:#fdfbf5;}
+.dt-cap h3{margin:0 0 .3rem; font:900 clamp(1.05rem,1.6vw,1.35rem)/1.25 'Merriweather',serif; color:#23253b;}
+.dt-cap p{margin:0; font:400 clamp(.82rem,1.1vw,.96rem)/1.55 'Merriweather',serif; color:#2a2c3c;} .dt-cap b{color:var(--accent);}
+.dt-cap{animation:dt-up .4s ease both;}
+.dt-nav{display:flex; gap:.4rem;} .dt-nav .k18-btn{min-width:5.5rem;} .dt-nav button:disabled{opacity:.35; cursor:default;}
+.dt-ctl{display:flex; flex-direction:column; gap:.45rem; padding-top:.5rem; border-top:1px dashed rgba(35,37,59,.22);} .dt-ctl[hidden]{display:none;}
+.dt-ctl label{display:grid; grid-template-columns:1fr auto; gap:.1rem .5rem; font:600 .72rem/1.3 'Inter',sans-serif; color:#3f4152;}
+.dt-ctl label b{font:900 .9rem 'Inter',sans-serif; color:var(--accent);} .dt-ctl input{grid-column:1/-1; accent-color:var(--accent);}
+.dt-ctlb{display:flex; flex-wrap:wrap; gap:.35rem;} .dt-ctlb .k18-ghost{font-size:.68rem; padding:.24rem .6rem;} .dt-ctlb .k18-ghost.on{background:#23253b; color:#fdfbf5;}
+.dt-note{margin:0; font:italic 400 .68rem/1.45 'Merriweather',serif; color:#6d6b78;}
+.dt-main{min-height:0; display:flex; flex-direction:column; gap:.5rem;}
+.dt-fig{flex:1; min-height:0; position:relative;} .dt-svg{position:absolute; inset:0; width:100%; height:100%;}
+.dt-h{font:800 15px 'Inter',sans-serif; letter-spacing:.12em; text-transform:uppercase; fill:#a5574d;}
+.dt-br{fill:none; stroke:#23253b; stroke-width:1.6; opacity:.75;} .dt-br.best{stroke:#2c6b5f; stroke-width:4; opacity:1;} .dt-br.worst{stroke:#9c3a4a; stroke-width:4; opacity:1;} .dt-br.dim{opacity:.25;}
+.dt-bl{font:700 17px 'Merriweather',serif; fill:#23253b;} .dt-bl.dim{opacity:.35;} .dt-bp{font:800 15px 'Inter',sans-serif; fill:var(--accent);}
+.dt-sq{fill:#3f4152; stroke:#23253b; stroke-width:1.5;}
+.dt-n circle{fill:#fdfbf5; stroke:#23253b; stroke-width:1.6;} .dt-nv{font:900 15px 'Inter',sans-serif; fill:#2c6b5f;} .dt-nv.neg{fill:#9c3a4a;}
+.dt-eu{font:900 20px 'Merriweather',serif; fill:#23253b;}
+.dt-end{fill:#c9c3b6;} .dt-end.g{fill:#4f7d4a;} .dt-end.r{fill:#9c3a4a;} .dt-end.dim{opacity:.3;}
+.dt-u{font:900 19px 'Inter',sans-serif; fill:#2c6b5f;} .dt-u.neg{fill:#9c3a4a;} .dt-us{font:600 13px 'Inter',sans-serif; fill:#6d6b78;}
+.dt-pay.dim{opacity:.3;} .dt-tagp{font:900 11px 'Inter',sans-serif; letter-spacing:.12em;} .dt-tagp.best{fill:#2c6b5f;} .dt-tagp.worst{fill:#9c3a4a;}
+.dt-qq{font:900 44px 'Merriweather',serif; fill:#a3722a;} .dt-qq2{font:italic 700 20px 'Merriweather',serif; fill:#a3722a;}
+.dt-svg:not(.dt-live) .dt-new{animation:dt-in .7s ease both;} .dt-svg:not(.dt-live) .dt-pay{animation:dt-in .6s ease both;}
+.dt-svg:not(.dt-live) .dt-n text{animation:dt-in .6s ease .25s both;}
+@keyframes dt-in{from{opacity:0}} @keyframes dt-up{from{opacity:0; transform:translateY(6px)}}
+.dt-res{display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:.45rem;} .dt-res[hidden]{display:none;}
+.dt-res div{display:flex; flex-direction:column; padding:.45rem .6rem; background:#fdfbf5; border:1px solid rgba(35,37,59,.16); border-radius:9px; animation:dt-up .4s ease both;}
+.dt-res b{font:900 clamp(1rem,1.6vw,1.35rem) 'Merriweather',serif; color:#2c6b5f;} .dt-res b.neg{color:#9c3a4a;} .dt-res span{font:600 .64rem/1.3 'Inter',sans-serif; color:#6d6b78;}
+/* decision rules */
+.dr-top{display:flex; justify-content:space-between; align-items:center; gap:1rem; flex-wrap:wrap;}
+.dr-rule{margin:0; font:400 clamp(.9rem,1.3vw,1.08rem) 'Merriweather',serif; color:#23253b;} .dr-rule b{color:var(--accent);} .dr-rule u{text-decoration:none; border-bottom:2px solid #a3722a;}
+.dr-tabs{display:flex; gap:.35rem;} .dr-tabs .k18-ghost.on{background:#23253b; color:#fdfbf5; border-color:#23253b;}
+.dr-pane{flex:1; min-height:0; display:grid; grid-template-columns:minmax(0,1.8fr) minmax(16rem,1fr); gap:clamp(.8rem,1.6vw,1.3rem); align-items:center;} .dr-pane[hidden]{display:none;}
+.dr-fig{min-height:0; height:100%; position:relative;} .lp-svg{position:absolute; inset:0; width:100%; height:100%;}
+.lp-b rect{stroke-width:1.6; transition:fill .3s, stroke-width .3s;} .lp-b.ctl rect{fill:#ece6f4; stroke:#5b4a8b;} .lp-b.plant rect{fill:#e2ecf4; stroke:#2f5c84;} .lp-b.sense rect{fill:#ece9e1; stroke:#6d6b78;}
+.lp-b.on rect{stroke-width:3.5;} .lp-b.ctl.on rect{fill:#ddd2ee;} .lp-b.plant.on rect{fill:#cfe0ee;} .lp-b.sense.on rect{fill:#e0dccf;}
+.lp-b.act.lit rect{fill:#f3d9b8; stroke:#a3722a; stroke-width:3.5;}
+.lp-t{font:900 17px 'Merriweather',serif; fill:#23253b;} .lp-s{font:600 12.5px 'Inter',sans-serif; fill:#55576a;}
+.lp-k{font:italic 400 14px 'Merriweather',serif; fill:#55576a;} .lp-d{font:600 12.5px 'Inter',sans-serif; fill:#6d6b78;}
+.lp-ar{stroke:#23253b; stroke-width:1.5; fill:none; opacity:.75;} .lp-cmp{fill:#fdfbf5; stroke:#5b4a8b; stroke-width:2;} .lp-cmp.on{fill:#5b4a8b;}
+.lp-pm{font:800 14px 'Inter',sans-serif; fill:#23253b;} .lp-dot{fill:#a3722a; stroke:#fdfbf5; stroke-width:2;}
+.dr-read{padding:.8rem .95rem; display:flex; flex-direction:column; gap:.45rem;}
+.dr-rh{display:flex; justify-content:space-between; align-items:flex-end;}
+.dr-temp{display:flex; align-items:baseline; gap:.35rem;} .dr-temp b{font:900 2.1rem/1 'Merriweather',serif; color:#23253b; font-variant-numeric:tabular-nums;} .dr-temp span{font:600 .72rem 'Inter',sans-serif; color:#6d6b78;}
+.dr-mode{font:900 .8rem 'Inter',sans-serif; letter-spacing:.12em; padding:.3rem .7rem; border-radius:999px; background:#ebe5d7; color:#55576a;} .dr-mode.heat{background:#a3722a; color:#fdfbf5;} .dr-mode.ac{background:#2f5c84; color:#fdfbf5;}
+.dr-ch{width:100%; height:auto; background:#fff; border:1px solid rgba(35,37,59,.12); border-radius:8px;}
+.dr-band{fill:#e3eee6;} .dr-tl{stroke:#2c6b5f; stroke-dasharray:5 4;} .dr-line{fill:none; stroke:#23253b; stroke-width:2.4; stroke-linejoin:round;} .dr-line.lm{stroke:#2f5c84;}
+.dr-ax{font:600 10px 'Inter',sans-serif; fill:#6d6b78;}
+.dr-rt{margin:0; font:400 .8rem/1.5 'Merriweather',serif; color:#2a2c3c; min-height:3em;} .dr-rt b{color:var(--accent);}
+.dr-sl{display:grid; grid-template-columns:auto 1fr auto; gap:.5rem; align-items:center; font:700 .74rem 'Inter',sans-serif; color:#3f4152;} .dr-sl input{accent-color:var(--accent);} .dr-sl b{font:900 .9rem 'Inter',sans-serif; color:var(--accent);}
+.dr-btns{display:flex; gap:.35rem; flex-wrap:wrap;} .dr-btns .k18-ghost{font-size:.7rem;} .dr-btns .k18-ghost.on{background:#a3722a; color:#fdfbf5; border-color:#a3722a;} .dr-btns button:disabled{opacity:.4; cursor:default;}
+.dr-tier.n{fill:#e3eee6;} .dr-tier.l1{fill:#f6ecd6;} .dr-tier.l2{fill:#f3dfcf;} .dr-tier.l3{fill:#efd3cf;}
+.dr-tn{font:700 9.5px 'Inter',sans-serif; fill:#6d6b78;} .dr-tn.b{fill:#9c3a4a; font-weight:900;} .dr-trig{stroke:#9c3a4a; stroke-width:1.6; stroke-dasharray:5 3;}
+.dr-pt circle{fill:#2f5c84; stroke:#fdfbf5; stroke-width:2;} .dr-pt.new{animation:dt-up .5s ease both;} .dr-pv{font:800 10.5px 'Inter',sans-serif; fill:#23253b;}
+.dr-src{margin:0; font:italic 400 .64rem/1.4 'Merriweather',serif; color:#6d6b78;}
+.dr-vs{grid-template-columns:minmax(0,1.6fr) minmax(15rem,1fr); align-items:start; align-content:center;}
+.dr-tbl{width:100%; border-collapse:collapse; font:400 clamp(.8rem,1.1vw,.95rem)/1.45 'Merriweather',serif; color:#2a2c3c;}
+.dr-tbl thead th{font:800 .7rem 'Inter',sans-serif; letter-spacing:.14em; text-transform:uppercase; color:var(--accent); text-align:left; padding:.4rem .6rem;}
+.dr-tbl tbody th{font:800 .84rem 'Merriweather',serif; color:#23253b; text-align:left; padding:.55rem .6rem; width:24%;}
+.dr-tbl td{padding:.55rem .6rem; border-top:1px solid rgba(35,37,59,.12);} .dr-tbl tbody th{border-top:1px solid rgba(35,37,59,.12);} .dr-tbl b{color:var(--accent);}
+.dr-tbl tbody tr{animation:dt-up .45s ease both;} .dr-tbl tbody tr:nth-child(2){animation-delay:.1s;} .dr-tbl tbody tr:nth-child(3){animation-delay:.2s;} .dr-tbl tbody tr:nth-child(4){animation-delay:.3s;} .dr-tbl tbody tr:nth-child(5){animation-delay:.4s;}
+.dr-tree{padding:.9rem 1rem; display:flex; flex-direction:column; gap:.4rem;} .dr-tree p,.dr-tree li{margin:0; font:400 .84rem/1.5 'Merriweather',serif; color:#2a2c3c;} .dr-tree ol{margin:0; padding-left:1.2rem; display:flex; flex-direction:column; gap:.3rem;}
+/* power */
+.pt-body{flex:1; min-height:0; display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.15fr); gap:clamp(1rem,2vw,1.6rem); align-items:center;}
+.pt-ans{display:flex; flex-direction:column; gap:.8rem;}
+.pt-card{padding:1rem 1.15rem; display:flex; flex-direction:column; gap:.4rem; animation:dt-up .5s ease both;} .pt-card:nth-child(2){animation-delay:.25s;}
+.pt-card p{margin:0; font:400 clamp(.9rem,1.25vw,1.06rem)/1.55 'Merriweather',serif; color:#2a2c3c;} .pt-card b{color:var(--accent);}
+.pt-think{margin:0; font:italic 400 clamp(.84rem,1.1vw,.96rem)/1.5 'Merriweather',serif; color:#55576a;}
+.pt-fig{padding:.8rem 1rem; display:flex; flex-direction:column; gap:.3rem; max-height:100%; min-height:0;} .pt-svg{width:100%; height:auto; max-height:62vh;}
+.pt-tri{fill:#f4efe4; stroke:#23253b; stroke-width:1; stroke-dasharray:3 5; opacity:.8;}
+.pt-c rect{stroke:#23253b; stroke-width:1.6;} .pt-c.a rect{fill:#e2ecf4;} .pt-c.b rect{fill:#ece6f4;} .pt-c.c rect{fill:#f6ecd6;}
+.pt-t{font:900 17px 'Merriweather',serif; fill:#23253b;} .pt-s{font:600 11.5px 'Inter',sans-serif; fill:#55576a;}
+.pt-ar{stroke:#23253b; stroke-width:1.6; opacity:.75;} .pt-l{font:700 13px 'Inter',sans-serif; fill:#23253b;} .pt-what{font:italic 400 13.5px 'Merriweather',serif; fill:#3f4152;}
+.pt-q{font:italic 700 19px 'Merriweather',serif; fill:#9c3a4a;}
+@media(max-width:900px){ .dt-body,.dr-pane,.pt-body{grid-template-columns:1fr;} .dt-res{grid-template-columns:repeat(2,1fr);} }
+
 /* ── Choice Architect (ch18_architect.py / .js / .css) ── */
 .ca-slide .ca{position:absolute; inset:0; display:flex; flex-direction:column; padding:clamp(.8rem,2vh,1.4rem) clamp(4.2rem,5.6vw,5.4rem) clamp(2.6rem,6vh,3.4rem); gap:clamp(.35rem,.9vh,.6rem);}
 .ca-top{display:flex; justify-content:space-between; align-items:flex-end; gap:1rem;}
@@ -1447,8 +1533,16 @@ if(!window.C17L){ window.C17L=(function(){
   function make(SEC,o){
     var st={HOST:false,backend:null,counts:{},doc:{},rv:0,run:0,mine:null,id:o.id}, KEY='c17:'+o.id;
     try{ var m=JSON.parse(localStorage.getItem(KEY)||'null'); if(m) st.mine=m; }catch(e){}
-    st.lock=function(v,keys){ if(st.backend && !st.HOST) keys.forEach(function(k){ st.backend.bump('polls',o.id,k); });
-      st.mine={v:v,run:st.run}; try{ localStorage.setItem(KEY,JSON.stringify(st.mine)); }catch(e){} if(o.onMine) o.onMine(st); };
+    /* Nov 17 2026 (review doc): an answer counts as locked in only after the write succeeds. All keys go in ONE write to this
+       device's shard (atomic, so a multi-key answer such as five map picks can never land partly), and a failure allows a retry. */
+    st.busy=false;
+    st.lock=function(v,keys){ if(st.HOST || st.busy || st.mine) return;
+      if(!st.backend){ flash(SEC,'Still connecting. Try again in a moment.'); return; }
+      var c={}, obj={counts:{}}; keys.forEach(function(k){ c[k]=(c[k]||0)+1; }); for(var k in c) obj.counts[k]=st.backend.inc(c[k]);
+      var run=st.run; st.busy=true; SEC.classList.add('lv-busy');
+      Promise.resolve().then(function(){ return st.backend.mergeDocShard('polls',o.id,obj); }).then(function(){
+        st.busy=false; SEC.classList.remove('lv-busy'); st.mine={v:v,run:run}; try{ localStorage.setItem(KEY,JSON.stringify(st.mine)); }catch(e){} if(o.onMine) o.onMine(st);
+      },function(){ st.busy=false; SEC.classList.remove('lv-busy'); flash(SEC,'Your answer did not send. Check your connection and try again.'); }); };
     st.reveal=function(extra){ var d={rv:1}; if(extra) for(var k in extra) d[k]=extra[k]; if(st.backend) st.backend.mergeDoc('polls',o.id,d); };
     st.reset=function(){ if(st.backend && confirm('Clear the class answers and hide the reveal on every screen?')) st.backend.setDoc('polls',o.id,{counts:{},rv:0,run:Date.now()}); };
     function onDoc(d){ d=d||{}; st.doc=d; var nr=d.run||0;
@@ -1463,7 +1557,9 @@ if(!window.C17L){ window.C17L=(function(){
   /* class guesses stored as "<prefix><bin>", bin = round(log10(v)*20) */
   function logGuesses(counts,prefix){ var a=[], re=new RegExp('^'+prefix+'(\\d+)$'); for(var k in counts){ var m=k.match(re); if(!m) continue; var c=+counts[k]||0; for(var i=0;i<c;i++) a.push(Math.pow(10,+m[1]/20)); } return a.sort(function(x,y){ return x-y; }); }
   function linGuesses(counts,prefix){ var a=[], re=new RegExp('^'+prefix+'(\\d+)$'); for(var k in counts){ var m=k.match(re); if(!m) continue; var c=+counts[k]||0; for(var i=0;i<c;i++) a.push(+m[1]); } return a.sort(function(x,y){ return x-y; }); }
-  function median(a){ return a.length? a[Math.floor((a.length-1)/2)] : null; }
+  function median(a){ var n=a.length; if(!n) return null; var m=Math.floor(n/2); return n%2? a[m] : (a[m-1]+a[m])/2; }   /* a is sorted; even n: mean of the two middle values */
+  function flash(SEC,msg){ var f=document.createElement('div'); f.className='lv-flash'; f.setAttribute('role','alert'); f.textContent=msg; SEC.appendChild(f);
+    setTimeout(function(){ f.classList.add('out'); setTimeout(function(){ f.remove(); },500); },4200); }
   /* host panel: count, a summary line, Reveal + Reset */
   function hostPanel(el,st,n,summary,label,fin){ el.innerHTML='<div class="lv-lbl">Your class</div><div class="lv-val">'+n+'</div><div class="lv-sub">'+(n===1?'answer':'answers')+' locked in</div>'
       +(summary? '<p class="lv-hm">'+summary+'</p>' : '')
@@ -1471,7 +1567,7 @@ if(!window.C17L){ window.C17L=(function(){
       +'<button type="button" class="lv-reset" data-lv-reset>Reset</button>';
     var b=el.querySelector('[data-lv-rev]'); if(b) b.addEventListener('click',function(){ st.reveal(fin? {fin:fin()} : null); });
     el.querySelector('[data-lv-reset]').addEventListener('click',function(){ st.reset(); }); }
-  return {E:E,T:T,cl:cl,eout:eout,nice:nice,big:big,fit:fit,onShow:onShow,stopKeys:stopKeys,make:make,logGuesses:logGuesses,linGuesses:linGuesses,median:median,hostPanel:hostPanel};
+  return {E:E,T:T,cl:cl,eout:eout,nice:nice,big:big,fit:fit,onShow:onShow,stopKeys:stopKeys,make:make,logGuesses:logGuesses,linGuesses:linGuesses,median:median,hostPanel:hostPanel,flash:flash};
 })(); }
 })();</script><script>(function(){
 var SEC=document.currentScript.closest('section'); if(!SEC||SEC.__pl) return; SEC.__pl=1;
@@ -1619,8 +1715,16 @@ if(!window.C17L){ window.C17L=(function(){
   function make(SEC,o){
     var st={HOST:false,backend:null,counts:{},doc:{},rv:0,run:0,mine:null,id:o.id}, KEY='c17:'+o.id;
     try{ var m=JSON.parse(localStorage.getItem(KEY)||'null'); if(m) st.mine=m; }catch(e){}
-    st.lock=function(v,keys){ if(st.backend && !st.HOST) keys.forEach(function(k){ st.backend.bump('polls',o.id,k); });
-      st.mine={v:v,run:st.run}; try{ localStorage.setItem(KEY,JSON.stringify(st.mine)); }catch(e){} if(o.onMine) o.onMine(st); };
+    /* Nov 17 2026 (review doc): an answer counts as locked in only after the write succeeds. All keys go in ONE write to this
+       device's shard (atomic, so a multi-key answer such as five map picks can never land partly), and a failure allows a retry. */
+    st.busy=false;
+    st.lock=function(v,keys){ if(st.HOST || st.busy || st.mine) return;
+      if(!st.backend){ flash(SEC,'Still connecting. Try again in a moment.'); return; }
+      var c={}, obj={counts:{}}; keys.forEach(function(k){ c[k]=(c[k]||0)+1; }); for(var k in c) obj.counts[k]=st.backend.inc(c[k]);
+      var run=st.run; st.busy=true; SEC.classList.add('lv-busy');
+      Promise.resolve().then(function(){ return st.backend.mergeDocShard('polls',o.id,obj); }).then(function(){
+        st.busy=false; SEC.classList.remove('lv-busy'); st.mine={v:v,run:run}; try{ localStorage.setItem(KEY,JSON.stringify(st.mine)); }catch(e){} if(o.onMine) o.onMine(st);
+      },function(){ st.busy=false; SEC.classList.remove('lv-busy'); flash(SEC,'Your answer did not send. Check your connection and try again.'); }); };
     st.reveal=function(extra){ var d={rv:1}; if(extra) for(var k in extra) d[k]=extra[k]; if(st.backend) st.backend.mergeDoc('polls',o.id,d); };
     st.reset=function(){ if(st.backend && confirm('Clear the class answers and hide the reveal on every screen?')) st.backend.setDoc('polls',o.id,{counts:{},rv:0,run:Date.now()}); };
     function onDoc(d){ d=d||{}; st.doc=d; var nr=d.run||0;
@@ -1635,7 +1739,9 @@ if(!window.C17L){ window.C17L=(function(){
   /* class guesses stored as "<prefix><bin>", bin = round(log10(v)*20) */
   function logGuesses(counts,prefix){ var a=[], re=new RegExp('^'+prefix+'(\\d+)$'); for(var k in counts){ var m=k.match(re); if(!m) continue; var c=+counts[k]||0; for(var i=0;i<c;i++) a.push(Math.pow(10,+m[1]/20)); } return a.sort(function(x,y){ return x-y; }); }
   function linGuesses(counts,prefix){ var a=[], re=new RegExp('^'+prefix+'(\\d+)$'); for(var k in counts){ var m=k.match(re); if(!m) continue; var c=+counts[k]||0; for(var i=0;i<c;i++) a.push(+m[1]); } return a.sort(function(x,y){ return x-y; }); }
-  function median(a){ return a.length? a[Math.floor((a.length-1)/2)] : null; }
+  function median(a){ var n=a.length; if(!n) return null; var m=Math.floor(n/2); return n%2? a[m] : (a[m-1]+a[m])/2; }   /* a is sorted; even n: mean of the two middle values */
+  function flash(SEC,msg){ var f=document.createElement('div'); f.className='lv-flash'; f.setAttribute('role','alert'); f.textContent=msg; SEC.appendChild(f);
+    setTimeout(function(){ f.classList.add('out'); setTimeout(function(){ f.remove(); },500); },4200); }
   /* host panel: count, a summary line, Reveal + Reset */
   function hostPanel(el,st,n,summary,label,fin){ el.innerHTML='<div class="lv-lbl">Your class</div><div class="lv-val">'+n+'</div><div class="lv-sub">'+(n===1?'answer':'answers')+' locked in</div>'
       +(summary? '<p class="lv-hm">'+summary+'</p>' : '')
@@ -1643,7 +1749,7 @@ if(!window.C17L){ window.C17L=(function(){
       +'<button type="button" class="lv-reset" data-lv-reset>Reset</button>';
     var b=el.querySelector('[data-lv-rev]'); if(b) b.addEventListener('click',function(){ st.reveal(fin? {fin:fin()} : null); });
     el.querySelector('[data-lv-reset]').addEventListener('click',function(){ st.reset(); }); }
-  return {E:E,T:T,cl:cl,eout:eout,nice:nice,big:big,fit:fit,onShow:onShow,stopKeys:stopKeys,make:make,logGuesses:logGuesses,linGuesses:linGuesses,median:median,hostPanel:hostPanel};
+  return {E:E,T:T,cl:cl,eout:eout,nice:nice,big:big,fit:fit,onShow:onShow,stopKeys:stopKeys,make:make,logGuesses:logGuesses,linGuesses:linGuesses,median:median,hostPanel:hostPanel,flash:flash};
 })(); }
 })();</script><script>(function(){
 var SEC=document.currentScript.closest('section'); if(!SEC||SEC.__mg) return; SEC.__mg=1;
@@ -1908,8 +2014,16 @@ if(!window.C17L){ window.C17L=(function(){
   function make(SEC,o){
     var st={HOST:false,backend:null,counts:{},doc:{},rv:0,run:0,mine:null,id:o.id}, KEY='c17:'+o.id;
     try{ var m=JSON.parse(localStorage.getItem(KEY)||'null'); if(m) st.mine=m; }catch(e){}
-    st.lock=function(v,keys){ if(st.backend && !st.HOST) keys.forEach(function(k){ st.backend.bump('polls',o.id,k); });
-      st.mine={v:v,run:st.run}; try{ localStorage.setItem(KEY,JSON.stringify(st.mine)); }catch(e){} if(o.onMine) o.onMine(st); };
+    /* Nov 17 2026 (review doc): an answer counts as locked in only after the write succeeds. All keys go in ONE write to this
+       device's shard (atomic, so a multi-key answer such as five map picks can never land partly), and a failure allows a retry. */
+    st.busy=false;
+    st.lock=function(v,keys){ if(st.HOST || st.busy || st.mine) return;
+      if(!st.backend){ flash(SEC,'Still connecting. Try again in a moment.'); return; }
+      var c={}, obj={counts:{}}; keys.forEach(function(k){ c[k]=(c[k]||0)+1; }); for(var k in c) obj.counts[k]=st.backend.inc(c[k]);
+      var run=st.run; st.busy=true; SEC.classList.add('lv-busy');
+      Promise.resolve().then(function(){ return st.backend.mergeDocShard('polls',o.id,obj); }).then(function(){
+        st.busy=false; SEC.classList.remove('lv-busy'); st.mine={v:v,run:run}; try{ localStorage.setItem(KEY,JSON.stringify(st.mine)); }catch(e){} if(o.onMine) o.onMine(st);
+      },function(){ st.busy=false; SEC.classList.remove('lv-busy'); flash(SEC,'Your answer did not send. Check your connection and try again.'); }); };
     st.reveal=function(extra){ var d={rv:1}; if(extra) for(var k in extra) d[k]=extra[k]; if(st.backend) st.backend.mergeDoc('polls',o.id,d); };
     st.reset=function(){ if(st.backend && confirm('Clear the class answers and hide the reveal on every screen?')) st.backend.setDoc('polls',o.id,{counts:{},rv:0,run:Date.now()}); };
     function onDoc(d){ d=d||{}; st.doc=d; var nr=d.run||0;
@@ -1924,7 +2038,9 @@ if(!window.C17L){ window.C17L=(function(){
   /* class guesses stored as "<prefix><bin>", bin = round(log10(v)*20) */
   function logGuesses(counts,prefix){ var a=[], re=new RegExp('^'+prefix+'(\\d+)$'); for(var k in counts){ var m=k.match(re); if(!m) continue; var c=+counts[k]||0; for(var i=0;i<c;i++) a.push(Math.pow(10,+m[1]/20)); } return a.sort(function(x,y){ return x-y; }); }
   function linGuesses(counts,prefix){ var a=[], re=new RegExp('^'+prefix+'(\\d+)$'); for(var k in counts){ var m=k.match(re); if(!m) continue; var c=+counts[k]||0; for(var i=0;i<c;i++) a.push(+m[1]); } return a.sort(function(x,y){ return x-y; }); }
-  function median(a){ return a.length? a[Math.floor((a.length-1)/2)] : null; }
+  function median(a){ var n=a.length; if(!n) return null; var m=Math.floor(n/2); return n%2? a[m] : (a[m-1]+a[m])/2; }   /* a is sorted; even n: mean of the two middle values */
+  function flash(SEC,msg){ var f=document.createElement('div'); f.className='lv-flash'; f.setAttribute('role','alert'); f.textContent=msg; SEC.appendChild(f);
+    setTimeout(function(){ f.classList.add('out'); setTimeout(function(){ f.remove(); },500); },4200); }
   /* host panel: count, a summary line, Reveal + Reset */
   function hostPanel(el,st,n,summary,label,fin){ el.innerHTML='<div class="lv-lbl">Your class</div><div class="lv-val">'+n+'</div><div class="lv-sub">'+(n===1?'answer':'answers')+' locked in</div>'
       +(summary? '<p class="lv-hm">'+summary+'</p>' : '')
@@ -1932,7 +2048,7 @@ if(!window.C17L){ window.C17L=(function(){
       +'<button type="button" class="lv-reset" data-lv-reset>Reset</button>';
     var b=el.querySelector('[data-lv-rev]'); if(b) b.addEventListener('click',function(){ st.reveal(fin? {fin:fin()} : null); });
     el.querySelector('[data-lv-reset]').addEventListener('click',function(){ st.reset(); }); }
-  return {E:E,T:T,cl:cl,eout:eout,nice:nice,big:big,fit:fit,onShow:onShow,stopKeys:stopKeys,make:make,logGuesses:logGuesses,linGuesses:linGuesses,median:median,hostPanel:hostPanel};
+  return {E:E,T:T,cl:cl,eout:eout,nice:nice,big:big,fit:fit,onShow:onShow,stopKeys:stopKeys,make:make,logGuesses:logGuesses,linGuesses:linGuesses,median:median,hostPanel:hostPanel,flash:flash};
 })(); }
 })();</script><script>(function(){
 var SEC=document.currentScript.closest('section'); if(!SEC||SEC.__as) return; SEC.__as=1;
@@ -2160,8 +2276,16 @@ if(!window.C17L){ window.C17L=(function(){
   function make(SEC,o){
     var st={HOST:false,backend:null,counts:{},doc:{},rv:0,run:0,mine:null,id:o.id}, KEY='c17:'+o.id;
     try{ var m=JSON.parse(localStorage.getItem(KEY)||'null'); if(m) st.mine=m; }catch(e){}
-    st.lock=function(v,keys){ if(st.backend && !st.HOST) keys.forEach(function(k){ st.backend.bump('polls',o.id,k); });
-      st.mine={v:v,run:st.run}; try{ localStorage.setItem(KEY,JSON.stringify(st.mine)); }catch(e){} if(o.onMine) o.onMine(st); };
+    /* Nov 17 2026 (review doc): an answer counts as locked in only after the write succeeds. All keys go in ONE write to this
+       device's shard (atomic, so a multi-key answer such as five map picks can never land partly), and a failure allows a retry. */
+    st.busy=false;
+    st.lock=function(v,keys){ if(st.HOST || st.busy || st.mine) return;
+      if(!st.backend){ flash(SEC,'Still connecting. Try again in a moment.'); return; }
+      var c={}, obj={counts:{}}; keys.forEach(function(k){ c[k]=(c[k]||0)+1; }); for(var k in c) obj.counts[k]=st.backend.inc(c[k]);
+      var run=st.run; st.busy=true; SEC.classList.add('lv-busy');
+      Promise.resolve().then(function(){ return st.backend.mergeDocShard('polls',o.id,obj); }).then(function(){
+        st.busy=false; SEC.classList.remove('lv-busy'); st.mine={v:v,run:run}; try{ localStorage.setItem(KEY,JSON.stringify(st.mine)); }catch(e){} if(o.onMine) o.onMine(st);
+      },function(){ st.busy=false; SEC.classList.remove('lv-busy'); flash(SEC,'Your answer did not send. Check your connection and try again.'); }); };
     st.reveal=function(extra){ var d={rv:1}; if(extra) for(var k in extra) d[k]=extra[k]; if(st.backend) st.backend.mergeDoc('polls',o.id,d); };
     st.reset=function(){ if(st.backend && confirm('Clear the class answers and hide the reveal on every screen?')) st.backend.setDoc('polls',o.id,{counts:{},rv:0,run:Date.now()}); };
     function onDoc(d){ d=d||{}; st.doc=d; var nr=d.run||0;
@@ -2176,7 +2300,9 @@ if(!window.C17L){ window.C17L=(function(){
   /* class guesses stored as "<prefix><bin>", bin = round(log10(v)*20) */
   function logGuesses(counts,prefix){ var a=[], re=new RegExp('^'+prefix+'(\\d+)$'); for(var k in counts){ var m=k.match(re); if(!m) continue; var c=+counts[k]||0; for(var i=0;i<c;i++) a.push(Math.pow(10,+m[1]/20)); } return a.sort(function(x,y){ return x-y; }); }
   function linGuesses(counts,prefix){ var a=[], re=new RegExp('^'+prefix+'(\\d+)$'); for(var k in counts){ var m=k.match(re); if(!m) continue; var c=+counts[k]||0; for(var i=0;i<c;i++) a.push(+m[1]); } return a.sort(function(x,y){ return x-y; }); }
-  function median(a){ return a.length? a[Math.floor((a.length-1)/2)] : null; }
+  function median(a){ var n=a.length; if(!n) return null; var m=Math.floor(n/2); return n%2? a[m] : (a[m-1]+a[m])/2; }   /* a is sorted; even n: mean of the two middle values */
+  function flash(SEC,msg){ var f=document.createElement('div'); f.className='lv-flash'; f.setAttribute('role','alert'); f.textContent=msg; SEC.appendChild(f);
+    setTimeout(function(){ f.classList.add('out'); setTimeout(function(){ f.remove(); },500); },4200); }
   /* host panel: count, a summary line, Reveal + Reset */
   function hostPanel(el,st,n,summary,label,fin){ el.innerHTML='<div class="lv-lbl">Your class</div><div class="lv-val">'+n+'</div><div class="lv-sub">'+(n===1?'answer':'answers')+' locked in</div>'
       +(summary? '<p class="lv-hm">'+summary+'</p>' : '')
@@ -2184,7 +2310,7 @@ if(!window.C17L){ window.C17L=(function(){
       +'<button type="button" class="lv-reset" data-lv-reset>Reset</button>';
     var b=el.querySelector('[data-lv-rev]'); if(b) b.addEventListener('click',function(){ st.reveal(fin? {fin:fin()} : null); });
     el.querySelector('[data-lv-reset]').addEventListener('click',function(){ st.reset(); }); }
-  return {E:E,T:T,cl:cl,eout:eout,nice:nice,big:big,fit:fit,onShow:onShow,stopKeys:stopKeys,make:make,logGuesses:logGuesses,linGuesses:linGuesses,median:median,hostPanel:hostPanel};
+  return {E:E,T:T,cl:cl,eout:eout,nice:nice,big:big,fit:fit,onShow:onShow,stopKeys:stopKeys,make:make,logGuesses:logGuesses,linGuesses:linGuesses,median:median,hostPanel:hostPanel,flash:flash};
 })(); }
 })();</script><script>(function(){
 var SEC=document.currentScript.closest('section'); if(!SEC||SEC.__pl) return; SEC.__pl=1;
@@ -2302,8 +2428,16 @@ if(!window.C17L){ window.C17L=(function(){
   function make(SEC,o){
     var st={HOST:false,backend:null,counts:{},doc:{},rv:0,run:0,mine:null,id:o.id}, KEY='c17:'+o.id;
     try{ var m=JSON.parse(localStorage.getItem(KEY)||'null'); if(m) st.mine=m; }catch(e){}
-    st.lock=function(v,keys){ if(st.backend && !st.HOST) keys.forEach(function(k){ st.backend.bump('polls',o.id,k); });
-      st.mine={v:v,run:st.run}; try{ localStorage.setItem(KEY,JSON.stringify(st.mine)); }catch(e){} if(o.onMine) o.onMine(st); };
+    /* Nov 17 2026 (review doc): an answer counts as locked in only after the write succeeds. All keys go in ONE write to this
+       device's shard (atomic, so a multi-key answer such as five map picks can never land partly), and a failure allows a retry. */
+    st.busy=false;
+    st.lock=function(v,keys){ if(st.HOST || st.busy || st.mine) return;
+      if(!st.backend){ flash(SEC,'Still connecting. Try again in a moment.'); return; }
+      var c={}, obj={counts:{}}; keys.forEach(function(k){ c[k]=(c[k]||0)+1; }); for(var k in c) obj.counts[k]=st.backend.inc(c[k]);
+      var run=st.run; st.busy=true; SEC.classList.add('lv-busy');
+      Promise.resolve().then(function(){ return st.backend.mergeDocShard('polls',o.id,obj); }).then(function(){
+        st.busy=false; SEC.classList.remove('lv-busy'); st.mine={v:v,run:run}; try{ localStorage.setItem(KEY,JSON.stringify(st.mine)); }catch(e){} if(o.onMine) o.onMine(st);
+      },function(){ st.busy=false; SEC.classList.remove('lv-busy'); flash(SEC,'Your answer did not send. Check your connection and try again.'); }); };
     st.reveal=function(extra){ var d={rv:1}; if(extra) for(var k in extra) d[k]=extra[k]; if(st.backend) st.backend.mergeDoc('polls',o.id,d); };
     st.reset=function(){ if(st.backend && confirm('Clear the class answers and hide the reveal on every screen?')) st.backend.setDoc('polls',o.id,{counts:{},rv:0,run:Date.now()}); };
     function onDoc(d){ d=d||{}; st.doc=d; var nr=d.run||0;
@@ -2318,7 +2452,9 @@ if(!window.C17L){ window.C17L=(function(){
   /* class guesses stored as "<prefix><bin>", bin = round(log10(v)*20) */
   function logGuesses(counts,prefix){ var a=[], re=new RegExp('^'+prefix+'(\\d+)$'); for(var k in counts){ var m=k.match(re); if(!m) continue; var c=+counts[k]||0; for(var i=0;i<c;i++) a.push(Math.pow(10,+m[1]/20)); } return a.sort(function(x,y){ return x-y; }); }
   function linGuesses(counts,prefix){ var a=[], re=new RegExp('^'+prefix+'(\\d+)$'); for(var k in counts){ var m=k.match(re); if(!m) continue; var c=+counts[k]||0; for(var i=0;i<c;i++) a.push(+m[1]); } return a.sort(function(x,y){ return x-y; }); }
-  function median(a){ return a.length? a[Math.floor((a.length-1)/2)] : null; }
+  function median(a){ var n=a.length; if(!n) return null; var m=Math.floor(n/2); return n%2? a[m] : (a[m-1]+a[m])/2; }   /* a is sorted; even n: mean of the two middle values */
+  function flash(SEC,msg){ var f=document.createElement('div'); f.className='lv-flash'; f.setAttribute('role','alert'); f.textContent=msg; SEC.appendChild(f);
+    setTimeout(function(){ f.classList.add('out'); setTimeout(function(){ f.remove(); },500); },4200); }
   /* host panel: count, a summary line, Reveal + Reset */
   function hostPanel(el,st,n,summary,label,fin){ el.innerHTML='<div class="lv-lbl">Your class</div><div class="lv-val">'+n+'</div><div class="lv-sub">'+(n===1?'answer':'answers')+' locked in</div>'
       +(summary? '<p class="lv-hm">'+summary+'</p>' : '')
@@ -2326,7 +2462,7 @@ if(!window.C17L){ window.C17L=(function(){
       +'<button type="button" class="lv-reset" data-lv-reset>Reset</button>';
     var b=el.querySelector('[data-lv-rev]'); if(b) b.addEventListener('click',function(){ st.reveal(fin? {fin:fin()} : null); });
     el.querySelector('[data-lv-reset]').addEventListener('click',function(){ st.reset(); }); }
-  return {E:E,T:T,cl:cl,eout:eout,nice:nice,big:big,fit:fit,onShow:onShow,stopKeys:stopKeys,make:make,logGuesses:logGuesses,linGuesses:linGuesses,median:median,hostPanel:hostPanel};
+  return {E:E,T:T,cl:cl,eout:eout,nice:nice,big:big,fit:fit,onShow:onShow,stopKeys:stopKeys,make:make,logGuesses:logGuesses,linGuesses:linGuesses,median:median,hostPanel:hostPanel,flash:flash};
 })(); }
 })();</script><script>(function(){
 var SEC=document.currentScript.closest('section'); if(!SEC||SEC.__pl) return; SEC.__pl=1;
@@ -2410,8 +2546,16 @@ if(!window.C17L){ window.C17L=(function(){
   function make(SEC,o){
     var st={HOST:false,backend:null,counts:{},doc:{},rv:0,run:0,mine:null,id:o.id}, KEY='c17:'+o.id;
     try{ var m=JSON.parse(localStorage.getItem(KEY)||'null'); if(m) st.mine=m; }catch(e){}
-    st.lock=function(v,keys){ if(st.backend && !st.HOST) keys.forEach(function(k){ st.backend.bump('polls',o.id,k); });
-      st.mine={v:v,run:st.run}; try{ localStorage.setItem(KEY,JSON.stringify(st.mine)); }catch(e){} if(o.onMine) o.onMine(st); };
+    /* Nov 17 2026 (review doc): an answer counts as locked in only after the write succeeds. All keys go in ONE write to this
+       device's shard (atomic, so a multi-key answer such as five map picks can never land partly), and a failure allows a retry. */
+    st.busy=false;
+    st.lock=function(v,keys){ if(st.HOST || st.busy || st.mine) return;
+      if(!st.backend){ flash(SEC,'Still connecting. Try again in a moment.'); return; }
+      var c={}, obj={counts:{}}; keys.forEach(function(k){ c[k]=(c[k]||0)+1; }); for(var k in c) obj.counts[k]=st.backend.inc(c[k]);
+      var run=st.run; st.busy=true; SEC.classList.add('lv-busy');
+      Promise.resolve().then(function(){ return st.backend.mergeDocShard('polls',o.id,obj); }).then(function(){
+        st.busy=false; SEC.classList.remove('lv-busy'); st.mine={v:v,run:run}; try{ localStorage.setItem(KEY,JSON.stringify(st.mine)); }catch(e){} if(o.onMine) o.onMine(st);
+      },function(){ st.busy=false; SEC.classList.remove('lv-busy'); flash(SEC,'Your answer did not send. Check your connection and try again.'); }); };
     st.reveal=function(extra){ var d={rv:1}; if(extra) for(var k in extra) d[k]=extra[k]; if(st.backend) st.backend.mergeDoc('polls',o.id,d); };
     st.reset=function(){ if(st.backend && confirm('Clear the class answers and hide the reveal on every screen?')) st.backend.setDoc('polls',o.id,{counts:{},rv:0,run:Date.now()}); };
     function onDoc(d){ d=d||{}; st.doc=d; var nr=d.run||0;
@@ -2426,7 +2570,9 @@ if(!window.C17L){ window.C17L=(function(){
   /* class guesses stored as "<prefix><bin>", bin = round(log10(v)*20) */
   function logGuesses(counts,prefix){ var a=[], re=new RegExp('^'+prefix+'(\\d+)$'); for(var k in counts){ var m=k.match(re); if(!m) continue; var c=+counts[k]||0; for(var i=0;i<c;i++) a.push(Math.pow(10,+m[1]/20)); } return a.sort(function(x,y){ return x-y; }); }
   function linGuesses(counts,prefix){ var a=[], re=new RegExp('^'+prefix+'(\\d+)$'); for(var k in counts){ var m=k.match(re); if(!m) continue; var c=+counts[k]||0; for(var i=0;i<c;i++) a.push(+m[1]); } return a.sort(function(x,y){ return x-y; }); }
-  function median(a){ return a.length? a[Math.floor((a.length-1)/2)] : null; }
+  function median(a){ var n=a.length; if(!n) return null; var m=Math.floor(n/2); return n%2? a[m] : (a[m-1]+a[m])/2; }   /* a is sorted; even n: mean of the two middle values */
+  function flash(SEC,msg){ var f=document.createElement('div'); f.className='lv-flash'; f.setAttribute('role','alert'); f.textContent=msg; SEC.appendChild(f);
+    setTimeout(function(){ f.classList.add('out'); setTimeout(function(){ f.remove(); },500); },4200); }
   /* host panel: count, a summary line, Reveal + Reset */
   function hostPanel(el,st,n,summary,label,fin){ el.innerHTML='<div class="lv-lbl">Your class</div><div class="lv-val">'+n+'</div><div class="lv-sub">'+(n===1?'answer':'answers')+' locked in</div>'
       +(summary? '<p class="lv-hm">'+summary+'</p>' : '')
@@ -2434,7 +2580,7 @@ if(!window.C17L){ window.C17L=(function(){
       +'<button type="button" class="lv-reset" data-lv-reset>Reset</button>';
     var b=el.querySelector('[data-lv-rev]'); if(b) b.addEventListener('click',function(){ st.reveal(fin? {fin:fin()} : null); });
     el.querySelector('[data-lv-reset]').addEventListener('click',function(){ st.reset(); }); }
-  return {E:E,T:T,cl:cl,eout:eout,nice:nice,big:big,fit:fit,onShow:onShow,stopKeys:stopKeys,make:make,logGuesses:logGuesses,linGuesses:linGuesses,median:median,hostPanel:hostPanel};
+  return {E:E,T:T,cl:cl,eout:eout,nice:nice,big:big,fit:fit,onShow:onShow,stopKeys:stopKeys,make:make,logGuesses:logGuesses,linGuesses:linGuesses,median:median,hostPanel:hostPanel,flash:flash};
 })(); }
 })();</script><script>(function(){
 var SEC=document.currentScript.closest('section'); if(!SEC||SEC.__pl) return; SEC.__pl=1;
@@ -2548,8 +2694,16 @@ if(!window.C17L){ window.C17L=(function(){
   function make(SEC,o){
     var st={HOST:false,backend:null,counts:{},doc:{},rv:0,run:0,mine:null,id:o.id}, KEY='c17:'+o.id;
     try{ var m=JSON.parse(localStorage.getItem(KEY)||'null'); if(m) st.mine=m; }catch(e){}
-    st.lock=function(v,keys){ if(st.backend && !st.HOST) keys.forEach(function(k){ st.backend.bump('polls',o.id,k); });
-      st.mine={v:v,run:st.run}; try{ localStorage.setItem(KEY,JSON.stringify(st.mine)); }catch(e){} if(o.onMine) o.onMine(st); };
+    /* Nov 17 2026 (review doc): an answer counts as locked in only after the write succeeds. All keys go in ONE write to this
+       device's shard (atomic, so a multi-key answer such as five map picks can never land partly), and a failure allows a retry. */
+    st.busy=false;
+    st.lock=function(v,keys){ if(st.HOST || st.busy || st.mine) return;
+      if(!st.backend){ flash(SEC,'Still connecting. Try again in a moment.'); return; }
+      var c={}, obj={counts:{}}; keys.forEach(function(k){ c[k]=(c[k]||0)+1; }); for(var k in c) obj.counts[k]=st.backend.inc(c[k]);
+      var run=st.run; st.busy=true; SEC.classList.add('lv-busy');
+      Promise.resolve().then(function(){ return st.backend.mergeDocShard('polls',o.id,obj); }).then(function(){
+        st.busy=false; SEC.classList.remove('lv-busy'); st.mine={v:v,run:run}; try{ localStorage.setItem(KEY,JSON.stringify(st.mine)); }catch(e){} if(o.onMine) o.onMine(st);
+      },function(){ st.busy=false; SEC.classList.remove('lv-busy'); flash(SEC,'Your answer did not send. Check your connection and try again.'); }); };
     st.reveal=function(extra){ var d={rv:1}; if(extra) for(var k in extra) d[k]=extra[k]; if(st.backend) st.backend.mergeDoc('polls',o.id,d); };
     st.reset=function(){ if(st.backend && confirm('Clear the class answers and hide the reveal on every screen?')) st.backend.setDoc('polls',o.id,{counts:{},rv:0,run:Date.now()}); };
     function onDoc(d){ d=d||{}; st.doc=d; var nr=d.run||0;
@@ -2564,7 +2718,9 @@ if(!window.C17L){ window.C17L=(function(){
   /* class guesses stored as "<prefix><bin>", bin = round(log10(v)*20) */
   function logGuesses(counts,prefix){ var a=[], re=new RegExp('^'+prefix+'(\\d+)$'); for(var k in counts){ var m=k.match(re); if(!m) continue; var c=+counts[k]||0; for(var i=0;i<c;i++) a.push(Math.pow(10,+m[1]/20)); } return a.sort(function(x,y){ return x-y; }); }
   function linGuesses(counts,prefix){ var a=[], re=new RegExp('^'+prefix+'(\\d+)$'); for(var k in counts){ var m=k.match(re); if(!m) continue; var c=+counts[k]||0; for(var i=0;i<c;i++) a.push(+m[1]); } return a.sort(function(x,y){ return x-y; }); }
-  function median(a){ return a.length? a[Math.floor((a.length-1)/2)] : null; }
+  function median(a){ var n=a.length; if(!n) return null; var m=Math.floor(n/2); return n%2? a[m] : (a[m-1]+a[m])/2; }   /* a is sorted; even n: mean of the two middle values */
+  function flash(SEC,msg){ var f=document.createElement('div'); f.className='lv-flash'; f.setAttribute('role','alert'); f.textContent=msg; SEC.appendChild(f);
+    setTimeout(function(){ f.classList.add('out'); setTimeout(function(){ f.remove(); },500); },4200); }
   /* host panel: count, a summary line, Reveal + Reset */
   function hostPanel(el,st,n,summary,label,fin){ el.innerHTML='<div class="lv-lbl">Your class</div><div class="lv-val">'+n+'</div><div class="lv-sub">'+(n===1?'answer':'answers')+' locked in</div>'
       +(summary? '<p class="lv-hm">'+summary+'</p>' : '')
@@ -2572,7 +2728,7 @@ if(!window.C17L){ window.C17L=(function(){
       +'<button type="button" class="lv-reset" data-lv-reset>Reset</button>';
     var b=el.querySelector('[data-lv-rev]'); if(b) b.addEventListener('click',function(){ st.reveal(fin? {fin:fin()} : null); });
     el.querySelector('[data-lv-reset]').addEventListener('click',function(){ st.reset(); }); }
-  return {E:E,T:T,cl:cl,eout:eout,nice:nice,big:big,fit:fit,onShow:onShow,stopKeys:stopKeys,make:make,logGuesses:logGuesses,linGuesses:linGuesses,median:median,hostPanel:hostPanel};
+  return {E:E,T:T,cl:cl,eout:eout,nice:nice,big:big,fit:fit,onShow:onShow,stopKeys:stopKeys,make:make,logGuesses:logGuesses,linGuesses:linGuesses,median:median,hostPanel:hostPanel,flash:flash};
 })(); }
 })();</script><script>(function(){
 var SEC=document.currentScript.closest('section'); if(!SEC||SEC.__pl) return; SEC.__pl=1;
@@ -3489,6 +3645,220 @@ window.__deckLiveReady.then(function(Lv){ backend=Lv.backend; HOST=!!Lv.HOST;
 });
 })();</script>
 </section>
+<section class="slide k18 dt-slide" data-type="content" style="--accent:#2f5c84"><div class="k18-wrap"><div><div class="eyebrow">Decisions in Organizations</div><h2 class="heading">Two Paths Diverged in the Woods&#8230; So I Used a Decision Tree</h2></div><div class="dt-body">
+  <div class="dt-side k18-card">
+    <div class="dt-chips"><button type="button" class="dt-chip" data-dt-go="1" aria-label="Step 1">1</button><button type="button" class="dt-chip" data-dt-go="2" aria-label="Step 2">2</button><button type="button" class="dt-chip" data-dt-go="3" aria-label="Step 3">3</button><button type="button" class="dt-chip" data-dt-go="4" aria-label="Step 4">4</button><button type="button" class="dt-chip" data-dt-go="5" aria-label="Step 5">5</button><button type="button" class="dt-chip" data-dt-go="6" aria-label="Step 6">6</button></div>
+    <div class="k18-tag" data-dt-tag>Step 1 of 6</div>
+    <div class="dt-cap" data-dt-cap></div>
+    <div class="dt-nav"><button type="button" class="k18-ghost" data-dt-prev>Back</button><button type="button" class="k18-btn" data-dt-next>Next</button></div>
+    <div class="dt-ctl" data-dt-ctl>
+      <div class="k18-tag">Try changing the numbers</div>
+      <label><span>Chance of an input price spike</span><b data-dt-v="ps">30%</b><input type="range" min="0" max="80" step="5" value="30" data-dt-in="ps"></label>
+      <label><span>Chance of high adoption (if supplies stay stable)</span><b data-dt-v="hs">50%</b><input type="range" min="10" max="90" step="5" value="50" data-dt-in="hs"></label>
+      <label><span>Social cost of carbon (per tonne CO&#8322;)</span><b data-dt-v="scc">$100</b><input type="range" min="0" max="300" step="10" value="100" data-dt-in="scc"></label>
+      <div class="dt-ctlb"><button type="button" class="k18-ghost" data-dt-bw>Show best and worst paths</button><button type="button" class="k18-ghost" data-dt-reset>Reset numbers</button></div>
+      <p class="dt-note">After a price spike, the chance of high adoption is half as large (empty shelves). Price war: 40% if adoption is high, 20% if low.</p>
+    </div>
+  </div>
+  <div class="dt-main">
+    <div class="dt-fig"><svg class="dt-svg" viewBox="0 0 1000 560" data-dt-svg></svg></div>
+    <div class="dt-res" data-dt-res></div>
+  </div>
+</div>
+<script>(function(){ 
+var SEC=document.currentScript.closest('section'); if(!SEC||SEC.__dt) return; SEC.__dt=1;
+var STEPS=[["The choice", "You sit on the executive board of a company that sells household goods like laundry detergent. Should you replace part of the liquid detergent line with <b>plant-based laundry sheets</b> (call it EcoLine)? The goal: <b>more profit and a smaller carbon footprint</b> within two years."], ["What will customers do?", "The obvious question: how many of your customers will switch? <b>High adoption</b> could pay off. <b>Low adoption</b> could lose money. But is that the whole story?"], ["But wait: what else shapes adoption?", "Raw-material prices could <b>spike</b>, leaving empty shelves and making high adoption less likely. And if adoption is high, a <b>rival may start a price war</b>. The uncertainties stack on top of each other."], ["Payoffs at the end of each path", "Each path ends with a profit (or a loss) and tonnes of CO&#8322; avoided. The <b>social cost of carbon</b> turns tonnes into dollars, so both goals sit on one scale: <b>U = profit + CO&#8322; avoided &#215; social cost of carbon</b>."], ["Roll back the tree", "Work from right to left. Each chance node is the <b>probability-weighted average</b> of its branches. That gives the <b>expected utility</b> (EU) of launching, to compare with the status quo (U = 0)."], ["So what do you think, boss?", ""]], N=STEPS.length, step=1, bw=false;
+function q(s){ return SEC.querySelector(s); } function qa(s){ return SEC.querySelectorAll(s); }
+var SV=q('[data-dt-svg]'), RES=q('[data-dt-res]');
+var P={ps:30,hs:50,scc:100}, P0={ps:30,hs:50,scc:100};
+/* the eight paths, top to bottom (profit $M, CO2 avoided kt) */
+var LEAF=[{i:'S',a:'H',w:0,pr:10,co:20},{i:'S',a:'H',w:1,pr:7,co:20},{i:'S',a:'L',w:0,pr:-2,co:10},{i:'S',a:'L',w:1,pr:-5,co:10},
+          {i:'X',a:'H',w:0,pr:7,co:15},{i:'X',a:'H',w:1,pr:4,co:15},{i:'X',a:'L',w:0,pr:-5,co:5},{i:'X',a:'L',w:1,pr:-8,co:5}];
+function model(){ var ps=P.ps/100, hs=P.hs/100, hx=hs/2, scc=P.scc;
+  var pI={S:1-ps,X:ps}, pA={S:{H:hs,L:1-hs},X:{H:hx,L:1-hx}}, pW={H:[.6,.4],L:[.8,.2]};
+  var L=LEAF.map(function(l){ var c=[pI[l.i],pA[l.i][l.a],pW[l.a][l.w]], p=c[0]*c[1]*c[2]; return {l:l,c:c,p:p,u:l.pr+l.co*scc/1000}; });
+  function ev(f){ var s=0, w=0; L.forEach(function(x){ if(f(x.l)){ s+=x.p*x.u; w+=x.p; } }); return w? s/w : 0; }
+  var m={L:L,eu:ev(function(){ return true; }),ps:ps,hs:hs,hx:hx};
+  m.inp={S:ev(function(l){ return l.i==='S'; }),X:ev(function(l){ return l.i==='X'; })};
+  m.ad={}; ['S','X'].forEach(function(i){ ['H','L'].forEach(function(a){ m.ad[i+a]=ev(function(l){ return l.i===i&&l.a===a; }); }); });
+  m.prof=0; m.co=0; m.loss=0; L.forEach(function(x){ m.prof+=x.p*x.l.pr; m.co+=x.p*x.l.co; if(x.l.pr<0) m.loss+=x.p; });
+  var best=0, worst=0; L.forEach(function(x,k){ if(x.u>L[best].u) best=k; if(x.u<L[worst].u) worst=k; }); m.best=best; m.worst=worst;
+  return m; }
+function f1(v){ return (v<0?'−':'+')+Math.abs(v).toFixed(1); } function f2(v){ return (v<0?'−':'+')+Math.abs(v).toFixed(2); }
+function pc(v){ return Math.round(v*1000)/10+'%'; } function pc0(v){ return Math.round(v*100)+'%'; }
+/* geometry */
+var LY=[60,118,176,234,292,350,408,466], XD=40, XN0=235, XN1=420, XN2=600, XL=780, YSQ=525;
+function mid(a,b){ return (a+b)/2; }
+var YR=[mid(LY[0],LY[1]),mid(LY[2],LY[3]),mid(LY[4],LY[5]),mid(LY[6],LY[7])], YA=[mid(YR[0],YR[1]),mid(YR[2],YR[3])], Y0=mid(YA[0],YA[1]);
+function el(x0,y0,x1,y1,cls,lab,lp){ var xm=x0+28, d='M'+x0+','+y0+' H'+xm+' V'+y1+' H'+x1;
+  return '<path class="dt-br '+(cls||'')+'" d="'+d+'"/>'+(lab? '<text x="'+(xm+8)+'" y="'+(y1-8)+'" class="dt-bl '+(cls||'')+'">'+lab+(lp!=null? ' <tspan class="dt-bp">'+lp+'</tspan>':'')+'</text>' : ''); }
+function node(x,y,v,show,cls,two){ return '<g class="dt-n '+(cls||'')+'"><circle cx="'+x+'" cy="'+y+'" r="25"/>'+(show? '<text x="'+x+'" y="'+(y+5)+'" text-anchor="middle" class="dt-nv'+(v<0?' neg':'')+'">'+(two?f2(v):f1(v))+'</text>' : '')+'</g>'; }
+function draw(){ var m=model(), o='', s=step, hl=bw;
+  var on=function(k){ return hl && (k===m.best||k===m.worst); }, pcls=function(k){ return !hl? '' : k===m.best? 'best' : k===m.worst? 'worst' : 'dim'; };
+  /* column heads */
+  var heads= s<=2? [['Choice',XD],['Customer adoption',XN0+60]] : [['Choice',XD-16],['Input supply',XN0+30],['Adoption',XN1+30],['Rival response',XN2+30],['Payoff',XL+22]];
+  heads.forEach(function(h){ o+='<text x="'+h[1]+'" y="24" class="dt-h">'+h[0]+'</text>'; });
+  /* decision square + status quo */
+  o+='<path class="dt-br" d="M'+(XD+16)+','+(Y0+16)+' V'+YSQ+' H'+XL+'"/><text x="'+(XD+28)+'" y="'+(YSQ-8)+'" class="dt-bl">Status quo</text>';
+  if(s>=5) o+='<path d="M'+(XN0-10)+','+(YSQ-9)+' l8,18 M'+(XN0)+','+(YSQ-9)+' l8,18" stroke="#9c3a4a" stroke-width="2"/>';
+  o+='<path d="M'+XL+','+(YSQ-8)+' l14,8 l-14,8 z" fill="#86847a"/><text x="'+(XL+22)+'" y="'+(YSQ+5)+'" class="dt-u">U = 0</text><text x="'+(XL+86)+'" y="'+(YSQ+5)+'" class="dt-us">no change</text>';
+  o+='<path class="dt-br" d="M'+(XD+32)+','+Y0+' H'+(XN0-24)+'"/><text x="'+(XD+40)+'" y="'+(Y0-8)+'" class="dt-bl">Launch EcoLine</text>';
+  o+='<rect x="'+(XD-16)+'" y="'+(Y0-16)+'" width="32" height="32" class="dt-sq"/>';
+  if(s>=5) o+='<text x="'+XD+'" y="'+(Y0-26)+'" text-anchor="middle" class="dt-eu dt-new">'+f2(m.eu)+'</text>';
+  if(s===1){ o+='<path class="dt-br" d="M'+(XN0-24)+','+Y0+' H'+(XN1)+'"/><text x="'+(XN1+30)+'" y="'+(Y0+15)+'" text-anchor="middle" class="dt-qq">?</text>'; }
+  else if(s===2){ var adH=m.ps*m.hx+(1-m.ps)*m.hs;
+    o+=node(XN0,Y0,0,false,'dt-new');
+    o+=el(XN0+24,Y0,XL-40,YA[0],'dt-new','High adoption',pc0(adH))+el(XN0+24,Y0,XL-40,YA[1],'dt-new','Low adoption',pc0(1-adH));
+    o+='<text x="'+(XL-30)+'" y="'+(YA[0]+6)+'" class="dt-qq2 dt-new">a big win?</text><text x="'+(XL-30)+'" y="'+(YA[1]+6)+'" class="dt-qq2 dt-new">a loss?</text>'; }
+  else {
+    o+=node(XN0,Y0,m.eu,s>=5,s===3?'dt-new':'',true);
+    var IN=[['S','Stable',1-m.ps,YA[0]],['X','Spike',m.ps,YA[1]]];
+    IN.forEach(function(I,ii){ o+=el(XN0+24,Y0,XN1-24,I[3],s===3?'dt-new':'',I[1],pc0(I[2])); o+=node(XN1,I[3],m.inp[I[0]],s>=5,s===3?'dt-new':'');
+      ['H','L'].forEach(function(a,ai){ var y=YR[ii*2+ai], pa= a==='H'? (I[0]==='S'?m.hs:m.hx) : 1-(I[0]==='S'?m.hs:m.hx);
+        o+=el(XN1+24,I[3],XN2-24,y,s===3?'dt-new':'',a==='H'?'High':'Low',pc0(pa)); o+=node(XN2,y,m.ad[I[0]+a],s>=5,s===3?'dt-new':'');
+        [0,1].forEach(function(w){ var k=ii*4+ai*2+w, x=m.L[k], pw= a==='H'? [.6,.4][w] : [.8,.2][w], c=pcls(k);
+          o+=el(XN2+24,y,XL,LY[k],(s===3?'dt-new ':'')+c,w?'Price war':'No war',pc0(pw));
+          var good=x.u>=0;
+          o+='<path d="M'+XL+','+(LY[k]-8)+' l14,8 l-14,8 z" class="dt-end '+(s>=4? (good?'g':'r') : '')+' '+c+'"/>';
+          if(s>=4) o+='<g class="dt-pay '+c+'"><text x="'+(XL+22)+'" y="'+(LY[k]+2)+'" class="dt-u'+(good?'':' neg')+'">U = '+f1(x.u)+'</text>'
+            +'<text x="'+(XL+22)+'" y="'+(LY[k]+19)+'" class="dt-us">p = '+pc(x.p)+' &#183; '+(x.l.pr<0?'−$':'$')+Math.abs(x.l.pr)+'M, '+x.l.co+' kt</text></g>';
+          if(on(k)) o+='<text x="'+(XL+128)+'" y="'+(LY[k]+2)+'" class="dt-tagp '+c+'">'+(k===m.best?'BEST':'WORST')+'</text>'; }); }); }); }
+  SV.innerHTML=o;
+  /* side panel */
+  q('[data-dt-tag]').textContent='Step '+s+' of '+N;
+  var cap=STEPS[s-1][1];
+  if(s===N){ var sign=m.eu>0? 'positive' : 'negative', lossy=m.loss;
+    var be=function(scc){ var save=P.scc, lo=0, hi=1; P.scc=scc; /* breakeven spike chance */ var keep=P.ps;
+      for(var it=0;it<40;it++){ var mid_=(lo+hi)/2; P.ps=mid_*100; if(model().eu>0) lo=mid_; else hi=mid_; } P.ps=keep; P.scc=save; return lo; };
+    var b0=be(0), b1=be(P.scc);
+    cap='<b>&#8220;'+(m.eu>0?'Positive':'Negative')+' on average, but '+pc(lossy)+' of the time we lose money.&#8221;</b> Launching: EU <b>'+f2(m.eu)+'</b>. Status quo: <b>0</b>. '
+      +'A <b>risk-averse</b> board might still say no. Carbon matters at the margin: valued at $0, the launch stops paying once a price spike is more than <b>'+pc0(b0)+'</b> likely; at $'+P.scc+' a tonne, it holds up to <b>'+pc0(b1)+'</b>.'; }
+  q('[data-dt-cap]').innerHTML='<h3>'+STEPS[s-1][0]+'</h3><p>'+cap+'</p>';
+  qa('[data-dt-go]').forEach(function(c){ c.classList.toggle('on',+c.dataset.dtGo===s); c.classList.toggle('done',+c.dataset.dtGo<s); });
+  q('[data-dt-prev]').disabled=s===1; q('[data-dt-next]').disabled=s===N;
+  q('[data-dt-ctl]').hidden=s<4; q('[data-dt-bw]').classList.toggle('on',bw);
+  RES.hidden=s<5;
+  if(s>=5) RES.innerHTML='<div><b class="'+(m.eu<0?'neg':'')+'">'+f2(m.eu)+'</b><span>EU of launching ($M equiv.)</span></div><div><b>0</b><span>status quo</span></div>'
+    +'<div><b class="'+(m.prof<0?'neg':'')+'">'+(m.prof<0?'−':'+')+'$'+Math.abs(m.prof).toFixed(3)+'M</b><span>expected profit</span></div>'
+    +'<div><b>'+m.co.toFixed(2)+' kt</b><span>expected CO&#8322; avoided, worth $'+(m.co*P.scc/1000).toFixed(3)+'M</span></div>'
+    +'<div><b class="neg">'+pc(m.loss)+'</b><span>chance of losing money</span></div>'; }
+function go(n){ step=Math.max(1,Math.min(N,n)); draw(); }
+q('[data-dt-next]').addEventListener('click',function(e){ e.currentTarget.blur(); go(step+1); });
+q('[data-dt-prev]').addEventListener('click',function(e){ e.currentTarget.blur(); go(step-1); });
+qa('[data-dt-go]').forEach(function(c){ c.addEventListener('click',function(){ c.blur(); go(+c.dataset.dtGo); }); });
+qa('[data-dt-in]').forEach(function(r){ ['keydown','keyup'].forEach(function(ev){ r.addEventListener(ev,function(e){ e.stopPropagation(); }); });
+  r.addEventListener('input',function(){ P[r.dataset.dtIn]=+r.value; lab(); SV.classList.add('dt-live'); draw(); }); });
+function lab(){ q('[data-dt-v="ps"]').textContent=P.ps+'%'; q('[data-dt-v="hs"]').textContent=P.hs+'%'; q('[data-dt-v="scc"]').textContent='$'+P.scc; }
+q('[data-dt-bw]').addEventListener('click',function(e){ e.currentTarget.blur(); bw=!bw; SV.classList.add('dt-live'); draw(); });
+q('[data-dt-reset]').addEventListener('click',function(e){ e.currentTarget.blur(); P={ps:P0.ps,hs:P0.hs,scc:P0.scc}; qa('[data-dt-in]').forEach(function(r){ r.value=P[r.dataset.dtIn]; }); lab(); draw(); });
+qa('[data-dt-go],[data-dt-next],[data-dt-prev]').forEach(function(b){ b.addEventListener('click',function(){ SV.classList.remove('dt-live'); }, true); });
+go(1);
+ })();</script></div></section>
+<section class="slide k18 dr-slide" data-type="content" style="--accent:#2f5c84"><div class="k18-wrap"><div><div class="eyebrow">Decisions in Organizations</div><h2 class="heading">How Would a Machine Make a Decision?</h2></div><div class="dr-top"><p class="dr-rule">A <b>decision rule</b>: <i>if</i> <u>this</u> happens, <i>then</i> do <u>that</u>. First read the information, then act.</p>
+  <div class="dr-tabs"><button type="button" class="k18-ghost on" data-dr-t="th">A thermostat</button><button type="button" class="k18-ghost" data-dr-t="lm">Lake Mead</button><button type="button" class="k18-ghost" data-dr-t="vs">How are they different?</button></div></div>
+<div class="dr-pane dr-th" data-dr-p="th">
+  <div class="dr-fig"><svg class="lp-svg" viewBox="0 0 800 340" data-loop="th"><defs><marker id="lpthA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#23253b"/></marker></defs><g class="lp-b ctl" data-stage="1" ><rect x="10" y="120" width="140" height="66" rx="10"/><text x="80" y="150" text-anchor="middle" class="lp-t">Target temp</text><text x="80" y="168" text-anchor="middle" class="lp-s"><tspan data-th-tg>70</tspan>&#176;F</text></g><path d="M150,153 H186" class="lp-ar" marker-end="url(#lpthA)"/><circle cx="200" cy="153" r="13" class="lp-cmp" data-stage="2"/><text x="182" y="140" class="lp-pm">+</text><text x="208" y="182" class="lp-pm">&#8722;</text><path d="M213,153 H238" class="lp-ar" marker-end="url(#lpthA)"/><g class="lp-b ctl" data-stage="2" ><rect x="240" y="120" width="150" height="66" rx="10"/><text x="315" y="150" text-anchor="middle" class="lp-t">Thermostat</text><text x="315" y="168" text-anchor="middle" class="lp-s">heat, cool, or off</text></g><path d="M390,153 H408 V107 H428 M408,153 V199 H428" class="lp-ar" fill="none" marker-end="url(#lpthA)"/><g class="lp-b ctl act" data-stage="3" data-act="heat"><rect x="430" y="76" width="130" height="60" rx="10"/><text x="495" y="103" text-anchor="middle" class="lp-t">Furnace</text><text x="495" y="121" text-anchor="middle" class="lp-s">adds heat</text></g><g class="lp-b ctl act" data-stage="3" data-act="ac"><rect x="430" y="170" width="130" height="60" rx="10"/><text x="495" y="197" text-anchor="middle" class="lp-t">AC</text><text x="495" y="215" text-anchor="middle" class="lp-s">removes heat</text></g><path d="M560,107 H580 V153 H598 M560,199 H580 V153" class="lp-ar" fill="none" marker-end="url(#lpthA)"/><g class="lp-b plant" data-stage="4" ><rect x="600" y="120" width="140" height="66" rx="10"/><text x="670" y="150" text-anchor="middle" class="lp-t">Room</text><text x="670" y="168" text-anchor="middle" class="lp-s">air temperature</text></g><text x="670" y="40" text-anchor="middle" class="lp-d">Weather, open doors, sunshine</text><path d="M670,48 V116" class="lp-ar" marker-end="url(#lpthA)"/><path d="M740,153 H770" class="lp-ar"/><text x="772" y="112" class="lp-d" text-anchor="end">Room temp</text><path d="M760,153 V282 H582" class="lp-ar" fill="none" marker-end="url(#lpthA)"/><g class="lp-b sense" data-stage="5" ><rect x="420" y="252" width="160" height="60" rx="10"/><text x="500" y="279" text-anchor="middle" class="lp-t">Thermometer</text><text x="500" y="297" text-anchor="middle" class="lp-s">reads room temp</text></g><path d="M420,282 H200 V168" class="lp-ar" fill="none" marker-end="url(#lpthA)"/><text x="315" y="302" text-anchor="middle" class="lp-d">Runs continuously</text><text x="80" y="206" text-anchor="middle" class="lp-k">Set target</text><text x="315" y="206" text-anchor="middle" class="lp-k">Decide</text><text x="500" y="246" text-anchor="middle" class="lp-k">Take action</text><text x="670" y="206" text-anchor="middle" class="lp-k">Change occurs</text><text x="500" y="330" text-anchor="middle" class="lp-k">Sense change</text><circle r="6" class="lp-dot" data-lp-dot/></svg></div>
+  <div class="dr-read k18-card">
+    <div class="dr-rh"><div><div class="k18-tag">Live read-out</div><div class="dr-temp"><b data-th-t>66.0</b><span>&#176;F in the room</span></div></div><div class="dr-mode" data-th-m>OFF</div></div>
+    <svg class="dr-ch" viewBox="0 0 420 190" data-th-ch></svg>
+    <p class="dr-rt" data-th-r></p>
+    <label class="dr-sl"><span>Target</span><input type="range" min="64" max="76" value="70" data-th-in><b data-th-tv>70&#176;F</b></label>
+    <div class="dr-btns"><button type="button" class="k18-ghost" data-th-door>Open the front door</button><button type="button" class="k18-ghost" data-th-sun>Sunny afternoon</button></div>
+  </div>
+</div>
+<div class="dr-pane dr-lm" data-dr-p="lm" hidden>
+  <div class="dr-fig"><svg class="lp-svg" viewBox="0 0 800 340" data-loop="lm"><defs><marker id="lplmA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#23253b"/></marker></defs><g class="lp-b ctl" data-stage="1" ><rect x="10" y="120" width="140" height="66" rx="10"/><text x="80" y="150" text-anchor="middle" class="lp-t">Target level</text><text x="80" y="168" text-anchor="middle" class="lp-s">1,075 ft trigger</text></g><path d="M150,153 H186" class="lp-ar" marker-end="url(#lplmA)"/><circle cx="200" cy="153" r="13" class="lp-cmp" data-stage="2"/><text x="182" y="140" class="lp-pm">+</text><text x="208" y="182" class="lp-pm">&#8722;</text><path d="M213,153 H238" class="lp-ar" marker-end="url(#lplmA)"/><g class="lp-b ctl" data-stage="2" ><rect x="240" y="120" width="150" height="66" rx="10"/><text x="315" y="150" text-anchor="middle" class="lp-t">Shortage rules</text><text x="315" y="168" text-anchor="middle" class="lp-s">elevation picks a tier</text></g><path d="M390,153 H428" class="lp-ar" marker-end="url(#lplmA)"/><g class="lp-b ctl act" data-stage="3" data-act="cut"><rect x="430" y="120" width="140" height="66" rx="10"/><text x="500" y="150" text-anchor="middle" class="lp-t">Delivery cuts</text><text x="500" y="168" text-anchor="middle" class="lp-s"><tspan data-lm-cut>AZ, NV, Mexico</tspan></text></g><path d="M570,153 H598" class="lp-ar" marker-end="url(#lplmA)"/><g class="lp-b plant" data-stage="4" ><rect x="600" y="120" width="140" height="66" rx="10"/><text x="670" y="150" text-anchor="middle" class="lp-t">Lake Mead</text><text x="670" y="168" text-anchor="middle" class="lp-s">water in storage</text></g><text x="670" y="40" text-anchor="middle" class="lp-d">Inflows, drought, evaporation</text><path d="M670,48 V116" class="lp-ar" marker-end="url(#lplmA)"/><path d="M740,153 H770" class="lp-ar"/><text x="772" y="112" class="lp-d" text-anchor="end">Lake level</text><path d="M760,153 V282 H582" class="lp-ar" fill="none" marker-end="url(#lplmA)"/><g class="lp-b sense" data-stage="5" ><rect x="420" y="252" width="160" height="60" rx="10"/><text x="500" y="279" text-anchor="middle" class="lp-t">24-Month Study</text><text x="500" y="297" text-anchor="middle" class="lp-s">projects Jan 1 level</text></g><path d="M420,282 H200 V168" class="lp-ar" fill="none" marker-end="url(#lplmA)"/><text x="315" y="302" text-anchor="middle" class="lp-d">Repeats every year</text><text x="80" y="206" text-anchor="middle" class="lp-k">Set target</text><text x="315" y="206" text-anchor="middle" class="lp-k">Decide</text><text x="500" y="206" text-anchor="middle" class="lp-k">Take action</text><text x="670" y="206" text-anchor="middle" class="lp-k">Change occurs</text><text x="500" y="330" text-anchor="middle" class="lp-k">Sense change</text><circle r="6" class="lp-dot" data-lp-dot/></svg></div>
+  <div class="dr-read k18-card">
+    <div class="k18-tag">The rule at work, 2022 to 2026</div>
+    <svg class="dr-ch" viewBox="0 0 420 230" data-lm-ch></svg>
+    <p class="dr-rt" data-lm-r>Each August, Reclamation&#8217;s 24-Month Study projects Lake Mead&#8217;s level for next January 1. The rule compares that projection with the tiers and sets the next year&#8217;s cuts.</p>
+    <div class="dr-btns"><button type="button" class="k18-btn" data-lm-next>Next August &#9654;</button><button type="button" class="k18-ghost" data-lm-reset>Start over</button></div>
+    <p class="dr-src">Projected January 1 elevations from Reclamation&#8217;s August 24-Month Studies (2021 to 2025). Level 1 cuts: Arizona &#8722;18%, Nevada &#8722;7%, Mexico &#8722;5%.</p>
+  </div>
+</div>
+<div class="dr-pane dr-vs" data-dr-p="vs" hidden>
+  <table class="dr-tbl"><thead><tr><th></th><th>Thermostat</th><th>Lake Mead</th></tr></thead><tbody><tr><th>How fast the system responds</th><td>Minutes: the room warms or cools quickly.</td><td>Years: a reservoir the size of Lake Mead responds slowly.</td></tr><tr><th>What the rule reads</th><td>The <b>current</b> temperature.</td><td>A <b>projection</b> of next January&#8217;s level from a 24-month study.</td></tr><tr><th>Type of rule</th><td>Simple on/off: heat, cool, or nothing.</td><td><b>Tiers</b>: the lower the lake, the deeper the cuts.</td></tr><tr><th>Outside forces</th><td>Weather, open doors, sunshine.</td><td>Snowpack, drought, evaporation: hard to predict.</td></tr><tr><th>Uncertainty</th><td>Low: it just reacts to what it reads.</td><td>High: decisions rest on forecasts that can be wrong.</td></tr></tbody></table>
+  <div class="dr-tree k18-card"><div class="k18-tag">Connection to decision trees</div>
+    <p>A decision rule can itself come from a decision tree when several things matter at once:</p>
+    <ol><li>What is next year&#8217;s projected rain and snow?</li><li>Will farm and city demand be higher or lower than last year?</li><li>Can some cities lean on other sources for a while (for example, the Salt River)?</li></ol></div>
+</div>
+<script>(function(){ 
+var SEC=document.currentScript.closest('section'); if(!SEC||SEC.__dr) return; SEC.__dr=1;
+function q(s){ return SEC.querySelector(s); } function qa(s){ return SEC.querySelectorAll(s); }
+var tab='th', LM=[[2022, "August 2021", 1065.85, "Level 1", "The first shortage ever declared on the lower Colorado River."], [2023, "August 2022", 1047.61, "Level 2a", "A deeper tier: the projection fell into the 1,045 to 1,050 ft band."], [2024, "August 2023", 1065.27, "Level 1", "A huge snow year raised the lake, so the rule stepped back up a tier."], [2025, "August 2024", 1062.32, "Level 1", "Still below 1,075 ft: the same Level 1 cuts."], [2026, "August 2025", 1055.88, "Level 1", "About 20 ft below the trigger. Level 1 again."]];
+qa('[data-dr-t]').forEach(function(b){ b.addEventListener('click',function(){ b.blur(); tab=b.dataset.drT; qa('[data-dr-t]').forEach(function(x){ x.classList.toggle('on',x===b); });
+  qa('[data-dr-p]').forEach(function(p){ p.hidden=p.dataset.drP!==tab; }); kick(); }); });
+/* the loop pulse: a dot travels the loop; the box it passes lights up */
+function loopPath(){ return [[80,153],[200,153],[315,153],[500,153],[670,153],[760,153],[760,282],[500,282],[200,282],[200,153]]; }
+var PATH=loopPath(), segL=[], tot=0; for(var i=1;i<PATH.length;i++){ var d=Math.hypot(PATH[i][0]-PATH[i-1][0],PATH[i][1]-PATH[i-1][1]); segL.push(d); tot+=d; }
+function at(f){ var s=f*tot; for(var i=0;i<segL.length;i++){ if(s<=segL[i]){ var k=s/segL[i]; return [PATH[i][0]+(PATH[i+1][0]-PATH[i][0])*k, PATH[i][1]+(PATH[i+1][1]-PATH[i][1])*k, i]; } s-=segL[i]; } return PATH[PATH.length-1].concat([segL.length-1]); }
+var STG=[1,2,3,4,4,5,5,2,2];
+/* thermostat model: 1 tick = 1 simulated minute */
+var T=66, tgt=70, mode='off', door=0, sun=false, hist=[], tick=0;
+for(var i=0;i<120;i++) hist.push(null);
+function stepTh(){ var k=door>0? .05 : .008, gain=(sun?.38:0); if(door>0) door--;
+  if(T<tgt-1) mode='heat'; else if(T>tgt+1) mode='ac'; else if(mode==='heat'&&T>=tgt+.6) mode='off'; else if(mode==='ac'&&T<=tgt-.6) mode='off';
+  T+=k*(42-T)+gain+(mode==='heat'?.5:0)-(mode==='ac'?.5:0);
+  hist.push(T); if(hist.length>120) hist.shift(); }
+function drawTh(){ var W=420,H=190,x0=36,x1=W-8,y0=10,y1=H-24, lo=56, hi=84, X=function(i){ return x0+(x1-x0)*i/119; }, Y=function(v){ return y1-(y1-y0)*(v-lo)/(hi-lo); };
+  var o='<rect x="'+x0+'" y="'+Y(tgt+1)+'" width="'+(x1-x0)+'" height="'+(Y(tgt-1)-Y(tgt+1))+'" class="dr-band"/><path d="M'+x0+','+Y(tgt)+' H'+x1+'" class="dr-tl"/>';
+  [60,65,70,75,80].forEach(function(v){ o+='<text x="'+(x0-6)+'" y="'+(Y(v)+4)+'" text-anchor="end" class="dr-ax">'+v+'</text>'; });
+  o+='<text x="'+x0+'" y="'+(H-6)+'" class="dr-ax">2 hours ago</text><text x="'+x1+'" y="'+(H-6)+'" text-anchor="end" class="dr-ax">now</text>';
+  var d=''; hist.forEach(function(v,i){ if(v==null) return; d+=(d?'L':'M')+X(i).toFixed(1)+','+Y(Math.max(lo,Math.min(hi,v))).toFixed(1); });
+  o+='<path d="'+d+'" class="dr-line"/>';
+  q('[data-th-ch]').innerHTML=o; q('[data-th-t]').textContent=T.toFixed(1);
+  var m=q('[data-th-m]'); m.textContent= mode==='heat'? 'HEAT ON' : mode==='ac'? 'AC ON' : 'OFF'; m.className='dr-mode '+mode;
+  qa('[data-loop="th"] [data-act]').forEach(function(b){ b.classList.toggle('lit',b.dataset.act===mode); });
+  q('[data-th-r]').innerHTML='<b>The rule:</b> if the room is below '+(tgt-1)+'&#176;F, heat. If it is above '+(tgt+1)+'&#176;F, cool. Otherwise, do nothing. '
+    +(door>0? '<i>The door is open: cold air is pouring in.</i>' : sun? '<i>The sun is heating the room.</i>' : ''); }
+q('[data-th-in]').addEventListener('input',function(e){ tgt=+e.target.value; q('[data-th-tv]').innerHTML=tgt+'&#176;F'; q('[data-th-tg]').textContent=tgt; });
+['keydown','keyup'].forEach(function(ev){ q('[data-th-in]').addEventListener(ev,function(e){ e.stopPropagation(); }); });
+q('[data-th-door]').addEventListener('click',function(e){ e.currentTarget.blur(); door=8; });
+q('[data-th-sun]').addEventListener('click',function(e){ e.currentTarget.blur(); sun=!sun; e.currentTarget.classList.toggle('on',sun); });
+for(var w=0;w<160;w++) stepTh();
+/* Lake Mead: one August study per click */
+var lmN=0;
+function tierOf(v){ return v>=1075? 'Normal' : v>=1050? 'Level 1' : v>=1045? 'Level 2a' : 'Deeper'; }
+function drawLm(){ var W=420,H=230,x0=48,x1=W-14,y0=12,y1=H-30, lo=1035, hi=1085, X=function(i){ return x0+(x1-x0)*(i+.5)/LM.length; }, Y=function(v){ return y1-(y1-y0)*(v-lo)/(hi-lo); };
+  var o='';
+  [[1075,1085,'Normal operations','n'],[1050,1075,'Level 1 shortage','l1'],[1045,1050,'Level 2a','l2'],[1035,1045,'Deeper tiers','l3']].forEach(function(b){
+    o+='<rect x="'+x0+'" y="'+Y(b[1])+'" width="'+(x1-x0)+'" height="'+(Y(b[0])-Y(b[1]))+'" class="dr-tier '+b[3]+'"/><text x="'+(x1-6)+'" y="'+(Y(b[1])+13)+'" text-anchor="end" class="dr-tn">'+b[2]+'</text>'; });
+  o+='<path d="M'+x0+','+Y(1075)+' H'+x1+'" class="dr-trig"/><text x="'+(x0+4)+'" y="'+(Y(1075)-5)+'" class="dr-tn b">1,075 ft trigger</text>';
+  [1040,1050,1060,1070,1080].forEach(function(v){ o+='<text x="'+(x0-6)+'" y="'+(Y(v)+4)+'" text-anchor="end" class="dr-ax">'+v.toLocaleString('en-US')+'</text>'; });
+  var d='';
+  LM.forEach(function(r,i){ o+='<text x="'+X(i)+'" y="'+(H-12)+'" text-anchor="middle" class="dr-ax">'+r[0]+'</text>';
+    if(i<lmN){ d+=(d?'L':'M')+X(i)+','+Y(r[2]); } });
+  if(d) o+='<path d="'+d+'" class="dr-line lm"/>';
+  LM.forEach(function(r,i){ if(i>=lmN) return; o+='<g class="dr-pt'+(i===lmN-1?' new':'')+'"><circle cx="'+X(i)+'" cy="'+Y(r[2])+'" r="6"/><text x="'+X(i)+'" y="'+(Y(r[2])-11)+'" text-anchor="middle" class="dr-pv">'+Math.round(r[2]).toLocaleString('en-US')+'</text></g>'; });
+  q('[data-lm-ch]').innerHTML=o;
+  var r=LM[lmN-1], cut=q('[data-lm-cut]');
+  if(r){ q('[data-lm-r]').innerHTML='<b>'+r[1]+' study:</b> projected '+r[2].toLocaleString('en-US',{minimumFractionDigits:2})+' ft on January 1, '+r[0]+'. That is '+(1075-r[2]).toFixed(0)+' ft below the trigger, so the rule picks <b>'+r[3]+'</b> for '+r[0]+'. '+r[4];
+    cut.textContent= r[3]==='Level 1'? 'AZ −18%, NV −7%, MX −5%' : 'deeper cuts (Level 2a)'; }
+  else { q('[data-lm-r]').innerHTML='Each August, Reclamation&#8217;s 24-Month Study projects Lake Mead&#8217;s level for next January 1. The rule compares that projection with the tiers and sets the next year&#8217;s cuts.'; cut.textContent='AZ, NV, Mexico'; }
+  q('[data-lm-next]').disabled=lmN>=LM.length; }
+q('[data-lm-next]').addEventListener('click',function(e){ e.currentTarget.blur(); lmN=Math.min(LM.length,lmN+1); pulse=0; drawLm(); });
+q('[data-lm-reset]').addEventListener('click',function(e){ e.currentTarget.blur(); lmN=0; drawLm(); });
+/* animation loop (only while the slide is showing) */
+var raf=null, last=0, acc=0, pulse=0;
+function frame(t){ raf=null; if(!SEC.classList.contains('active')||tab==='vs'){ last=0; return; }
+  var dt=last? Math.min(.1,(t-last)/1000) : 0; last=t;
+  pulse=(pulse+dt/(tab==='th'?4.5:7))%1;
+  var svg=q('[data-loop="'+tab+'"]'), p=at(pulse), dot=svg.querySelector('[data-lp-dot]'); dot.setAttribute('cx',p[0]); dot.setAttribute('cy',p[1]);
+  var stg=STG[p[2]]; svg.querySelectorAll('[data-stage]').forEach(function(b){ b.classList.toggle('on',+b.dataset.stage===stg); });
+  if(tab==='th'){ acc+=dt; while(acc>.2){ acc-=.2; stepTh(); } drawTh(); }
+  raf=requestAnimationFrame(frame); }
+function kick(){ if(!raf) raf=requestAnimationFrame(frame); }
+new MutationObserver(function(){ if(SEC.classList.contains('active')) kick(); }).observe(SEC,{attributes:true,attributeFilter:['class']});
+drawTh(); drawLm(); kick();
+ })();</script></div></section>
+<section class="slide k18 pt-slide" data-type="content" style="--accent:#2f5c84"><div class="k18-wrap"><div><div class="eyebrow">Decisions in Organizations</div><h2 class="heading">But Who Decides the Decision Rule?</h2></div><div class="pt-body">
+  <div class="pt-ans">
+    <div class="pt-card k18-card"><div class="k18-tag">Answer 1 &#183; in theory</div><p>Whole fields of study (decision theory, operations research, control engineering) are devoted to finding the <b>&#8220;best&#8221; decision rule</b>: the one that meets the goal at the lowest cost or risk.</p></div>
+    <div class="pt-card k18-card"><div class="k18-tag">Answer 2 &#183; in practice</div><p>Day to day, which rules (policies) get proposed and adopted depends a lot on <b>power</b>: who sets the agenda, who has money and information, and who is in the room when the rule is written.</p></div>
+    <p class="pt-think">Think back to Lake Mead: who wrote the shortage tiers, and whose water was cut first?</p>
+  </div>
+  <div class="pt-fig k18-card"><div class="k18-tag">A power triangle</div><svg class="pt-svg" viewBox="0 0 720 470"><defs><marker id="ptA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#23253b"/></marker></defs><path d="M360,72 L170,362 L550,362 Z" class="pt-tri"/><path d="M335.9,108.8 L194.1,325.2" class="pt-ar" marker-start="url(#ptA)" marker-end="url(#ptA)"/><path d="M384.1,108.8 L525.9,325.2" class="pt-ar" marker-start="url(#ptA)" marker-end="url(#ptA)"/><path d="M262.0,362.0 L458.0,362.0" class="pt-ar" marker-start="url(#ptA)" marker-end="url(#ptA)"/><g class="pt-lb"><text x="250" y="206" text-anchor="end" class="pt-l"><tspan class="pt-who">Lawmakers &#8594; <tspan class="pt-what">funding, oversight</tspan></tspan></text><text x="250" y="226" text-anchor="end" class="pt-l"><tspan class="pt-who">Agencies &#8594; <tspan class="pt-what">expertise</tspan></tspan></text></g><g class="pt-lb"><text x="470" y="206" text-anchor="start" class="pt-l"><tspan class="pt-who">Lawmakers &#8594; <tspan class="pt-what">friendly laws</tspan></tspan></text><text x="470" y="226" text-anchor="start" class="pt-l"><tspan class="pt-who">Groups &#8594; <tspan class="pt-what">votes, money</tspan></tspan></text></g><g class="pt-lb"><text x="360" y="424" text-anchor="middle" class="pt-l"><tspan class="pt-who">Agencies &#8594; <tspan class="pt-what">rules, contracts</tspan></tspan></text><text x="360" y="444" text-anchor="middle" class="pt-l"><tspan class="pt-who">Groups &#8594; <tspan class="pt-what">support, information</tspan></tspan></text></g><g class="pt-c a"><rect x="272" y="41" width="176" height="62" rx="12"/><text x="360" y="69" text-anchor="middle" class="pt-t">Lawmakers</text><text x="360" y="89" text-anchor="middle" class="pt-s">Congress, legislatures</text></g><g class="pt-c b"><rect x="82" y="331" width="176" height="62" rx="12"/><text x="170" y="359" text-anchor="middle" class="pt-t">Agencies</text><text x="170" y="379" text-anchor="middle" class="pt-s">write and run the rules</text></g><g class="pt-c c"><rect x="462" y="331" width="176" height="62" rx="12"/><text x="550" y="359" text-anchor="middle" class="pt-t">Interest groups</text><text x="550" y="379" text-anchor="middle" class="pt-s">industry, advocates</text></g><text x="360" y="262" text-anchor="middle" class="pt-q">Who is missing</text><text x="360" y="284" text-anchor="middle" class="pt-q">from the triangle?</text></svg></div>
+</div></div></section>
 <section class="slide" data-type="grid" style="--accent:#3d4266">
   <div class="slide-inner col">
     <div class="eyebrow">Chapter 18  ·  Key Concepts</div>
@@ -3505,7 +3875,7 @@ window.__deckLiveReady.then(function(Lv){ backend=Lv.backend; HOST=!!Lv.HOST;
 
 <div class="hud">
   <button onclick="prev()" title="Previous (left arrow)">&#8249;</button>
-  <span class="counter" id="counter">1 / 20</span>
+  <span class="counter" id="counter">1 / 23</span>
   <button onclick="next()" title="Next (right arrow)">&#8250;</button>
   <button onclick="toggleMenu()" title="Slide menu (O)">&#9776;</button>
   <button onclick="toggleFs()" title="Fullscreen (F)">&#9974;</button>
@@ -3514,7 +3884,7 @@ window.__deckLiveReady.then(function(Lv){ backend=Lv.backend; HOST=!!Lv.HOST;
 <div class="menu" id="menu">
   <button class="menu-close" onclick="toggleMenu(false)" aria-label="Close menu">&times;</button>
   <h3>Chapter 18 &middot; Jump to a slide</h3>
-  <div class="menu-grid"><button class="menu-item" data-go="0"><span class="menu-num">1</span>Title</button><button class="menu-item" data-go="1"><span class="menu-num">2</span>Outline</button><button class="menu-item" data-go="2"><span class="menu-num">3</span>Announcements</button><button class="menu-item" data-go="3"><span class="menu-num">4</span>18.1 ▶ A Bat and a Ball (live)</button><button class="menu-item" data-go="4"><span class="menu-num">5</span>18.1 ▶ The Mug Experiment (live)</button><button class="menu-item" data-go="5"><span class="menu-num">6</span>18.1 How People Prioritize and Decide</button><button class="menu-item" data-go="6"><span class="menu-num">7</span>18.1 Emotional Defense Mechanisms</button><button class="menu-item" data-go="7"><span class="menu-num">8</span>18.1 ▶ Which Line Matches? (live)</button><button class="menu-item" data-go="8"><span class="menu-num">9</span>18.1 The Pull of the Group</button><button class="menu-item" data-go="9"><span class="menu-num">10</span>18.1 First Impressions (the 1975 study, animated)</button><button class="menu-item" data-go="10"><span class="menu-num">11</span>18.1 Belief Perseverance and Confirmation Bias</button><button class="menu-item" data-go="11"><span class="menu-num">12</span>18.2 ▶ The Planted Litter (live)</button><button class="menu-item" data-go="12"><span class="menu-num">13</span>18.2 Knowing, Doing, and Prompts</button><button class="menu-item" data-go="13"><span class="menu-num">14</span>18.2 ▶ The Default Decides (live)</button><button class="menu-item" data-go="14"><span class="menu-num">15</span>18.3 ▶ Which Card Worked? (live)</button><button class="menu-item" data-go="15"><span class="menu-num">16</span>18.3 Positive, Negative, Social</button><button class="menu-item" data-go="16"><span class="menu-num">17</span>18.4 ▶ A Difficult Decision (live)</button><button class="menu-item" data-go="17"><span class="menu-num">18</span>18.4 Labels and Narratives</button><button class="menu-item" data-go="18"><span class="menu-num">19</span>18.5 ▶ Choice Architect (live game)</button><button class="menu-item" data-go="19"><span class="menu-num">20</span>Key Concepts</button></div>
+  <div class="menu-grid"><button class="menu-item" data-go="0"><span class="menu-num">1</span>Title</button><button class="menu-item" data-go="1"><span class="menu-num">2</span>Outline</button><button class="menu-item" data-go="2"><span class="menu-num">3</span>Announcements</button><button class="menu-item" data-go="3"><span class="menu-num">4</span>18.1 ▶ A Bat and a Ball (live)</button><button class="menu-item" data-go="4"><span class="menu-num">5</span>18.1 ▶ The Mug Experiment (live)</button><button class="menu-item" data-go="5"><span class="menu-num">6</span>18.1 How People Prioritize and Decide</button><button class="menu-item" data-go="6"><span class="menu-num">7</span>18.1 Emotional Defense Mechanisms</button><button class="menu-item" data-go="7"><span class="menu-num">8</span>18.1 ▶ Which Line Matches? (live)</button><button class="menu-item" data-go="8"><span class="menu-num">9</span>18.1 The Pull of the Group</button><button class="menu-item" data-go="9"><span class="menu-num">10</span>18.1 First Impressions (the 1975 study, animated)</button><button class="menu-item" data-go="10"><span class="menu-num">11</span>18.1 Belief Perseverance and Confirmation Bias</button><button class="menu-item" data-go="11"><span class="menu-num">12</span>18.2 ▶ The Planted Litter (live)</button><button class="menu-item" data-go="12"><span class="menu-num">13</span>18.2 Knowing, Doing, and Prompts</button><button class="menu-item" data-go="13"><span class="menu-num">14</span>18.2 ▶ The Default Decides (live)</button><button class="menu-item" data-go="14"><span class="menu-num">15</span>18.3 ▶ Which Card Worked? (live)</button><button class="menu-item" data-go="15"><span class="menu-num">16</span>18.3 Positive, Negative, Social</button><button class="menu-item" data-go="16"><span class="menu-num">17</span>18.4 ▶ A Difficult Decision (live)</button><button class="menu-item" data-go="17"><span class="menu-num">18</span>18.4 Labels and Narratives</button><button class="menu-item" data-go="18"><span class="menu-num">19</span>18.5 ▶ Choice Architect (live game)</button><button class="menu-item" data-go="19"><span class="menu-num">20</span>Decision Trees (guest lecture)</button><button class="menu-item" data-go="20"><span class="menu-num">21</span>Decision Rules (guest lecture)</button><button class="menu-item" data-go="21"><span class="menu-num">22</span>Who Decides the Rule? (guest lecture)</button><button class="menu-item" data-go="22"><span class="menu-num">23</span>Key Concepts</button></div>
 </div>
 
 <script>
