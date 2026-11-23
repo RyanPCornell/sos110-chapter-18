@@ -1506,6 +1506,14 @@ body{background:#16172a;}
 .ca-ccs3 .ca-or{grid-template-columns:8.2rem 1fr 7.2rem;} .ca-ccs3 .ca-orl{font-size:.9rem;} .ca-ccs3 .ca-orv{font-size:1rem;} .ca-ccs3 .ca-ort{height:16px; border-radius:8px;}
 .ca-ccs3 .ca-ccg em{font-size:.78rem; padding:.2rem .6rem;} .ca-ccs3 .ca-ccg span{font-size:.68rem;} .ca-ccs3 .ca-ccm{font-size:.8rem;}
 .ca-cbody .ca-cmpn{font-size:.86rem;}
+/* Nov 23 2026: the semester playback */
+.ca-semo{height:100%;}
+.ca-semwk{display:flex; align-items:center; gap:.8rem;} .ca-semwk b{font:900 1.3rem 'Merriweather',serif; color:#23253b; min-width:5.5rem; font-variant-numeric:tabular-nums;}
+.ca-semtrack{flex:1; height:8px; border-radius:4px; background:#ebe5d7; overflow:hidden;} .ca-semtrack i{display:block; height:100%; width:0; background:#a3722a; transition:width .6s linear;}
+.ca-semwk span{font:italic 700 .85rem 'Merriweather',serif; color:#a5574d; min-width:9rem;}
+.ca-tots b{font-variant-numeric:tabular-nums;}
+.ca-evs{max-height:9.5rem; overflow:auto;} .ca-evs li{animation:ca-rise .4s ease both;} .ca-evw{color:#a5574d!important; font:800 .72rem 'Inter',sans-serif; letter-spacing:.08em; text-transform:uppercase; margin-right:.3rem;}
+.ca-semo .ca-ovf{justify-content:space-between; align-items:center; gap:1rem;}
 
 
 /* announcements / upcoming assignments */
@@ -2783,49 +2791,49 @@ var BEH={P:{n:'chose the plant-based entrée',s:'Plant plates',c:'#4f7d4a',g:'pl
          R:{n:'used a reusable mug',s:'Reusable mugs',c:'#2f6b67',g:'reusable mug',st:'coffee'},
          W:{n:'left little food behind',s:'Clean plates',c:'#a3722a',g:'clean plate',st:'waste'},
          S:{n:'sorted their waste correctly',s:'Sorted right',c:'#2f5c84',g:'right bin',st:'waste'}};
-var BASE={P:.20,R:.12,W:.55,S:.40}, SAT0=78, BUDGET=15000, MAXL=3, MEALS_WK=7500, WEEKS=15;
+var BASE={P:.20,R:.12,W:.55,S:.40}, SAT0=78, BUDGET=8000, MAXL=3, MEALS_WK=7500, WEEKS=15;
 var STATIONS={head:'Line entrance',tray:'Tray rack',entree:'Entrée counter',coffee:'Coffee bar',waste:'Waste station'};
 var LEVERS=[
- {id:'pledge',st:'head',name:'Pledge board',tag:'Commitment',sec:'18.2',b:'W',pp:5,sat:0,cost:200,fade:.5,
+ {id:'pledge',st:'head',name:'Pledge board',tag:'Commitment',sec:'18.2',b:'W',pp:5,sat:0,cost:400,fade:.5,
   desc:'A board at the head of the line: “I take only what I’ll eat.” Diners can add a sticky note with their name.',
   note:'A public promise creates cognitive dissonance when we break it, so people try to keep it. Without reminders, the effect tends to fade.',src:''},
- {id:'trayless',st:'tray',name:'Go trayless',tag:'Nudge (a little friction)',sec:'18.2',b:'W',pp:12,sat:-4,cost:-1000,
+ {id:'trayless',st:'tray',name:'Go trayless',tag:'Nudge (a little friction)',sec:'18.2',b:'W',pp:12,sat:-4,cost:-1500,
   desc:'Take away the tray rack. Diners carry plates in their hands, so they take less at once. (Fewer trays to wash saves money.)',
   note:'Without trays, people take less and waste less. Campus pilots and studies report plate waste falling by roughly a quarter to a third.',src:'University of Georgia pilot (26.7% less plate waste); Kim &amp; Morawski, <i>J. Hunger Environ. Nutr.</i>; Thiagarajah &amp; Getty, <i>J. Acad. Nutr. Diet.</i> (2013).'},
- {id:'default',st:'entree',name:'Plant-forward default',tag:'Default · status quo bias',sec:'18.2',b:'P',pp:40,sat:-2,cost:0,
-  desc:'The chef’s plate is the lentil bowl. Grilled chicken is still there: diners just ask for it.',
+ {id:'default',st:'entree',name:'Plant-forward default',tag:'Default · status quo bias',sec:'18.2',b:'P',pp:40,sat:-2,cost:2500,
+  desc:'The chef’s plate is the lentil bowl. Grilled chicken is still there: diners just ask for it. (New recipes and kitchen training cost money.)',
   note:'We tend to take what has already been chosen for us. In three randomized trials at campus catered events, guests given a plant-based default were about 3.5 times as likely to eat plant-based.',src:'Boronowsky et al. (2022), <i>Frontiers in Sustainable Food Systems</i> 6:1001157.'},
- {id:'order',st:'entree',name:'Plant dish first',tag:'Automatic thinking',sec:'18.1',b:'P',pp:7,sat:0,cost:0,
-  desc:'Put the lentil bowl first in line, at eye level. The chicken comes second.',
+ {id:'order',st:'entree',name:'Plant dish first',tag:'Automatic thinking',sec:'18.1',b:'P',pp:7,sat:0,cost:500,
+  desc:'Put the lentil bowl first in line, at eye level. The chicken comes second. (Rearranging the counter takes some work.)',
   note:'On autopilot, we take what we see first and stop looking. Placement nudges in cafeterias usually produce modest but real shifts.',src:''},
- {id:'name',st:'entree',name:'Rename the dish',tag:'Frames · labels',sec:'18.4',b:'P',pp:6,sat:1,cost:0,
-  desc:'“Vegan lentil bowl” becomes “Smoky chipotle lentil bowl.” Same food.',
+ {id:'name',st:'entree',name:'Rename the dish',tag:'Frames · labels',sec:'18.4',b:'P',pp:6,sat:1,cost:800,
+  desc:'“Vegan lentil bowl” becomes “Smoky chipotle lentil bowl.” Same food, new menu boards.',
   note:'Words set the frame. In five university dining halls, taste-focused labels raised vegetable selection 14% over basic labels and 29% over health-focused ones.',src:'Turnwald et al. (2019), <i>Psychological Science</i> 30(11), 1603–1615.'},
- {id:'sign',st:'entree',name:'A sign at the counter',sec:'18.3',b:'P',cost:300,fade:.5,opts:[
+ {id:'sign',st:'entree',name:'A sign at the counter',sec:'18.3',b:'P',cost:600,fade:.5,opts:[
    {k:'moral',label:'“Eat less meat. Save the planet.”',short:'Eat less meat. Save the planet.',pp:1,sat:-3,tag:'A moral appeal',
     note:'A lecture at the moment of choice. Moralizing messages often make people tune out, or push back.',src:''},
    {k:'dyn',label:'“More and more students here are choosing plant-based.”',short:'More and more students here choose plant-based.',pp:5,sat:0,tag:'Social norms (a changing norm)',
     note:'Telling people a behavior is spreading can pull them along. In a Stanford café, a “more and more people” message about eating less meat raised meatless orders from 17% to 34% compared with a static norm. Later replications were mixed.',src:'Sparkman &amp; Walton (2017), <i>Psychological Science</i> 28(11).'},
    {k:'neg',label:'“Most students here still eat meat at every meal.”',short:'Most students here still eat meat at every meal.',pp:-4,sat:0,tag:'Social norms (backfire)',
     note:'Saying that most people do the undesired thing makes it feel normal. At Petrified Forest National Park, a sign saying many visitors took wood was followed by more theft than a simple “please don’t.”',src:'Cialdini et al. (2006), <i>Social Influence</i> 1(1), 3–15.'}]},
- {id:'surcharge',st:'entree',name:'Meat surcharge',tag:'Negative incentive',sec:'18.3',b:'P',pp:16,sat:-12,cost:-6000,react:true,
+ {id:'surcharge',st:'entree',name:'Meat surcharge',tag:'Negative incentive',sec:'18.3',b:'P',pp:16,sat:-12,cost:-4000,react:true,
   desc:'Add $1.50 to every meat entrée. The money goes into your budget.',
   note:'Prices work. But a charge that feels imposed can spark backlash, especially when diners had no say: psychologists call it reactance.',src:''},
  {id:'cup',st:'coffee',name:'Cup pricing',sec:'18.1',b:'R',opts:[
-   {k:'charge',label:'Charge 25¢ for a paper cup',short:'Paper cup +25¢',pp:8,sat:-1,cost:-3000,tag:'Loss aversion (a loss to avoid)',
+   {k:'charge',label:'Charge 25¢ for a paper cup',short:'Paper cup +25¢',pp:8,sat:-1,cost:-2000,tag:'Loss aversion (a loss to avoid)',
     note:'Same 25 cents, framed two ways. In a field experiment in UK cafés, a charge on disposable cups raised reusable cup use; a discount of the same size made no detectable difference. Losses loom larger than gains.',src:'Poortinga &amp; Whitaker (2018), <i>Sustainability</i> 10(3), 873.'},
    {k:'disc',label:'Take 25¢ off for a reusable mug',short:'Mug −25¢',pp:1,sat:1,cost:2500,tag:'Loss aversion (a gain to win)',
     note:'Same 25 cents, framed as a gain. In a field experiment in UK cafés, the discount made no detectable difference, while a charge of the same size raised reusable cup use.',src:'Poortinga &amp; Whitaker (2018), <i>Sustainability</i> 10(3), 873.'}]},
- {id:'mug',st:'coffee',name:'Mugs by default',tag:'Default',sec:'18.2',b:'R',pp:48,sat:-1,cost:1500,
-  desc:'Ceramic mugs sit at the front of the coffee bar. Paper cups are behind the counter, on request.',
+ {id:'mug',st:'coffee',name:'Mugs by default',tag:'Default',sec:'18.2',b:'R',pp:48,sat:-1,cost:4000,
+  desc:'Ceramic mugs sit at the front of the coffee bar. Paper cups are behind the counter, on request. (Buying and washing mugs costs money.)',
   note:'Choosing anything other than the default takes effort and feels like a decision, so most people don’t. Nothing is banned.',src:''},
- {id:'binsigns',st:'waste',name:'Picture signs at the bins',tag:'Prompt',sec:'18.2',b:'S',pp:18,sat:0,cost:400,fade:.25,
+ {id:'binsigns',st:'waste',name:'Picture signs at the bins',tag:'Prompt',sec:'18.2',b:'S',pp:18,sat:0,cost:1200,fade:.25,
   desc:'Photos of real items above each bin, and the compost bin moved first.',
   note:'A prompt works best right at the moment of decision, when it is specific and easy to act on.',src:''},
- {id:'ambassador',st:'waste',name:'Bin ambassador',tag:'Social incentive',sec:'18.3',b:'S',pp:35,sat:0,cost:12000,
+ {id:'ambassador',st:'waste',name:'Bin ambassador',tag:'Social incentive',sec:'18.3',b:'S',pp:35,sat:0,cost:9000,
   desc:'A student staff member stands by the bins at lunch and helps people sort.',
   note:'Being seen changes behavior, and a helper makes the right choice easy. Effective, but staff time is expensive.',src:''},
- {id:'feedback',st:'waste',name:'Food-waste screen',tag:'Feedback',sec:'18.2',b:'W',pp:7,sat:0,cost:2500,fade:.4,
+ {id:'feedback',st:'waste',name:'Food-waste screen',tag:'Feedback',sec:'18.2',b:'W',pp:7,sat:0,cost:3500,fade:.4,
   desc:'A screen by the bins shows today’s food waste in kilograms, updated as people scrape their plates.',
   note:'Feedback makes an invisible outcome visible, like a home energy report. Effects are real but often small, and fade once the display becomes background.',src:''}
 ];
@@ -3067,7 +3075,7 @@ function paintPlan(){
     +budgetHTML()
     +'<div class="ca-tabs">'+tabs+'</div><div class="ca-lvs">'+cards+'</div>'
     +'<div class="ca-hall-l"><div class="k18-tag">Your design &#183; '+n+' change'+(n===1?'':'s')+'</div>'+designList(true)+'</div>'
-    +'<button type="button" class="k18-btn ca-go" data-run'+(n&&!last?'':' disabled')+'>'+(S.tests.length? 'Test the new version at lunch' : 'Test this design at lunch')+'</button>'
+    +(left(S.adopted)<0? '<p class="ca-small bad">Over budget by '+money(-left(S.adopted)).replace('−','')+'. Drop a change, or add one that raises money.</p>' : '')+'<button type="button" class="k18-btn ca-go" data-run'+(n&&!last&&left(S.adopted)>=0?'':' disabled')+'>'+(S.tests.length? 'Test the new version at lunch' : 'Test this design at lunch')+'</button>'
     +(S.tests.length? '<button type="button" class="k18-ghost ca-fin" data-finish>Lock it in: run the semester</button>' : '');
   var sc2=q('.ca-lvs',SIDE); if(sc2) sc2.scrollTop=keep;
   qa('[data-tab]',SIDE).forEach(function(b){ b.addEventListener('click',function(){ S.tab=b.dataset.tab; save(); paintPlan(); }); });
@@ -3133,55 +3141,97 @@ function paintResult(){ var t=S.tests[S.tests.length-1], oa=outcome(t.a), ob=out
   q('[data-lock]',SIDE).addEventListener('click',function(){ startSemester(); }); }
 
 /* ═══ the semester ══════════════════════════════════════════════════════════════════════════════════════ */
-function semester(keys){ var p0=probs([]), o0=outcome(p0), pet=null, rep=false, weeks=[];
-  var satNow=probs(keys).sat, hasS=keys.indexOf('surcharge')>-1;
-  for(var w=1;w<=WEEKS;w++){ var gone=(rep && hasS);
-    var p=probs(keys.filter(function(k){ return !(gone && k==='surcharge'); }),function(o){ return 1-(o.fade||0)*(w-1)/(WEEKS-1); });
+/* Nov 23 2026 (Ryan): "the Semester reveal doesn't really show very much and the graph doesn't seem to change as time goes on."
+   The semester now has a shared calendar (orientation, midterms, Thanksgiving, finals) that moves BOTH your hall and the hall
+   "as it was"; structural changes take a few weeks to settle in; prompts fade; defaults and layout grow into habits; a surcharge can
+   be petitioned away. It plays week by week with the gap between the two lines shaded, events as they happen, and running totals. */
+var CAL=[ {z:{P:0,R:0,W:0,S:-.15},s:1,n:'Orientation'},{z:{P:0,R:0,W:.05,S:0},s:1},{z:{P:.04,R:0,W:.05,S:.05},s:1},{z:{P:0,R:.05,W:0,S:0},s:0},
+  {z:{P:-.05,R:0,W:0,S:0},s:0},{z:{P:0,R:0,W:-.05,S:0},s:-1},{z:{P:-.08,R:-.1,W:-.3,S:-.25},s:-3,n:'Midterms'},{z:{P:-.05,R:-.05,W:-.25,S:-.2},s:-2,n:'Midterms'},
+  {z:{P:.03,R:0,W:.05,S:0},s:1},{z:{P:0,R:.04,W:0,S:.05},s:1},{z:{P:.08,R:0,W:.1,S:0},s:2,n:'Thanksgiving week'},{z:{P:0,R:0,W:0,S:0},s:0},
+  {z:{P:-.03,R:0,W:-.05,S:0},s:-1},{z:{P:-.08,R:-.08,W:-.3,S:-.2},s:-3,n:'Finals'},{z:{P:-.06,R:-.06,W:-.25,S:-.18},s:-4,n:'Finals'} ];
+var STRUCT={'default':1,order:1,name:1,trayless:1,mug:1,ambassador:1,'cup:charge':1,'cup:disc':1,surcharge:1}, HABIT={'default':1,order:1,mug:1,trayless:1};
+function withCal(p,w){ var c=CAL[w-1], q={sat:p.sat+c.s}; ['P','R','W','S'].forEach(function(b){ q[b]=sig(logit(clamp(p[b],.01,.99))+c.z[b]); }); return q; }
+function semester(keys){ var p0=probs([]), o0=outcome(p0), pet=null, rep=false, weeks=[], hasS=keys.indexOf('surcharge')>-1, satNow=probs(keys).sat;
+  for(var w=1;w<=WEEKS;w++){ var gone=(rep && hasS), t=(w-1)/(WEEKS-1);
+    var k2=keys.filter(function(k){ return !(gone && k==='surcharge'); });
+    var p=probs(k2,function(o){ var m=1; if(o.fade) m*=1-o.fade*t; if(STRUCT[o.key]) m*=Math.min(1,.55+.18*(w-1)); if(HABIT[o.key]) m*=1+.12*t; return m; });
     if(gone) p.sat+=2;
-    var oc=outcome(p); weeks.push({w:w,co2:oc.co2,land:oc.land,sat:oc.sat,p:p});
+    var smooth=outcome(p), pc=withCal(p,w), pb=withCal(p0,w), oc=outcome(pc), ob=outcome(pb);
+    weeks.push({w:w,co2:oc.co2,land:oc.land,sat:oc.sat,b:{co2:ob.co2,land:ob.land,sat:ob.sat},s:smooth,p:p});
     if(hasS && satNow<=70 && w===4 && !pet){ pet=4; } if(pet && w===5) rep=true; }
-  var tot={co2:0,land:0}; weeks.forEach(function(x){ tot.co2+=(o0.co2-x.co2)*MEALS_WK/1000; tot.land+=(o0.land-x.land)*MEALS_WK/1e6; });
-  return {weeks:weeks,base:o0,pet:pet,tot:tot,end:weeks[WEEKS-1]}; }
+  var cum={co2:[],land:[]}, a=0, l=0; weeks.forEach(function(x){ a+=(x.b.co2-x.co2)*MEALS_WK/1000; l+=(x.b.land-x.land)*MEALS_WK/1e6; cum.co2.push(a); cum.land.push(l); });
+  var last=weeks[WEEKS-1], end={co2:last.s.co2,land:last.s.land,sat:last.s.sat,p:last.p};
+  var ev=[], names=function(f){ return keys.filter(f).map(function(k){ return OPT[k].L.opts? OPT[k].L.name : OPT[k].name; }); };
+  if(!keys.length) ev.push({w:1,t:'Nothing changed, so the hall ran exactly as before. Status quo bias wins again.'});
+  else if(names(function(k){ return STRUCT[k]; }).length) ev.push({w:1,t:'Diners meet the new hall. Bigger changes take two or three weeks to settle in.'});
+  var fd=names(function(k){ return OPT[k].fade; }); if(fd.length) ev.push({w:4,t:'<b>'+fd.join(', ')+'</b>: the novelty is wearing off. Diners stop noticing.'});
+  if(pet){ ev.push({w:4,t:'Diners start a <b>petition</b> against the meat surcharge.'}); ev.push({w:5,t:'The student senate votes the surcharge down. Its effect, and its money, are gone (reactance).'}); }
+  ev.push({w:7,t:'<b>Midterms</b>: rushed lunches mean more waste and less sorting, in your hall and in the hall as it was.'});
+  var hb=names(function(k){ return HABIT[k]; }); if(hb.length) ev.push({w:10,t:'<b>'+hb.join(', ')+'</b>: now a habit. Diners do it without thinking, so it keeps working.'});
+  ev.push({w:11,t:'Thanksgiving week: fewer, calmer lunches.'}); ev.push({w:14,t:'<b>Finals</b>: stress lunches. Mood and sorting dip everywhere.'});
+  return {weeks:weeks,base:o0,pet:pet,cum:cum,tot:{co2:a,land:l},end:end,ev:ev}; }
 function startSemester(){ S.phase='semester'; S.sem=semester(S.adopted); save();
   ROOT.classList.remove('ca-plan'); writeDesign(true); paintChips();
   var e=S.sem.end; write({f:{c:Math.round(e.co2*100)/100,w:Math.round(e.land),s:Math.round(e.sat),n:semNet(S.adopted,S.sem),k:S.adopted.join(',')}});
   paintSemester(); paintSideDone(); }
 function paintSideDone(){ SIDE.innerHTML='<div class="ca-sh"><div class="k18-tag">Your semester</div><p class="ca-lead">Your design ran for '+WEEKS+' weeks: about '+(MEALS_WK*WEEKS).toLocaleString('en-US')+' lunches.</p></div>'
-  +'<button type="button" class="k18-btn" data-open-sem>Show the semester</button><button type="button" class="k18-btn" data-open-fin>How your hall works</button>'
+  +'<button type="button" class="k18-btn" data-open-sem>Replay the semester</button><button type="button" class="k18-btn" data-open-fin>How your hall works</button>'
   +'<div class="ca-hall-l"><div class="k18-tag">Your hall</div>'+hallList().replace(/<button[^>]*>&#215;<\/button>/g,'')+'</div>'
   +'<button type="button" class="k18-ghost" data-restart>Start a new hall</button>';
   q('[data-open-sem]',SIDE).addEventListener('click',paintSemester); q('[data-open-fin]',SIDE).addEventListener('click',paintFinale);
   q('[data-restart]',SIDE).addEventListener('click',function(){ if(!confirm('Start over with a fresh hall? Your class results stay in.')) return; var r=S.run; freshState(); S.run=r; S.phase='plan'; save(); OVER.hidden=true; props(); render(); }); }
-function chartSVG(sem,key,label,unit,fmt,col,lowGood){ var W=360,H=230,x0=40,x1=W-12,y0=30,y1=H-28, ws=sem.weeks, base=sem.base[key];
-  var vals=ws.map(function(w){ return w[key]; }).concat([base]), mn=Math.min.apply(null,vals), mx=Math.max.apply(null,vals), pad=(mx-mn)*.25||1; mn-=pad; mx+=pad;
+var SEMT=null;
+function semChart(sem,key,label,unit,fmt,col,lowGood){ var W=380,H=300,x0=44,x1=W-14,y0=34,y1=H-30, ws=sem.weeks;
+  var vals=[]; ws.forEach(function(w){ vals.push(w[key],w.b[key]); }); var mn=Math.min.apply(null,vals), mx=Math.max.apply(null,vals), pad=(mx-mn)*.18||1; mn-=pad; mx+=pad;
   var X=function(w){ return x0+(x1-x0)*(w-1)/(WEEKS-1); }, Y=function(v){ return y1-(y1-y0)*(v-mn)/(mx-mn); };
-  var d=ws.map(function(w,i){ return (i?'L':'M')+X(w.w).toFixed(1)+','+Y(w[key]).toFixed(1); }).join(' ');
-  var end=ws[WEEKS-1][key], better=lowGood? end<base : end>base;
-  return '<svg class="ca-ch" viewBox="0 0 '+W+' '+H+'"><text x="'+x0+'" y="14" class="ca-cht">'+label+'</text>'
+  var dl=function(f){ return ws.map(function(w,i){ return (i?'L':'M')+X(w.w).toFixed(1)+','+Y(f(w)).toFixed(1); }).join(' '); };
+  var dB=dl(function(w){ return w.b[key]; }), dD=dl(function(w){ return w[key]; });
+  var area=dD+' '+ws.slice().reverse().map(function(w){ return 'L'+X(w.w).toFixed(1)+','+Y(w.b[key]).toFixed(1); }).join(' ')+' Z';
+  var good=ws[WEEKS-1][key]<ws[WEEKS-1].b[key]===lowGood;
+  var o='<svg class="ca-ch" viewBox="0 0 '+W+' '+H+'" data-semc="'+key+'"><defs><clipPath id="semClip_'+key+'"><rect x="0" y="0" width="'+x0+'" height="'+H+'" data-clip/></clipPath></defs>'
+    +'<text x="'+x0+'" y="16" class="ca-cht">'+label+'</text>'
     +'<path d="M'+x0+','+y1+' H'+x1+'" stroke="#23253b" stroke-width=".8"/>'
-    +[1,5,10,15].map(function(w){ return '<text x="'+X(w)+'" y="'+(y1+14)+'" text-anchor="middle" class="ca-dbt">wk '+w+'</text>'; }).join('')
-    +'<path d="M'+x0+','+Y(base)+' H'+x1+'" stroke="#86847a" stroke-width="1.4" stroke-dasharray="5 4"/><text x="'+(x0+4)+'" y="'+(Y(base)+(Y(end)<Y(base)? 14 : -6))+'" text-anchor="start" class="ca-dbt">as it was: '+fmt(base)+unit+'</text>'
+    +[1,4,7,10,13,15].map(function(w){ return '<text x="'+X(w)+'" y="'+(y1+15)+'" text-anchor="middle" class="ca-dbt">wk '+w+'</text>'; }).join('')
+    +[7,14].map(function(w){ return '<rect x="'+(X(w)-6)+'" y="'+y0+'" width="'+((x1-x0)/(WEEKS-1)+12)+'" height="'+(y1-y0)+'" fill="#23253b" opacity=".045"/>'; }).join('')
+    +'<g clip-path="url(#semClip_'+key+')"><path d="'+area+'" fill="'+(good?col:'#9c3a4a')+'" opacity=".14"/>'
+    +'<path d="'+dB+'" fill="none" stroke="#86847a" stroke-width="1.6" stroke-dasharray="5 4"/><path d="'+dD+'" fill="none" stroke="'+col+'" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></g>'
     +(sem.pet? '<path d="M'+X(sem.pet)+','+y0+' V'+y1+'" stroke="#9c3a4a" stroke-dasharray="2 3"/>' : '')
-    +'<path class="ca-draw" d="'+d+'" fill="none" stroke="'+col+'" stroke-width="3" stroke-linecap="round" pathLength="1"/>'
-    +'<circle cx="'+X(WEEKS)+'" cy="'+Y(end)+'" r="4.5" fill="'+col+'" class="ca-endpt"/><text x="'+(X(WEEKS)-8)+'" y="'+(Y(end)+(Y(end)<Y(base)? -10 : 20))+'" text-anchor="end" class="ca-chv'+(better?'':' bad')+'">'+fmt(end)+unit+'</text></svg>'; }
-function paintSemester(){ var sem=S.sem; OVER.hidden=false;
-  var notes=[]; S.adopted.forEach(function(k){ var o=OPT[k]; if(o.fade) notes.push('<b>'+esc(o.name)+'</b> lost some of its pull as diners got used to it (novelty fades).'); });
-  if(S.adopted.some(function(k){ return OPT[k].L.st && (k==='default'||k==='mug'||k==='order'||k==='trayless'); })) notes.push('<b>Defaults and layout</b> held steady all semester: they work on autopilot, so they never wear off.');
-  if(sem.pet) notes.push('<b>Week 4:</b> diners started a petition against the meat surcharge. <b>Week 5:</b> the student senate voted it down, so its effect (and its money) vanished. That is reactance.');
-  if(!S.adopted.length) notes.push('You adopted nothing, so the semester ran exactly as before. Status quo bias wins again.');
-  OVER.innerHTML='<div class="ca-ov k18-card"><div class="ca-ovh"><div><div class="k18-tag">The semester &#183; '+WEEKS+' weeks, about '+(MEALS_WK*WEEKS).toLocaleString('en-US')+' lunches</div><h3>What your design did over time</h3></div>'
-    +'<button type="button" class="k18-ghost" data-close>Back to the hall</button></div>'
-    +'<div class="ca-sems">'+chartSVG(sem,'co2','Carbon per meal',' kg',function(v){ return f1(v); },'#2c6b5f',true)
-    +chartSVG(sem,'land','Landfill per meal',' g',function(v){ return Math.round(v); },'#a3722a',true)
-    +chartSVG(sem,'sat','Diner mood',' /100',function(v){ return Math.round(v); },'#5b4a8b',false)+'</div>'
-    +'<div class="ca-semb"><div class="ca-tots">'
-    +'<div><b>'+f1(Math.max(0,sem.tot.co2))+'</b><span>tonnes CO&#8322;e avoided</span></div>'
-    +'<div><b>'+f1(Math.max(0,sem.tot.land))+'</b><span>tonnes kept out of landfill</span></div>'
-    +(function(){ var nc=semNet(S.adopted,sem); return nc<0? '<div><b>+'+money(-nc)+'</b><span>raised: your fees brought in more than you spent</span></div>' : '<div><b>'+money(nc)+'</b><span>spent of your '+money(BUDGET)+' budget</span></div>'; })()+'</div>'
-    +'<ul class="ca-notes">'+notes.map(function(n){ return '<li>'+n+'</li>'; }).join('')+'</ul></div>'
-    +'<div class="ca-ovf"><button type="button" class="k18-btn" data-tofin>See how your hall works &#8594;</button></div></div>';
-  q('[data-close]',OVER).addEventListener('click',function(){ OVER.hidden=true; });
-  q('[data-tofin]',OVER).addEventListener('click',paintFinale); }
+    +'<path d="M'+x0+','+y0+' V'+y1+'" stroke="#a3722a" stroke-width="1.2" data-wkline/>'
+    +'<g data-vals><circle r="4.5" fill="'+col+'" data-vd/><text class="ca-chv" data-vt></text><text class="ca-dbt" data-bt></text></g></svg>';
+  return {html:o, step:function(svg,w){ var wk=ws[w-1], xr=X(w)+3, r=svg.querySelector('[data-clip]'); r.setAttribute('width',xr);
+      svg.querySelector('[data-wkline]').setAttribute('d','M'+X(w)+','+y0+' V'+y1);
+      var c=svg.querySelector('[data-vd]'); c.setAttribute('cx',X(w)); c.setAttribute('cy',Y(wk[key]));
+      var better= lowGood? wk[key]<=wk.b[key] : wk[key]>=wk.b[key], tx=svg.querySelector('[data-vt]'), above=Y(wk[key])<Y(wk.b[key]);
+      tx.setAttribute('x',Math.min(X(w)+6,x1-60)); tx.setAttribute('y',Y(wk[key])+(above?-9:16)); tx.textContent=fmt(wk[key])+unit; tx.setAttribute('class','ca-chv'+(better?'':' bad'));
+      var bt=svg.querySelector('[data-bt]'); bt.setAttribute('x',Math.min(X(w)+6,x1-60)); bt.setAttribute('y',Y(wk.b[key])+(above?16:-8)); bt.textContent='as it was '+fmt(wk.b[key])+unit; } }; }
+function paintSemester(){ var sem=S.sem; if(!sem||!sem.cum){ sem=S.sem=semester(S.adopted); save(); } OVER.hidden=false; clearInterval(SEMT);
+  var C=[semChart(sem,'co2','Carbon per meal',' kg',function(v){ return f1(v); },'#2c6b5f',true),
+         semChart(sem,'land','Landfill per meal',' g',function(v){ return Math.round(v); },'#a3722a',true),
+         semChart(sem,'sat','Diner mood',' /100',function(v){ return Math.round(v); },'#5b4a8b',false)];
+  var nc=semNet(S.adopted,sem);
+  OVER.innerHTML='<div class="ca-ov k18-card ca-semo"><div class="ca-ovh"><div><div class="k18-tag">The semester &#183; '+WEEKS+' weeks, about '+(MEALS_WK*WEEKS).toLocaleString('en-US')+' lunches</div><h3>Your hall vs. the same hall as it was</h3></div>'
+    +'<span class="ca-ovbtns"><button type="button" class="k18-ghost" data-sem-play>Pause</button><button type="button" class="k18-ghost" data-sem-skip>Skip to week 15</button><button type="button" class="k18-ghost" data-close>Back to the hall</button></span></div>'
+    +'<div class="ca-semwk"><b data-sem-w>Week 1</b><div class="ca-semtrack"><i data-sem-bar></i></div><span data-sem-cal></span></div>'
+    +'<div class="ca-sems">'+C.map(function(c){ return c.html; }).join('')+'</div>'
+    +'<div class="ca-semb"><div class="ca-tots"><div><b data-tot-c>0.0</b><span>tonnes CO&#8322;e avoided so far</span></div><div><b data-tot-l>0.0</b><span>tonnes kept out of landfill so far</span></div>'
+    +'<div><b data-tot-m>$0</b><span data-tot-ml>'+(nc<0?'raised by your fees so far':'spent so far, of '+money(BUDGET))+'</span></div></div>'
+    +'<ul class="ca-notes ca-evs" data-sem-ev></ul></div>'
+    +'<div class="ca-ovf"><span class="ca-small">Grey dashed line: the same weeks with nothing changed. Shading: the difference your design made.</span><button type="button" class="k18-btn" data-tofin>See how your hall works &#8594;</button></div></div>';
+  var svgs=C.map(function(c,i){ return OVER.querySelectorAll('[data-semc]')[i]; }), w=0, shown={};
+  function to(n){ w=n; C.forEach(function(c,i){ c.step(svgs[i],w); });
+    q('[data-sem-w]',OVER).textContent='Week '+w; q('[data-sem-bar]',OVER).style.width=(w/WEEKS*100)+'%'; q('[data-sem-cal]',OVER).textContent=CAL[w-1].n||'';
+    q('[data-tot-c]',OVER).textContent=f1(Math.max(0,sem.cum.co2[w-1])); q('[data-tot-l]',OVER).textContent=f1(Math.max(0,sem.cum.land[w-1]));
+    var spent=0; S.adopted.forEach(function(k){ var c=OPT[k].cost; spent+= (k==='surcharge'&&sem.pet)? c*Math.min(w,4)/WEEKS : c*w/WEEKS; });   /* a repealed surcharge stops raising money after week 4 */
+    q('[data-tot-m]',OVER).textContent=(nc<0?'+':'')+money(Math.abs(Math.round(spent/10)*10)).replace('−','');
+    var ul=q('[data-sem-ev]',OVER); sem.ev.forEach(function(e,i){ if(e.w<=w && !shown[i]){ shown[i]=1; var li=document.createElement('li'); li.innerHTML='<b class="ca-evw">Week '+e.w+'</b> '+e.t; ul.insertBefore(li,ul.firstChild); } });
+    if(w>=WEEKS){ clearInterval(SEMT); SEMT=null; var pb=q('[data-sem-play]',OVER); if(pb) pb.textContent='Replay'; } }
+  function play(){ clearInterval(SEMT); if(w>=WEEKS){ w=0; shown={}; q('[data-sem-ev]',OVER).innerHTML=''; } q('[data-sem-play]',OVER).textContent='Pause';
+    SEMT=setInterval(function(){ if(!OVER.querySelector('.ca-semo')||OVER.hidden||!SEC.classList.contains('active')){ clearInterval(SEMT); SEMT=null; return; } to(w+1); },700); }
+  to(1); play();
+  q('[data-sem-play]',OVER).addEventListener('click',function(e){ e.currentTarget.blur(); if(SEMT){ clearInterval(SEMT); SEMT=null; e.currentTarget.textContent='Play'; } else play(); });
+  q('[data-sem-skip]',OVER).addEventListener('click',function(e){ e.currentTarget.blur(); clearInterval(SEMT); SEMT=null; for(var k=w+1;k<=WEEKS;k++) to(k); });
+  q('[data-close]',OVER).addEventListener('click',function(){ clearInterval(SEMT); SEMT=null; OVER.hidden=true; });
+  q('[data-tofin]',OVER).addEventListener('click',function(){ clearInterval(SEMT); SEMT=null; paintFinale(); }); }
 
 /* ═══ the finale: how your hall works ══════════════════════════════════════════════════════════════════ */
 function paintFinale(){ OVER.hidden=false; var keys=S.adopted, p0=probs([]), sem=S.sem||semester(keys), p1=sem.end.p, o0=outcome(p0), o1={co2:sem.end.co2,land:sem.end.land,sat:sem.end.sat};
@@ -3474,7 +3524,7 @@ function cardAt(sc,lt,t){
     var pr=clamp((lt-4.6)/.3,0,1);
     o+='<g opacity="'+a(3.8)+'" transform="translate(500 516)"><rect x="-176" y="-22" width="170" height="44" rx="22" fill="'+(pr>0?'#2c6b5f':'#2f5c84')+'" transform="scale('+(1-.06*Math.sin(pr*3.14))+')"/><text x="-91" y="6" text-anchor="middle" class="ca-vbtn">'+(pr>=1?'Adopted &#10003;':'Adopt it')+'</text>'
       +'<rect x="6" y="-22" width="170" height="44" rx="22" fill="none" stroke="#23253b" stroke-opacity=".3" stroke-width="1.5"/><text x="91" y="6" text-anchor="middle" class="ca-vbtn2">Leave it out</text></g>'
-      +'<g opacity="'+a(4.8)+'"><text x="500" y="584" text-anchor="middle" class="ca-vax">Semester budget: $15,000 &#183; this change costs $0</text></g>';
+      +'<g opacity="'+a(4.8)+'"><text x="500" y="584" text-anchor="middle" class="ca-vax">Semester budget: $8,000 &#183; this change costs $500</text></g>';
     return o; }
   if(sc.card==='sem'){ var x0=170, x1=830, Y=function(v){ return 470-v*700; }, Xw=function(w){ return x0+(x1-x0)*(w-1)/14; }, pr=clamp((lt-.8)/4.2,0,1), wmax=1+14*pr;
     function line(f,col,dash){ var d=''; for(var w=1;w<=wmax+.001;w+=.25) d+=(d?'L':'M')+Xw(w).toFixed(1)+','+Y(f(w)).toFixed(1); return '<path d="'+d+'" fill="none" stroke="'+col+'" stroke-width="4" stroke-linecap="round"'+(dash?' stroke-dasharray="7 7"':'')+'/>'; }
